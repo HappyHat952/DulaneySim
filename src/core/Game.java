@@ -1,15 +1,14 @@
 package core;
 
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import setup.Images;
 
 public class Game extends BasicGameState 
 {	
 	private int id;
+	private static StateBasedGame sbg;
 
 	public Game(int id) 
 	{
@@ -25,6 +24,8 @@ public class Game extends BasicGameState
 	{
 		// This code happens when you enter a game state for the *first time.*
 		gc.setShowFPS(true);
+		Images.loadImages();
+		this.sbg = sbg;
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -51,6 +52,10 @@ public class Game extends BasicGameState
 
 	public void keyPressed(int key, char c)
 	{
+		if (key == Input.KEY_X)
+		{
+			sbg.enterState(Main.RACER_ID);
+		}
 		// This code happens every time the user presses a key
 	}
 	
