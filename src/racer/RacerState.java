@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class RacerState extends BasicGameState {
 
     private int id;
+    private StateBasedGame sbg;
     Runner r;
     private Image background1;
     private Image background2;
@@ -42,6 +43,9 @@ public class RacerState extends BasicGameState {
         }
         if (c == 'd') {
             r.moveRight();
+        }
+        if (c == 'x') {
+            sbg.enterState(Main.ASSIGN_ID);
         }
     }
 
@@ -74,6 +78,7 @@ public class RacerState extends BasicGameState {
         obstacles = new ArrayList<Obstacle>();
         speed = 22;
         counter = 0;
+        sbg = stateBasedGame;
     }
 
     @Override
