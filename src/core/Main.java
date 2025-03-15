@@ -7,6 +7,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import racer.RacerState;
+import teacherTalk.TeacherTalk;
 
 public class Main extends StateBasedGame {
     public final static int FRAMES_PER_SECOND = 60;
@@ -14,17 +15,25 @@ public class Main extends StateBasedGame {
 
     public static final int GAME_ID = 0;
     public static final int RACER_ID = 1;
-    public static final int ASSIGN_ID = 2;
+    public static final int TEACHER_ID = 2;
+    public static final int ASSIGN_ID =3;
+    public static final int LOCKER_ID = 4;
+    public static final int LEVEL_ID = 5;
 
     private BasicGameState game;
     private BasicGameState racer;
     private BasicGameState assign;
+    private BasicGameState teacher;
+    private BasicGameState assignment;
+    private BasicGameState locker;
+    private BasicGameState level;
 
     public Main(String name) {
         super(name);
 
         game = new Game(GAME_ID);
         racer = new RacerState(RACER_ID);
+        teacher = new TeacherTalk(TEACHER_ID);
         assign = new Assignment(ASSIGN_ID);
     }
 
@@ -40,6 +49,7 @@ public class Main extends StateBasedGame {
     public void initStatesList(GameContainer gc) throws SlickException {
         addState(game);
         addState(racer);
+        addState(teacher);
         addState(assign);
     }
 
