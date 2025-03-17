@@ -14,8 +14,7 @@ public class RacerState extends BasicGameState {
     private int id;
     private StateBasedGame sbg;
     Runner r;
-    private Image background1;
-    private Image background2;
+    private SpriteSheet background;
     private int y1;
     private int y2;
     private static int speed;
@@ -26,8 +25,6 @@ public class RacerState extends BasicGameState {
 
     public RacerState(int id) {
         this.id = id;
-
-//        gameOverScreen = Images.timesUp;
     }
 
 
@@ -68,23 +65,18 @@ public class RacerState extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        background1 = Images.racerBackground;
-        background2 = Images.racerBackground;
+        background = Images.racerBackground;
         screenHeight = Main.getScreenHeight();
         screenWidth = Main.getScreenWidth();
         r = new Runner();
-        y1 = 0;
-        y2 = background1.getHeight() * -1;
         obstacles = new ArrayList<Obstacle>();
-        speed = 22;
-        counter = 0;
+
         sbg = stateBasedGame;
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
-        g.drawImage(background1, 0, y1);
-        g.drawImage(background2, 0, y2);
+        g.drawImage(background, 0, y1);
         for (Obstacle o: obstacles) {
             o.render(g);
         }
@@ -107,18 +99,7 @@ public class RacerState extends BasicGameState {
         cleanUp();
 
         // UPDATE SCREEN
-        int j = 0;
-        while (y1 < screenHeight && y2 < screenHeight && j <= speed) {
-            y1++;
-            y2++;
-            j++;
-        }
-        if (y1 >= screenHeight) {
-            y1 = background1.getHeight() * -1;
-        }
-        if (y2 >= screenHeight) {
-            y2 = background1.getHeight() * -1;
-        }
+
         // MOVE PENGUIN
         if (gc.getInput().isKeyDown(Input.KEY_A)) {
             r.moveLeft();
