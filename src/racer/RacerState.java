@@ -13,11 +13,12 @@ public class RacerState extends BasicGameState {
 
     private int id;
     private StateBasedGame sbg;
-    Runner r;
+    Racer r;
     private SpriteSheet background;
-    private int y1;
-    private int y2;
-    private static int speed;
+    private int maxCount;
+    private int count;
+    private int frame;
+    private static int FPS;
     private int counter;
     private int screenHeight;
     private int screenWidth;
@@ -34,7 +35,6 @@ public class RacerState extends BasicGameState {
 
     @Override
     public void keyPressed(int key, char c) {
-//        super.keyPressed(key, c);
         if (c == 'a') {
             r.moveLeft();
         }
@@ -46,14 +46,12 @@ public class RacerState extends BasicGameState {
         }
     }
 
-    public static int getSpeed() {
-        return speed;
+    public static int getFPS() {
+        return FPS;
     }
 
     public void resetGame() {
-//        super.resetGame();
-//        gameOver = false;
-        speed = 22;
+        FPS = 22;
         r.setX(Main.getScreenWidth()/2 - Images.racer.getWidth());
     }
 
@@ -68,15 +66,18 @@ public class RacerState extends BasicGameState {
         background = Images.racerBackground;
         screenHeight = Main.getScreenHeight();
         screenWidth = Main.getScreenWidth();
-        r = new Runner();
+        maxCount = background.getVerticalCount();
+        r = new Racer();
         obstacles = new ArrayList<Obstacle>();
-
+        count = 0;
+        frame = 0;
         sbg = stateBasedGame;
+        FPS = 10;
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
-        g.drawImage(background, 0, y1);
+        g.drawImage(background.getSprite(0, frame), 0, 0);
         for (Obstacle o: obstacles) {
             o.render(g);
         }
@@ -92,13 +93,19 @@ public class RacerState extends BasicGameState {
             o.update();
         }
 
-        if (Math.random() <.03f) {
+        if (count % 10 == 0 && Math.random() <.01f) {
             obstacles.add(new Obstacle());
         }
 
         cleanUp();
 
         // UPDATE SCREEN
+        count++;
+        if (count % FPS == 0 && frame < maxCount - 1) {
+            frame++;
+        } else if (count % FPS == 0 & frame == maxCount - 1) {
+            frame = 0;
+        }
 
         // MOVE PENGUIN
         if (gc.getInput().isKeyDown(Input.KEY_A)) {
@@ -107,13 +114,15 @@ public class RacerState extends BasicGameState {
         if (gc.getInput().isKeyDown(Input.KEY_D)) {
             r.moveRight();
         }
+        if (gc.getInput().isKeyDown(Input.KEY_W)) {
+            r.moveUp();
+        }
 
         // IF OBSTACLES ARE HIT
         for (int a = 0; a < obstacles.size(); a++) {
             Obstacle o = obstacles.get(a);
             if (r.isOver(o)) {
-//                    r.setImage(Images.penguinHit);
-                speed = 10;
+                FPS = 20;
                 counter = 60;
                 i--;
             }
@@ -122,8 +131,7 @@ public class RacerState extends BasicGameState {
         if (counter > 0) {
             counter--;
             if (counter == 0) {
-                speed = 22;
-//                    r.setImage(Images.penguin);
+                FPS = 10;
             }
         }
     }
