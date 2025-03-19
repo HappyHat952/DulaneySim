@@ -22,7 +22,7 @@ public class Obstacle {
     }
 
     public void update() {
-        y += RacerState.getSpeed();
+        y += RacerState.getFPS();
     }
 
     public int getY() {

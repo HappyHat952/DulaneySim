@@ -6,19 +6,24 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import setup.Images;
 
-public class Runner {
+public class Racer {
 
     private int x;
     private int y;
     private int w;
     private int h;
+    private int baseY;
+    private boolean isJumping;
+    private final int jumpHeight = 500;
     private Image image;
 
-    public Runner() {
+    public Racer() {
         image = Images.racer;
+        isJumping = false;
 
         x = Main.getScreenWidth()/2 - image.getWidth();
         y = Main.getScreenHeight() - (image.getHeight() + 10);
+        baseY = Main.getScreenHeight() - (image.getHeight() + 10);
         w = image.getWidth();
         h = image.getHeight();
     }
@@ -44,7 +49,17 @@ public class Runner {
     }
 
     public void update() {
+        if (isJumping) {
+            if (y == baseY - jumpHeight) {
+                isJumping = false;
+            } else {
+                y -= 25;
+            }
+        }
 
+        if (!isJumping && y < baseY) {
+            y += 25;
+        }
     }
 
     public void moveRight() {
@@ -63,6 +78,12 @@ public class Runner {
     public void moveLeft() {
         if (x - 15 > 0) {
             x -= 15;
+        }
+    }
+
+    public void moveUp() {
+        if (y == Main.getScreenHeight() - (image.getHeight() + 10)) {
+            isJumping = true;
         }
     }
 

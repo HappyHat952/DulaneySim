@@ -6,7 +6,7 @@ import org.newdawn.slick.SpriteSheet;
 
 public class Images {
 
-    static public Image racerBackground;
+    static public SpriteSheet racerBackground;
     static public Image racer;
     static public Image obstacle;
 
@@ -14,7 +14,7 @@ public class Images {
     public static void loadImages() {
 
         try {
-            racerBackground = new Image("res/racer/racerBackground.png");
+            racerBackground = new SpriteSheet("res/racer/racerBackground.png", 1920, 1080);
             racer = new Image("res/racer/racer.png");
             obstacle = new Image("res/racer/obstacle.png");
         } catch (SlickException e) {
