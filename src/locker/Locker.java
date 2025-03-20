@@ -1,12 +1,15 @@
 package locker;
 
 import core.Main;
+import core.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import setup.Fonts;
+import setup.Images;
 
 public class Locker extends BasicGameState {
     private int id;
@@ -30,8 +33,11 @@ public class Locker extends BasicGameState {
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
-        g.setColor(Color.white);
-        g.drawString("Hello World!", Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
+       g.drawImage(Images.locker, 0, 0);
+       g.setFont(Fonts.big);
+       g.setColor(Color.black);
+       g.drawString("GPA: " + Player.getGPA(), Main.getScreenWidth() * .120f, Main.getScreenHeight() * .27f);
+       g.drawString("Grade: " + Player.getGrade(), Main.getScreenWidth() * .440f, Main.getScreenHeight() * .21f);
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {

@@ -1,6 +1,8 @@
 package core;
 
 import assignment.Assignment;
+import levels.Title;
+import locker.Locker;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -13,28 +15,32 @@ public class Main extends StateBasedGame {
     public final static int FRAMES_PER_SECOND = 60;
     private static AppGameContainer appgc;
 
-    public static final int GAME_ID = 0;
-    public static final int RACER_ID = 1;
-    public static final int TEACHER_ID = 2;
-    public static final int ASSIGN_ID =3;
-    public static final int LOCKER_ID = 4;
-    public static final int LEVEL_ID = 5;
+    public static final int TITLE_ID = 0;
+    public static final int GAME_ID = 1;
+    public static final int RACER_ID = 2;
+    public static final int TEACHER_ID = 3;
+    public static final int ASSIGN_ID = 4;
+    public static final int LOCKER_ID = 5;
+    public static final int LEVEL_ID = 6;
 
+    private BasicGameState title;
     private BasicGameState game;
     private BasicGameState racer;
-    private BasicGameState assign;
     private BasicGameState teacher;
-    private BasicGameState assignment;
+    private BasicGameState assign;
     private BasicGameState locker;
+    private BasicGameState assignment;
     private BasicGameState level;
 
     public Main(String name) {
         super(name);
 
+        title = new Title(TITLE_ID);
         game = new Game(GAME_ID);
         racer = new RacerState(RACER_ID);
         teacher = new TeacherTalk(TEACHER_ID);
         assign = new Assignment(ASSIGN_ID);
+        locker = new Locker(LOCKER_ID);
     }
 
     public static int getScreenWidth() {
@@ -47,10 +53,12 @@ public class Main extends StateBasedGame {
 
 
     public void initStatesList(GameContainer gc) throws SlickException {
+        addState(title);
         addState(game);
         addState(racer);
         addState(teacher);
         addState(assign);
+        addState(locker);
     }
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
 package levels;
 
-public class Freshman {
+public class Freshman extends Level {
 }
