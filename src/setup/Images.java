@@ -11,6 +11,8 @@ public class Images {
     static public Image racer;
     static public Image obstacle;
     static public Image locker;
+    static public Image home;
+    static public Image help;
 
 
     // REMINDER TO SCALE TO SCREEN WIDTH AND HEIGHT
@@ -22,6 +24,9 @@ public class Images {
             racer = new Image("res/racer/racer.png");
             obstacle = new Image("res/racer/obstacle.png");
             locker = new Image("res/locker/locker.png");
+            home = new Image("res/locker/home.png");
+            help = new Image("res/locker/help.png");
+
         } catch (SlickException e) {
             System.out.println("don't load");
             e.printStackTrace();

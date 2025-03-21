@@ -93,7 +93,7 @@ public class RacerState extends BasicGameState {
             o.update();
         }
 
-        if (count % 10 == 0 && Math.random() <.01f) {
+        if (count % 10 == 0 && Math.random() <.15f) {
             obstacles.add(new Obstacle());
         }
 
@@ -122,7 +122,7 @@ public class RacerState extends BasicGameState {
         for (int a = 0; a < obstacles.size(); a++) {
             Obstacle o = obstacles.get(a);
             if (r.isOver(o)) {
-                FPS = 20;
+                FPS = 5;
                 counter = 60;
                 i--;
             }
