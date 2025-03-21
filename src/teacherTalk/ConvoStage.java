@@ -25,6 +25,8 @@ public class ConvoStage {
 //    }
     public ConvoStage(ArrayList<Dialogue> dialogues, int stageId, int teachId)
     {
+
+        //test
         convoStage = dialogues;
         options = new ArrayList<>();
         setConvo(dialogues);
