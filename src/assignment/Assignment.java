@@ -45,7 +45,7 @@ public class Assignment extends BasicGameState {
         // This code renders shapes and images every frame.
         g.setBackground(Color.orange);
         g.setColor(Color.white);
-        g.drawRect(50,0,Main.getScreenWidth() - 100, Main.getScreenHeight() );
+        g.fillRect(50,0,Main.getScreenWidth() - 100, Main.getScreenHeight() );
         g.setColor(Color.black);
         g.drawString("Assignment:", Main.getScreenWidth() * .5f, Main.getScreenHeight() * .1f);
 //        float y = Main.getScreenHeight()*.1f;

@@ -45,5 +45,18 @@ public class Title extends BasicGameState {
         {
             sbg.enterState(Main.GAME_ID);
         }
+        if (key == Input.KEY_T)
+        {
+            sbg.enterState(Main.TEACHER_ID);
+        }
+        if (key == Input.KEY_A)
+        {
+            sbg.enterState(Main.ASSIGN_ID);
+        }
+        if (key == Input.KEY_L)
+        {
+            sbg.enterState(Main.LOCKER_ID);
+        }
+
     }
 }

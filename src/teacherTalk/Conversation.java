@@ -1,5 +1,7 @@
 package teacherTalk;
 
+import org.newdawn.slick.Graphics;
+
 import java.util.ArrayList;
 
 public class Conversation {
@@ -12,6 +14,10 @@ public class Conversation {
     private String teachName;
     private String objective;
     private ArrayList<ConvoStage> stages;
+
+    private int activeStage;
+    private boolean active;
+    private boolean complete;
 
     public Conversation()
     {
@@ -37,6 +43,8 @@ public class Conversation {
                 "end";
         setDialogues();
         System.out.println("conversation created");
+        activeStage = 0;
+
     }
     private void setDialogues()
     {
@@ -97,12 +105,52 @@ public class Conversation {
             c.print();
         }
     }
+
+    public void update()
+    {
+        if (active)
+        {
+            stages.get(activeStage).update();
+        }
+        if (stages.get(activeStage).isComplete() && activeStage+1< stages.size())
+        {
+            activeStage++;
+        }
+
+    }
+
+    public void draw(Graphics g)
+    {
+        if (active)
+        {
+            stages.get(activeStage).draw(g);
+        }
+    }
+
+    public void keyPressed(int key, char c)
+    {
+        if (active)
+        {
+            stages.get(activeStage).keyPressed(key,c);
+        }
+    }
+
+    public void activate(){ active = true;}
+
+
     private ArrayList<Dialogue> getDialogue(ArrayList<String> stringDialogues)
     {
         ArrayList<Dialogue> convoDialogue = new ArrayList<>();
         for (String s: stringDialogues)
         {
             Dialogue d = new Dialogue(teachId, s);
+
+            if (d.getStrId().charAt(0) == 'O') // identifies any option and creates
+                // option class instead of dialogue
+            {
+                d = new Choice( teachId, s);
+            }
+
             convoDialogue.add(d);
         }
         return convoDialogue;

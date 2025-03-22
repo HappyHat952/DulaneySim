@@ -28,6 +28,7 @@ public class TeacherTalk extends BasicGameState {
         // This code happens when you enter a game state for the *first time.*
         gc.setShowFPS(true);
         convo = new Conversation();
+        convo.activate();
     }
 
     public void setConversation()
@@ -37,12 +38,14 @@ public class TeacherTalk extends BasicGameState {
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         // This updates your game's logic every frame.  NO DRAWING.
+        convo.update();
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
-        g.setColor(Color.white);
-        g.drawString("Teacher!", Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
+       g.setBackground(Color.darkGray);
+        convo.draw(g);
+
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -55,6 +58,7 @@ public class TeacherTalk extends BasicGameState {
 
     public void keyPressed(int key, char c) {
         // This code happens every time the user presses a key
+        convo.keyPressed(key,c);
     }
 
     public void mousePressed(int button, int x, int y) {

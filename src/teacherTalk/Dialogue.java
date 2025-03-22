@@ -4,30 +4,25 @@ public class Dialogue {
 
     // a single dialogue interaction
     String expression;
-    int person;
+    int teacherID;
+    int personID;
+    String person;
     String text;
     String dialogue;
-    Dialogue nextDialogue;
+
+    int tier; //what level of the conversation -- determines what comes next.
+    int readTime; // frames
 
     String id;
 
-//    public Dialogue(String id, String dialogue, String expression, int person)
-//    {
-//        this.id = id;
-//        this.dialogue = dialogue;
-//        this.expression = expression;
-//        this.person = person;
-//
-//    }
-
-    public Dialogue(int person, String text)
+    public Dialogue(int teachID, String text)
     {
-        this.person = person;
+        this.teacherID = teachID;
         this.text = text;
         setInformation();
     }
 
-    private void setInformation()
+    protected void setInformation()
     {
         dialogue = text.substring(text.indexOf(": ")+ 2);
         String unchoppedid = text.substring(0,text.indexOf(":"));
@@ -37,8 +32,22 @@ public class Dialogue {
         {
             if (unchoppedid.charAt(i)!='_')
             {
-                id = id + unchoppedid.substring(i,i+1);
+                id = id + unchoppedid.charAt(i);
             }
+            else {
+                tier++;
+            }
+        }
+
+        if (id.contains("T"))
+        {
+            personID = teacherID;
+            person = "Mr. McVeigh";
+        }
+        else
+        {
+            personID = Conversation.STUDENT;
+            person = "You";
         }
 
         if (id.contains("T1"))
@@ -49,17 +58,25 @@ public class Dialogue {
         {
             expression = ":(";
         }
+        else {
+            expression = "---";
+        }
+
+        readTime = dialogue.length() * 10;
 
     }
 
-    public void setPerson(int personId){ person = personId;}
+    public void setTeacherID(int personId){ teacherID = personId;}
 
     public String getStrId(){ return id;}
     public String getDialogue(){ return dialogue;}
-    public int getPerson(){ return person;}
+    public int getTeacherID(){ return teacherID;}
+    public String getText(){ return text;}
+    public int getTier(){ return tier;}
+    public int getReadTime(){ return readTime;}
 
     @Override
     public String toString() {
-        return expression+"| " +person +": " +dialogue;
+        return tier +"||"+id+"|" +expression+"| " + person +": " +dialogue;
     }
 }
