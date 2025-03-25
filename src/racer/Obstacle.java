@@ -7,29 +7,49 @@ import setup.Images;
 
 public class Obstacle {
 
-    protected int x;
-    protected int y;
+    protected float x;
+    protected float y;
     protected int w;
     protected int h;
+    protected float xAdd;
     protected Image image;
 
     public Obstacle() {
-        x = (int) (Math.random() * Main.getScreenWidth());
         image = Images.obstacle;
+        x = Main.getScreenWidth() * .5f - (float) image.getWidth() / 2;
         w = image.getWidth();
         h = image.getHeight();
-        y = -h;
+        y = Main.getScreenHeight() * .14f;
+
+
+        double random = Math.random();
+
+        if (random < .25) {
+            xAdd = 4.5f;
+        } else if (random < .5) {
+            xAdd = -4.5f;
+        } else if (random < .75) {
+            xAdd = 10;
+        } else {
+            xAdd = -10;
+        }
+
     }
 
     public void update() {
-        y += RacerState.getFPS();
+        y += (float) RacerState.getyAdd() /2;
+        if (RacerState.getyAdd() == 10) {
+            x += xAdd/2;
+        } else {
+            x += xAdd;
+        }
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 

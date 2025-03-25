@@ -21,10 +21,12 @@ public class Images {
 
     //conversation
     static public Image mcVBG;
-
-
     static public SpriteSheet mcVImage;
 
+
+    // cutscene
+    static public Image lunch1;
+    static public Image fight;
 
     // REMINDER TO SCALE TO SCREEN WIDTH AND HEIGHT
     public static void loadImages() {
@@ -47,6 +49,9 @@ public class Images {
             mcVBG = new Image("res/conversation/backdrop/mcVeighBackdrop.png");
             mcVImage = new SpriteSheet ("res/conversation/teachers/mcVeighSprite.png", 1920,1080);
 
+            //cutscene
+            lunch1 = new Image("res/cutscene/lunch/lunch1.png");
+            fight = new Image("res/cutscene/fight.png");
 
 
         } catch (SlickException e) {

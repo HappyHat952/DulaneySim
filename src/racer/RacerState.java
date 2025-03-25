@@ -18,7 +18,8 @@ public class RacerState extends BasicGameState {
     private int maxCount;
     private int count;
     private int frame;
-    private static int FPS;
+    private static int yAdd;
+    private int FPS;
     private int counter;
     private int screenHeight;
     private int screenWidth;
@@ -46,14 +47,10 @@ public class RacerState extends BasicGameState {
         }
     }
 
-    public static int getFPS() {
-        return FPS;
+    public static int getyAdd() {
+        return yAdd;
     }
 
-    public void resetGame() {
-        FPS = 22;
-        r.setX(Main.getScreenWidth()/2 - Images.racer.getWidth());
-    }
 
 
     @Override
@@ -72,7 +69,7 @@ public class RacerState extends BasicGameState {
         count = 0;
         frame = 0;
         sbg = stateBasedGame;
-        FPS = 10;
+        yAdd = 20;
     }
 
     @Override
@@ -86,8 +83,6 @@ public class RacerState extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame stateBasedGame, int i) throws SlickException {
-        //UPDATE PENGUIN AND THE OBSTACLES
-//        if (!pause && !gameOver){
         r.update();
         for (Obstacle o: obstacles) {
             o.update();
@@ -100,6 +95,11 @@ public class RacerState extends BasicGameState {
         cleanUp();
 
         // UPDATE SCREEN
+        if (yAdd == 20) {
+            FPS = 10;
+        } else {
+            FPS = 20;
+        }
         count++;
         if (count % FPS == 0 && frame < maxCount - 1) {
             frame++;
@@ -122,7 +122,7 @@ public class RacerState extends BasicGameState {
         for (int a = 0; a < obstacles.size(); a++) {
             Obstacle o = obstacles.get(a);
             if (r.isOver(o)) {
-                FPS = 5;
+                yAdd = 10;
                 counter = 60;
                 i--;
             }
@@ -131,7 +131,7 @@ public class RacerState extends BasicGameState {
         if (counter > 0) {
             counter--;
             if (counter == 0) {
-                FPS = 10;
+                yAdd = 20;
             }
         }
     }

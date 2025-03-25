@@ -64,6 +64,10 @@ public class Game extends BasicGameState
 		{
 			sbg.enterState(Main.LOCKER_ID);
 		}
+		if (key == Input.KEY_A)
+		{
+			sbg.enterState(Main.CUTSCENE_ID);
+		}
 		// This code happens every time the user presses a key
 	}
 	
