@@ -11,7 +11,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Fonts;
 import setup.Images;
-import ui.buttons.HomeButton;
+import ui.buttons.StateChangeButton;
 
 import java.util.ArrayList;
 
@@ -33,8 +33,9 @@ public class Locker extends BasicGameState {
         // This code happens when you enter a game state for the *first time.*
         gc.setShowFPS(true);
         lockerButtons = new ArrayList<>();
-        home = new HomeButton((int) (Main.getScreenWidth() * .735f), (int) (Main.getScreenHeight() * .35f),
-                Images.home.getScaledCopy((int) (Main.getScreenWidth() * .08f), (int) (Main.getScreenHeight() * .14f)), sbg);
+        home = new StateChangeButton((int) (Main.getScreenWidth() * .735f), (int) (Main.getScreenHeight() * .35f),
+                Images.home.getScaledCopy((int) (Main.getScreenWidth() * .08f), (int) (Main.getScreenHeight() * .14f)),
+                sbg, "Run To Class", Main.RACER_ID);
 //        help = new Button((int) (Main.getScreenWidth() * .735f), (int) (Main.getScreenHeight() * .55f),
 //                Images.help.getScaledCopy((int) (Main.getScreenWidth() * .08f), (int) (Main.getScreenHeight() * .14f)),
 //        "help");

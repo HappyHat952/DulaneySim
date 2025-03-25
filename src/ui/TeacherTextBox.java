@@ -8,5 +8,7 @@ public class TeacherTextBox extends TextBox{
     {
         super(text, Fonts.medium, (int)(Main.getScreenWidth()*.54f), (int)(Main.getScreenHeight()*.2f),
                 (int)(Main.getScreenWidth()*.43f), (int)(Main.getScreenHeight()*.2f));
+
+        wrappedText = wrapText(text);
     }
 }

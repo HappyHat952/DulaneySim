@@ -1,7 +1,11 @@
 package teacherTalk;
 
+import core.Main;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.state.StateBasedGame;
 import setup.Images;
+import ui.buttons.StateChangeButton;
 
 import java.util.ArrayList;
 
@@ -16,6 +20,8 @@ public class Conversation {
     private String objective;
     private ArrayList<ConvoStage> stages;
 
+    private StateChangeButton assignmentButton;
+
     private int activeStage;
     private boolean active;
     private boolean complete;
@@ -24,7 +30,7 @@ public class Conversation {
 
     private int imageID;
 
-    public Conversation()
+    public Conversation(StateBasedGame sbg)
     {
         convo = "Teach: Mr. McVeigh\n" +
                 "Obj: Ask for a test regrade\n" +
@@ -36,9 +42,9 @@ public class Conversation {
                 "__T2: Womp Womp.\n" +
                 "__T2: Maybe you should have done better :P/\n"+
                 "__S: This guy is kind of weird...\n"+
-                "_OWA: Could I retake this test\n" +
+                "_OWA: Could I retake this test?\n" +
                 "__T2: It’s NOT a test! It’s a quiz\n" +
-                "_OCA: Could I retake this quiz\n" +
+                "_OCA: Could I retake this quiz?\n" +
                 "__T1: Sure!\n" +
                 "HT1: I'll think about it\n" +
                 "_OWA: The class Average was a 64%\n" +
@@ -52,6 +58,8 @@ public class Conversation {
         System.out.println("conversation created");
         activeStage = 0;
         imageID = 0;
+        assignmentButton = new StateChangeButton((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f),
+                Color.blue,"Start Quiz", Main.ASSIGN_ID,sbg);
 
     }
     private void setDialogues()
@@ -156,6 +164,7 @@ public class Conversation {
         {
             g.drawString("complete", 60,60);
         }
+        assignmentButton.render(g);
     }
 
     public void keyPressed(int key, char c)
@@ -186,6 +195,11 @@ public class Conversation {
         }
         return convoDialogue;
 
+    }
+
+    public void mousePressed(int button, int x, int y)
+    {
+        assignmentButton.click(x,y);
     }
 
 }

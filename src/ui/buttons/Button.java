@@ -1,11 +1,9 @@
 package ui.buttons;
 
 import core.Main;
+import org.newdawn.slick.*;
 import setup.Fonts;
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 
 public class Button {
     protected int x;
@@ -16,6 +14,26 @@ public class Button {
     protected Image image;
     protected  String name;
     protected String info;
+    protected TrueTypeFont font;
+
+    public Button (int x, int y, int w, String s, TrueTypeFont f, Color c)
+    {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        name = s;
+        font = f;
+        color = c;
+    }
+    public Button (int x, int y, String s, TrueTypeFont f, Color c)
+    {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        name = s;
+        font = f;
+        color = c;
+    }
 
     public Button(int x, int y, int w, int h, Color color) {
         this.x = x;
@@ -23,6 +41,7 @@ public class Button {
         this.w = w;
         this.h = h;
         this.color = color;
+        font = Fonts.small;
     }
 
     public Button(int x, int y, int w, int h, Color color, String name) {
@@ -32,6 +51,7 @@ public class Button {
         this.h = h;
         this.color = color;
         this.name = name;
+        font = Fonts.small;
     }
 
     public Button(int x, int y, int w, int h, Color color, String name, String info) {
@@ -42,6 +62,7 @@ public class Button {
         this.color = color;
         this.name = name;
         this.info = info;
+        font = Fonts.small;
     }
 
     public Button(int x, int y, Image image, String name) {
@@ -51,11 +72,13 @@ public class Button {
         this.name = name;
         w = image.getWidth();
         h = image.getHeight();
+        font = Fonts.small;
     }
 
     public Button(int x, int y) {
         this.x = x;
         this.y = y;
+        font = Fonts.small;
     }
 
     public void render(Graphics g) {
@@ -79,21 +102,21 @@ public class Button {
                 image.drawFlash(x,y);
             }
             if (name != null) {
-                g.setFont(Fonts.small);
+                g.setFont(font);
                 g.setColor(Color.black);
-                g.drawString(name, x + w / 2f - Fonts.small.getWidth(name) / 2f, y + h / 2f);
+                g.drawString(name, x + w / 2f - font.getWidth(name) / 2f, y + h / 2f);
             }
             if (info != null)
             {
-                g.setFont(Fonts.small);
+                g.setFont(font);
                 g.setColor(Color.black);
-                g.drawString(info, x + w /2f - Fonts.small.getWidth(info) /2f , y + h *.6f);
+                g.drawString(info, x + w /2f - font.getWidth(info) /2f , y + h *.6f);
             }
 
         }else if (name != null){
-            g.setFont(Fonts.small);
+            g.setFont(font);
             g.setColor(Color.white);
-            g.drawString(name, x+w/2f - Fonts.small.getWidth(name)/2f, y+ h/2f);
+            g.drawString(name, x+w/2f - font.getWidth(name)/2f, y+ h/2f);
         }
 
     }

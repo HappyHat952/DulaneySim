@@ -83,6 +83,8 @@ public class ConvoStage {
         choiceBoxes = new ArrayList<>();
         allBoxes = new ArrayList<>();
 
+        int choiceY = (int)( Main.getScreenHeight()*.6f) ;
+
         for (int i=0; i<allDialogues.size(); i++)
         {
             Dialogue d = allDialogues.get(i);
@@ -90,8 +92,9 @@ public class ConvoStage {
             if (allDialogues.get(i) instanceof Choice)
             {
                 Choice c = (Choice)(d);
-                tb = new ChoiceTextBox(c.toString(), (int)(Main.getScreenWidth()*.61f),
-                        (int)(Main.getScreenHeight()*.6f + Main.getScreenHeight()*.03f*i));
+                tb = new ChoiceTextBox(c.toString(), (int)(Main.getScreenWidth()*.56f),
+                        choiceY);
+                choiceY+=tb.getHeight() +15;
                 choiceBoxes.add((ChoiceTextBox)tb);
                 if (c.getCorrect())
                 {
@@ -190,28 +193,21 @@ public class ConvoStage {
                 }
                 if (i == selected) {
                     if (selected == finalSelect) {
-                        g.setColor(Color.cyan);
                         choiceBoxes.get(i).setBGColor(Color.cyan);
                     } else {
-                        g.setColor(Color.blue);
                         choiceBoxes.get(i).setBGColor(Color.blue);
                     }
                 } else {
-                    g.setColor(Color.black);
                     choiceBoxes.get(i).setBGColor(Color.black);
                 }
                 choiceBoxes.get(i).draw(g);
-                g.drawString(c.toString(), 20, 300 + 30 * i);
             }
 
         }
         else {
             allBoxes.get(currentDia).draw(g);
-            g.drawString(allDialogues.get(currentDia).toString()+"|| " + timer +"/ "+allDialogues.get(currentDia).getReadTime(), 20, 300);
         }
 
-
-        g.drawString(""+selected,0,0);
     }
 
 

@@ -5,6 +5,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Images;
+import ui.buttons.StateChangeButton;
 
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class RacerState extends BasicGameState {
     private int screenHeight;
     private int screenWidth;
     private ArrayList<Obstacle> obstacles;
+
+    private StateChangeButton classButton;
 
     public RacerState(int id) {
         this.id = id;
@@ -70,6 +73,10 @@ public class RacerState extends BasicGameState {
         frame = 0;
         sbg = stateBasedGame;
         yAdd = 20;
+        FPS = 10;
+
+        classButton = new StateChangeButton((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f),
+                Color.orange,"Enter Class", Main.TEACHER_ID,sbg);
     }
 
     @Override
@@ -79,6 +86,20 @@ public class RacerState extends BasicGameState {
             o.render(g);
         }
         r.render(g);
+        if (r.isComplete())
+        {
+            classButton.render(g);
+        }
+    }
+
+    @Override
+    public void mousePressed(int button, int x, int y) {
+        super.mousePressed(button, x, y);
+        if (r.isComplete())
+        {
+            classButton.click(x,y);
+        }
+
     }
 
     @Override

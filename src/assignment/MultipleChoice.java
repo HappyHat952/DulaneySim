@@ -1,6 +1,7 @@
 package assignment;
 
 import core.Main;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
@@ -14,24 +15,39 @@ public class MultipleChoice {
     ArrayList<String> options;
     char correct;
 
-    public MultipleChoice(ArrayList<String> mcq)
+    int index;
+
+
+    public MultipleChoice(ArrayList<String> mcq, int index)
     {
         this.mcq = mcq;
+        System.out.println(mcq);
+        this.index = index;
+        number = index+1;
+
+        options = new ArrayList<>();
         setInfo();
     }
 
     public void draw(Graphics g)
     {
-        float y = Main.getScreenHeight()*.1f+20;
-        float x = Main.getScreenWidth()*.5f;
+        float y = Main.getScreenHeight()*.1f+Main.getScreenHeight()*.4f*index;
+        float x = Main.getScreenWidth()*.2f;
+        g.setColor(Color.black);
         g.drawString(number +". "+header, x, y);
         for (String s: options)
         {
-            y+=20;
+            y+=30;
             if (s.charAt(0)== correct)
             {
-                g.drawString(s,x,y);
+                g.setColor(Color.green);
             }
+            else
+            {
+                g.setColor(Color.black);
+            }
+
+            g.drawString(s,x,y);
 
         }
     }
@@ -40,16 +56,15 @@ public class MultipleChoice {
     {
         try{
             //number = Integer.parseInt(mcq.getFirst().replaceAll("[//D]", ""));
-            String s = mcq.getFirst().substring(0,3).replaceAll("[\\D.]", "");
-            number = Integer.parseInt(s);
-            if (number/10 == 0)
+            header = mcq.getFirst().replaceAll("Qstn: ","" );
+
+            for (int i = 1; i< mcq.size()-1; i++) // looks through the options
+                // (everything but first line and last line)
             {
-                header = mcq.getFirst().substring(3,mcq.getFirst().length());
+                options.add(mcq.get(i));
             }
-            options = mcq;
+
             correct = mcq.getLast().charAt(0);
-//            options.remove(0);
-//            options.remove(1);
         } catch (NumberFormatException e) {
             System.out.println(e.getCause());
             e.printStackTrace();

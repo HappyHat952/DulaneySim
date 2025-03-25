@@ -5,6 +5,7 @@ import core.Main;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import setup.Images;
+import ui.buttons.StateChangeButton;
 
 public class Racer {
 
@@ -17,6 +18,8 @@ public class Racer {
     private final int jumpHeight = 500;
     private Image image;
 
+    private boolean complete;
+
     public Racer() {
         image = Images.racer;
         isJumping = false;
@@ -26,7 +29,13 @@ public class Racer {
         baseY = Main.getScreenHeight() - (image.getHeight() + 10);
         w = image.getWidth();
         h = image.getHeight();
+
+        complete = true;
+
+
     }
+
+    public boolean isComplete(){ return complete;}
 
     public int getX() {
         return x;

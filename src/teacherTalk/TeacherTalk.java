@@ -27,7 +27,7 @@ public class TeacherTalk extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         // This code happens when you enter a game state for the *first time.*
         gc.setShowFPS(true);
-        convo = new Conversation();
+        convo = new Conversation(sbg);
         convo.activate();
     }
 
@@ -63,5 +63,6 @@ public class TeacherTalk extends BasicGameState {
 
     public void mousePressed(int button, int x, int y) {
         // This code happens every time the user presses the mouse
+        convo.mousePressed(button,x,y);
     }
 }

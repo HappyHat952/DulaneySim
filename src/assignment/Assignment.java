@@ -7,6 +7,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import setup.Fonts;
+import ui.buttons.StateChangeButton;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +23,8 @@ public class Assignment extends BasicGameState {
     private ArrayList<String> assignment;
     private ArrayList<MultipleChoice> mcqs;
 
+    private StateBasedGame cutSceneButton;
+
     public Assignment(int id) {
         this.id = id;
     }
@@ -34,7 +38,8 @@ public class Assignment extends BasicGameState {
         gc.setShowFPS(true);
         this.sbg= sbg;
         mcqs = new ArrayList<>();
-        setAssignment("test1");
+        setAssignment("Test 1");
+     //   cutSceneButton = new StateChangeButton((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f), Color.orange,"Go To Lunch", Main.,sbg);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -47,7 +52,7 @@ public class Assignment extends BasicGameState {
         g.setColor(Color.white);
         g.fillRect(50,0,Main.getScreenWidth() - 100, Main.getScreenHeight() );
         g.setColor(Color.black);
-        g.drawString("Assignment:", Main.getScreenWidth() * .5f, Main.getScreenHeight() * .1f);
+        g.setFont(Fonts.small);
 //        float y = Main.getScreenHeight()*.1f;
 //        for (String s: assignment)
 //        {
@@ -56,7 +61,11 @@ public class Assignment extends BasicGameState {
 //        }
         if (mcqs!= null && !mcqs.isEmpty())
         {
-            mcqs.getFirst().draw(g);
+            for (MultipleChoice mcq: mcqs)
+            {
+                mcq.draw(g);
+                System.out.println("mc is 'drawing' "+mcqs);
+            }
         }
 
     }
@@ -80,6 +89,7 @@ public class Assignment extends BasicGameState {
     public void setAssignment(String id)
     {
         assignment = new ArrayList<>();
+        id = id.replace(" ", "_");
         try
         {
             File f = new File("res/assignment/"+id+".txt");
@@ -87,25 +97,27 @@ public class Assignment extends BasicGameState {
             String str = s.nextLine();
             ArrayList<String> q = new ArrayList<>();
 
-            while (!str.equals("_"))
+            while (!str.equals("end"))
             {
-                if (Pattern.matches("[\\D.]", str.substring(0,0)))
+              //  if (str.contains("Qstn: ") && !assignment.isEmpty())
+                if (str.length() == 1 && !assignment.isEmpty())
                 {
-                    if (q.isEmpty())
-                    {
-                        q = new ArrayList<>();
-                    }
-                    else {
-                        mcqs.add (new MultipleChoice(q));
-                        q = new ArrayList<>();
-                    }
+                    q.add(str);
+                    assignment.add(str);
+                    mcqs.add (new MultipleChoice(q, mcqs.size()));
+                    q = new ArrayList<>();
                 }
-                q.add(str);
-                System.out.print(str);
-                assignment.add(str);
+                else
+                {
+                    q.add(str);
+//                System.out.print(str);
+                    assignment.add(str);
+
+                }
+                System.out.println("multiple Choice created."+ mcqs.size());
                 str = s.nextLine();
+
             }
-            MultipleChoice mcq = new MultipleChoice(assignment);
         } catch (FileNotFoundException e) {
             System.out.println("fine wasn't found");
         }
