@@ -2,7 +2,7 @@ package locker;
 
 import core.Main;
 import core.Player;
-import levels.Button;
+import ui.buttons.Button;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -11,6 +11,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Fonts;
 import setup.Images;
+import ui.buttons.HomeButton;
 
 import java.util.ArrayList;
 
@@ -32,14 +33,13 @@ public class Locker extends BasicGameState {
         // This code happens when you enter a game state for the *first time.*
         gc.setShowFPS(true);
         lockerButtons = new ArrayList<>();
-        home = new Button((int) (Main.getScreenWidth() * .735f), (int) (Main.getScreenHeight() * .35f),
-                Images.home.getScaledCopy((int) (Main.getScreenWidth() * .08f), (int) (Main.getScreenHeight() * .14f)),
-                "home");
-        help = new Button((int) (Main.getScreenWidth() * .735f), (int) (Main.getScreenHeight() * .55f),
-                Images.help.getScaledCopy((int) (Main.getScreenWidth() * .08f), (int) (Main.getScreenHeight() * .14f)),
-        "help");
+        home = new HomeButton((int) (Main.getScreenWidth() * .735f), (int) (Main.getScreenHeight() * .35f),
+                Images.home.getScaledCopy((int) (Main.getScreenWidth() * .08f), (int) (Main.getScreenHeight() * .14f)), sbg);
+//        help = new Button((int) (Main.getScreenWidth() * .735f), (int) (Main.getScreenHeight() * .55f),
+//                Images.help.getScaledCopy((int) (Main.getScreenWidth() * .08f), (int) (Main.getScreenHeight() * .14f)),
+//        "help");
         lockerButtons.add(home);
-        lockerButtons.add(help);
+//        lockerButtons.add(help);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -72,12 +72,12 @@ public class Locker extends BasicGameState {
 
     public void mousePressed(int button, int x, int y) {
         // This code happens every time the user presses the mouse
+        for (Button b: lockerButtons) {
+            b.click(x, y);
+        }
     }
 
     @Override
     public void mouseMoved(int oldx, int oldy, int newx, int newy) {
-        for (Button b: lockerButtons) {
-            b.isMouseOver(newx, newy);
-        }
     }
 }

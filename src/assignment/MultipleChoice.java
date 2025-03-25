@@ -48,8 +48,8 @@ public class MultipleChoice {
             }
             options = mcq;
             correct = mcq.getLast().charAt(0);
-            options.remove(0);
-            options.remove(1);
+//            options.remove(0);
+//            options.remove(1);
         } catch (NumberFormatException e) {
             System.out.println(e.getCause());
             e.printStackTrace();

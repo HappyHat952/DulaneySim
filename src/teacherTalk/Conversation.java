@@ -1,6 +1,7 @@
 package teacherTalk;
 
 import org.newdawn.slick.Graphics;
+import setup.Images;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,10 @@ public class Conversation {
     private boolean active;
     private boolean complete;
 
+    private int mistakes;
+
+    private int imageID;
+
     public Conversation()
     {
         convo = "Teach: Mr. McVeigh\n" +
@@ -29,6 +34,8 @@ public class Conversation {
                 "HT2: I don’t think I’ll give a retake.\n" +
                 "_OWA: Can we have the quiz regraded bc fire drill\n" +
                 "__T2: Womp Womp.\n" +
+                "__T2: Maybe you should have done better :P/\n"+
+                "__S: This guy is kind of weird...\n"+
                 "_OWA: Could I retake this test\n" +
                 "__T2: It’s NOT a test! It’s a quiz\n" +
                 "_OCA: Could I retake this quiz\n" +
@@ -44,6 +51,7 @@ public class Conversation {
         setDialogues();
         System.out.println("conversation created");
         activeStage = 0;
+        imageID = 0;
 
     }
     private void setDialogues()
@@ -100,10 +108,11 @@ public class Conversation {
             }
 
         }
+    }
 
-        for (ConvoStage c: stages){
-            c.print();
-        }
+    public void setImage(int index)
+    {
+        imageID = index;
     }
 
     public void update()
@@ -112,18 +121,40 @@ public class Conversation {
         {
             stages.get(activeStage).update();
         }
-        if (stages.get(activeStage).isComplete() && activeStage+1< stages.size())
+        if (stages.get(activeStage).isComplete())
         {
-            activeStage++;
+            mistakes += stages.get(activeStage).getWrongCount();// sums up the mistakes the person makes.
+            if (activeStage+1<stages.size())
+            {
+                activeStage++;
+            }
+            else
+            {
+                active = false;
+                complete = true;
+            }
+
+
+        }
+        if (stages.get(activeStage).isComplete())
+        {
+
         }
 
     }
 
     public void draw(Graphics g)
     {
-        if (active)
+        g.drawImage(Images.mcVBG,0,0);
+        g.drawImage(Images.mcVImage.getSubImage(0,imageID), 0,20);
+        g.drawString(""+mistakes, 40,40);
+        if (active && !complete)
         {
             stages.get(activeStage).draw(g);
+        }
+        if (complete)
+        {
+            g.drawString("complete", 60,60);
         }
     }
 

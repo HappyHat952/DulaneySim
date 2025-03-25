@@ -1,8 +1,12 @@
 package teacherTalk;
 
+import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import ui.ChoiceTextBox;
+import ui.TeacherTextBox;
+import ui.TextBox;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -17,6 +21,10 @@ public class ConvoStage {
     private ArrayList<Choice> choices;        //each of the user- inputted possible options
     private Choice correctChoice;
     private Dialogue header;                    //the main teacher dialogue (that may repeat)
+
+    private TeacherTextBox mainBox;
+    private ArrayList<ChoiceTextBox> choiceBoxes;
+    private ArrayList<TextBox> allBoxes;
 
     private boolean complete;
     private boolean active;                     //whether or not this stage is active (might not be needed)
@@ -39,6 +47,7 @@ public class ConvoStage {
         allDialogues = dialogues;
         choices = new ArrayList<>();
         setConvo(dialogues);
+        setTextBoxes();
         selected = -1;
         finalSelect = -1;
         currentDia = -1;
@@ -68,6 +77,35 @@ public class ConvoStage {
             }
         }
     }
+    public void setTextBoxes() {
+        mainBox = new TeacherTextBox(header.toString());
+
+        choiceBoxes = new ArrayList<>();
+        allBoxes = new ArrayList<>();
+
+        for (int i=0; i<allDialogues.size(); i++)
+        {
+            Dialogue d = allDialogues.get(i);
+            TextBox tb;
+            if (allDialogues.get(i) instanceof Choice)
+            {
+                Choice c = (Choice)(d);
+                tb = new ChoiceTextBox(c.toString(), (int)(Main.getScreenWidth()*.61f),
+                        (int)(Main.getScreenHeight()*.6f + Main.getScreenHeight()*.03f*i));
+                choiceBoxes.add((ChoiceTextBox)tb);
+                if (c.getCorrect())
+                {
+                    ((ChoiceTextBox)tb).setCorrectTrue();
+                }
+            }
+            else
+            {
+                tb = new TeacherTextBox(d.toString());
+            }
+            allBoxes.add(tb);
+
+        }
+    }
 
     public void keyPressed(int key, char c)
     {
@@ -85,11 +123,15 @@ public class ConvoStage {
         }
         if (key == Input.KEY_ENTER)
         {
-            if (finalSelect == -1)
+            if (finalSelect == -1 && selected != -1)
             {
                 finalSelect = selected;
                 currentDia = allDialogues.indexOf(choices.get(finalSelect));// the current dialogue location
                 // is in the larger list of choices
+                if (!choices.get(finalSelect).equals(correctChoice))
+                {
+                    wrongCount++;
+                }
             }
 
         }
@@ -137,26 +179,34 @@ public class ConvoStage {
 
         if (finalSelect == -1)
         {
-            g.drawString(header.toString(), 20, 270);
+            //g.drawString(header.toString(), 20, 270);
+            mainBox.draw(g);
             for (int i = 0; i< choices.size(); i++) {
                 Choice c = choices.get(i);
                 if (c.getCorrect()) {
                     g.setColor(Color.green);
-                } else if (i == selected) {
+                    choiceBoxes.get(i).setBGColor(Color.green);
+
+                }
+                if (i == selected) {
                     if (selected == finalSelect) {
                         g.setColor(Color.cyan);
+                        choiceBoxes.get(i).setBGColor(Color.cyan);
                     } else {
                         g.setColor(Color.blue);
+                        choiceBoxes.get(i).setBGColor(Color.blue);
                     }
-                    g.fillRect(20, 300 * stageId + 30 * i, 50, 20);
                 } else {
                     g.setColor(Color.black);
+                    choiceBoxes.get(i).setBGColor(Color.black);
                 }
+                choiceBoxes.get(i).draw(g);
                 g.drawString(c.toString(), 20, 300 + 30 * i);
             }
 
         }
         else {
+            allBoxes.get(currentDia).draw(g);
             g.drawString(allDialogues.get(currentDia).toString()+"|| " + timer +"/ "+allDialogues.get(currentDia).getReadTime(), 20, 300);
         }
 
@@ -169,6 +219,7 @@ public class ConvoStage {
     public boolean isActive(){ return active;}
     public boolean isComplete(){ return complete;}
     public int getStageId() { return stageId;}
+    public int getWrongCount(){ return wrongCount;}
     public void activate(){ active = true;}
 
 

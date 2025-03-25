@@ -1,4 +1,4 @@
-package levels;
+package ui.buttons;
 
 import core.Main;
 import setup.Fonts;
@@ -104,6 +104,16 @@ public class Button {
         }
         return false;
     }
+
+    public void click(int mouseX, int mouseY)
+    {
+        if (isMouseOver(mouseX,mouseY))
+        {
+            action();
+        }
+    }
+
+    public void action(){}
 
     public int getX(){ return x;}
     public int getY(){ return y;}
