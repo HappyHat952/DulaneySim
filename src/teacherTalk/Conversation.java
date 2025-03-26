@@ -163,7 +163,7 @@ public class Conversation {
         {
             g.setColor(Color.black);
             g.setFont(Fonts.big);
-            g.drawString("Objective: "+ objective, Main.getScreenWidth()*.25f, Main.getScreenHeight()*.03f);
+            g.drawString("Objective: "+ objective, Main.getScreenWidth()*.31f, Main.getScreenHeight()*.01f);
             stages.get(activeStage).draw(g);
         }
         if (complete)

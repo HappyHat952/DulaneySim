@@ -28,6 +28,11 @@ public class RacerState extends BasicGameState {
     private int screenWidth;
     private ArrayList<Obstacle> obstacles;
 
+    private int distanceToClass;
+    private int travelled;
+
+    private boolean complete;
+
     private StateChangeButton classButton;
 
     public RacerState(int id) {
@@ -77,6 +82,9 @@ public class RacerState extends BasicGameState {
         yAdd = 20;
         FPS = 10;
 
+        distanceToClass = 400;
+        travelled = 0;
+
         classButton = new StateChangeButton((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f),
                 Color.orange,"Enter Class", Main.TEACHER_ID,sbg);
     }
@@ -89,13 +97,21 @@ public class RacerState extends BasicGameState {
             o.render(g);
         }
         r.render(g);
-        if (r.isComplete())
+        if (complete)
         {
             classButton.render(g);
         }
         g.setFont(Fonts.big);
         g.setColor(Color.black);
-        g.drawString("Use WASD TO MOVE", 130, 20);
+        g.drawString("Use WASD TO MOVE", 190, 20);
+
+        g.setLineWidth(2);
+        g.setColor(Color.black);
+        g.drawRect(10,190, 15,500);
+
+        g.setLineWidth(1);
+        g.setColor(Color.red);
+        g.fillRect(10, 190+500*(1-travelled*1f/distanceToClass), 15, 500*(travelled*1f/distanceToClass));
 
         Player.render(g);
     }
@@ -103,7 +119,7 @@ public class RacerState extends BasicGameState {
     @Override
     public void mousePressed(int button, int x, int y) {
         super.mousePressed(button, x, y);
-        if (r.isComplete())
+        if (complete)
         {
             classButton.click(x,y);
         }
@@ -112,56 +128,72 @@ public class RacerState extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame stateBasedGame, int i) throws SlickException {
-        r.update();
-        for (Obstacle o: obstacles) {
-            o.update();
-        }
+        if (travelled<= distanceToClass)
+        {
+            r.update();
+            for (Obstacle o: obstacles) {
+                o.update();
+            }
 
-        if (count % 10 == 0 && Math.random() <.15f) {
-            obstacles.add(new Obstacle());
-        }
+            if (count % 10 == 0 && Math.random() <.15f) {
+                obstacles.add(new Obstacle());
+            }
 
-        cleanUp();
+            cleanUp();
 
-        // UPDATE SCREEN
-        if (yAdd == 20) {
-            FPS = 10;
-        } else {
-            FPS = 20;
-        }
-        count++;
-        if (count % FPS == 0 && frame < maxCount - 1) {
-            frame++;
-        } else if (count % FPS == 0 & frame == maxCount - 1) {
-            frame = 0;
-        }
+            // UPDATE SCREEN
+            if (yAdd == 20) {
+                FPS = 10;
+            } else {
+                FPS = 20;
+            }
 
-        // MOVE PENGUIN
-        if (gc.getInput().isKeyDown(Input.KEY_A)) {
-            r.moveLeft();
-        }
-        if (gc.getInput().isKeyDown(Input.KEY_D)) {
-            r.moveRight();
-        }
-        if (gc.getInput().isKeyDown(Input.KEY_W)) {
-            r.moveUp();
-        }
 
-        // IF OBSTACLES ARE HIT
-        for (int a = 0; a < obstacles.size(); a++) {
-            Obstacle o = obstacles.get(a);
-            if (r.isOver(o)) {
-                yAdd = 10;
-                counter = 60;
-                i--;
+            count++;
+            if (count % FPS == 0 && frame < maxCount - 1) {
+                frame++;
+
+            } else if (count % FPS == 0 & frame == maxCount - 1) {
+                frame = 0;
+                travelled += yAdd;
+            }
+
+            // MOVE PENGUIN
+            if (gc.getInput().isKeyDown(Input.KEY_A)) {
+                r.moveLeft();
+            }
+            if (gc.getInput().isKeyDown(Input.KEY_D)) {
+                r.moveRight();
+            }
+            if (gc.getInput().isKeyDown(Input.KEY_W)) {
+                r.moveUp();
+            }
+
+            // IF OBSTACLES ARE HIT
+            for (int a = 0; a < obstacles.size(); a++) {
+                Obstacle o = obstacles.get(a);
+                if (r.isOver(o) && !r.isJumping()) {
+                    yAdd = 10;
+                    counter = 60;
+                    i--;
+                }
+            }
+
+            if (counter > 0) {
+                counter--;
+                if (counter == 0) {
+                    yAdd = 20;
+                }
             }
         }
-
-        if (counter > 0) {
-            counter--;
-            if (counter == 0) {
-                yAdd = 20;
-            }
+        else {
+            complete = true;
         }
+
+//        if (travelled <= distanceToClass)
+//        {
+
     }
 }
+
+

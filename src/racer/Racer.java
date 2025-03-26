@@ -96,4 +96,8 @@ public class Racer {
         }
     }
 
+    public boolean isJumping()
+    {
+        return isJumping;
+    }
 }
