@@ -5,6 +5,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import racer.Obstacle;
 import racer.Racer;
+import setup.Fonts;
 import setup.Images;
 import ui.buttons.Button;
 import ui.buttons.CutsceneButton;
@@ -26,6 +27,9 @@ public class Cutscene extends BasicGameState {
     private float y;
     private String text1;
     private String text2;
+    private String testString;
+    private String title;
+    private boolean showButtons;
 
 
     public Cutscene(int id) {
@@ -54,16 +58,25 @@ public class Cutscene extends BasicGameState {
         x = screenWidth * .05f;
         y = screenHeight * .2f;
         sbg = stateBasedGame;
-        stateButton = new StateChangeButton((int)(Main.getScreenWidth() * .8f), (int)(Main.getScreenHeight()*.1f), Color.red,
-                "Finish Cutscene",  Main.LOCKER_ID, sbg);
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
        g.drawImage(image, Main.getScreenWidth() *.5f - (float) image.getWidth() /2, Main.getScreenHeight() * .1f);
-       left.render(g);
-       right.render(g);
-       stateButton.render(g);
+       if (showButtons) {
+           left.render(g);
+           right.render(g);
+           g.setColor(Color.white);
+           g.setFont(Fonts.big);
+           g.drawString(title, Main.getScreenWidth() * .4f, Main.getScreenHeight() * .05f);
+       } else {
+           g.setColor(Color.darkGray);
+           g.fillRect(0, 0, Main.getScreenWidth(), Main.getScreenHeight());
+           g.setColor(Color.white);
+           g.setFont(Fonts.big);
+           g.drawString(testString,Main.getScreenWidth() * .35f, Main.getScreenHeight() * .45f);
+           stateButton.render(g);
+       }
     }
 
     @Override
@@ -79,19 +92,39 @@ public class Cutscene extends BasicGameState {
             image = Images.lunch1;
             text1 = "EAT";
             text2 = "DON'T EAT";
+            title = "LUNCH TIME!";
+            stateButton = new StateChangeButton((int)(Main.getScreenWidth() * .35f), (int)(Main.getScreenHeight()*.8f), Color.red,
+                    "Continue",  Main.CUTSCENE_ID, sbg);
         } else if (level == 2) {
             image = Images.fight;
             text1 = "FIGHT";
             text2 = "DON'T FIGHT";
+            title = "FIGHT!";
+            stateButton = new StateChangeButton((int)(Main.getScreenWidth() * .35f), (int)(Main.getScreenHeight()*.8f), Color.red,
+                    "Continue",  Main.LOCKER_ID, sbg);
         }
 
+        showButtons = true;
         left = new CutsceneButton((int) x, (int) y, 200, 100, Color.green, text1, "Interesting choice...");
         right = new CutsceneButton((int) (screenWidth - 3 * x), (int) y, 200, 100, Color.red, text2, "This action has consequences...");
+
+
+
     }
 
     @Override
     public void mousePressed(int button, int x, int y) {
         left.click(x, y);
         right.click(x, y);
+        if (left.isMouseOver(x, y)) {
+            showButtons = false;
+            testString = "Interesting choice...";
+        } else if (right.isMouseOver(x, y)) {
+            showButtons = false;
+            testString = "This action will have consequences...";
+        } else if (stateButton.isMouseOver(x, y)) {
+            stateButton.action();
+        }
+
     }
 }

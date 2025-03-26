@@ -21,13 +21,6 @@ public class CutsceneButton extends Button {
 
     public void render(Graphics g) {
         super.render(g);
-        if (showText) {
-            g.setColor(Color.darkGray);
-            g.fillRect(0, 0, Main.getScreenWidth(), Main.getScreenHeight());
-            g.setColor(Color.white);
-            g.setFont(Fonts.big);
-            g.drawString(info,Main.getScreenWidth() * .3f, Main.getScreenHeight() * .45f);
-            g.drawString("Press X to Continue",Main.getScreenWidth() * .3f, Main.getScreenHeight() * .85f);
-        }
+
     }
 }
