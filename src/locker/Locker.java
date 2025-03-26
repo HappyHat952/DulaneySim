@@ -49,7 +49,8 @@ public class Locker extends BasicGameState {
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
-       g.drawImage(Images.locker, 0, 0);
+       g.setBackground(Color.black);
+        g.drawImage(Images.locker, 0, 0);
         for (Button b: lockerButtons) {
             b.render(g);
         }

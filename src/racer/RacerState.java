@@ -82,6 +82,7 @@ public class RacerState extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
+        g.setBackground(Color.black);
         g.drawImage(background.getSprite(0, frame), 0, 0);
         for (Obstacle o: obstacles) {
             o.render(g);
