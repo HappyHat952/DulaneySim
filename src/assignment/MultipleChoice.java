@@ -1,6 +1,7 @@
 package assignment;
 
 import core.Main;
+import core.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -13,6 +14,11 @@ public class MultipleChoice {
 
     String header;
     ArrayList<String> options;
+
+    ArrayList<Option> optionClick;
+
+    boolean right;
+
     char correct;
 
     int index;
@@ -24,7 +30,6 @@ public class MultipleChoice {
         System.out.println(mcq);
         this.index = index;
         number = index+1;
-
         options = new ArrayList<>();
         setInfo();
     }
@@ -35,20 +40,16 @@ public class MultipleChoice {
         float x = Main.getScreenWidth()*.2f;
         g.setColor(Color.black);
         g.drawString(number +". "+header, x, y);
-        for (String s: options)
+
+        for (Option s: optionClick)
         {
-            y+=30;
-            if (s.charAt(0)== correct)
-            {
-                g.setColor(Color.green);
-            }
-            else
-            {
-                g.setColor(Color.black);
-            }
-
-            g.drawString(s,x,y);
-
+            s.draw(g);
+        }
+        if (!right)
+        {
+            g.setLineWidth(4);
+            g.drawLine(x,y,x+50,y+50);
+            g.drawLine(x+50, y, x, y+50);
         }
     }
 
@@ -57,18 +58,54 @@ public class MultipleChoice {
         try{
             //number = Integer.parseInt(mcq.getFirst().replaceAll("[//D]", ""));
             header = mcq.getFirst().replaceAll("Qstn: ","" );
+            optionClick = new ArrayList<>();
 
             for (int i = 1; i< mcq.size()-1; i++) // looks through the options
                 // (everything but first line and last line)
             {
+
                 options.add(mcq.get(i));
             }
 
+            float y = Main.getScreenHeight()*.1f+Main.getScreenHeight()*.4f*index;
+            float x = Main.getScreenWidth()*.2f;
+
             correct = mcq.getLast().charAt(0);
+
+            for (String o: options)
+            {
+                y+= 30;
+                optionClick.add(new Option((int)(x),(int)(y), (int)(Main.getScreenWidth()*.4f), o) );
+            }
+
         } catch (NumberFormatException e) {
             System.out.println(e.getCause());
             e.printStackTrace();
         }
 
+    }
+
+    public boolean grade()
+    {
+        for (Option o: optionClick)
+        {
+            if (o.isSelected() && o.getText().charAt(0)== correct)
+            {
+                right = true;
+            }
+            else if (o.isSelected())
+            {
+                right = false;
+            }
+        }
+        return right;
+    }
+
+    public void click(int x, int y)
+    {
+        for (Option o: optionClick)
+        {
+            o.click(x,y);
+        }
     }
 }

@@ -8,6 +8,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Fonts;
+import ui.buttons.Button;
 import ui.buttons.StateChangeButton;
 
 import java.io.File;
@@ -25,7 +26,11 @@ public class Assignment extends BasicGameState {
     private ArrayList<String> assignment;
     private ArrayList<MultipleChoice> mcqs;
 
-    private StateBasedGame cutSceneButton;
+    private boolean complete;
+    private float grade;
+
+    private StateChangeButton cutSceneButton;
+    private Button submitBtn;
 
     public Assignment(int id) {
         this.id = id;
@@ -41,7 +46,10 @@ public class Assignment extends BasicGameState {
         this.sbg= sbg;
         mcqs = new ArrayList<>();
         setAssignment("Test 1");
-     //   cutSceneButton = new StateChangeButton((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f), Color.orange,"Go To Lunch", Main.,sbg);
+        cutSceneButton = new StateChangeButton((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f),
+                Color.orange,"Go To Lunch", Main.CUTSCENE_ID,sbg);
+        submitBtn = new Button((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f),75,
+                50,Color.red,"Submit");
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -50,9 +58,18 @@ public class Assignment extends BasicGameState {
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
+
         g.setBackground(Color.orange);
         g.setColor(Color.white);
         g.fillRect(50,0,Main.getScreenWidth() - 100, Main.getScreenHeight() );
+
+        g.setFont(Fonts.big);
+        g.setColor(Color.red);
+        if (grade!= 0)
+        {
+            g.drawString((""+grade*100+"%"),Main.getScreenWidth()*.5f, Main.getScreenHeight()*.3f);
+        }
+
         g.setColor(Color.black);
         g.setFont(Fonts.small);
 //        float y = Main.getScreenHeight()*.1f;
@@ -69,6 +86,15 @@ public class Assignment extends BasicGameState {
                 System.out.println("mc is 'drawing' "+mcqs);
             }
         }
+        if (complete)
+        {
+            cutSceneButton.render(g);
+        }
+        else
+        {
+            submitBtn.render(g);
+        }
+
 
     }
 
@@ -89,6 +115,33 @@ public class Assignment extends BasicGameState {
 
     public void mousePressed(int button, int x, int y) {
         // This code happens every time the user presses the mouse
+        if (complete)
+        {
+            cutSceneButton.click(x,y);
+        }
+        else {
+            for (MultipleChoice m : mcqs)
+            {
+                m.click(x,y);
+            }
+            if (submitBtn.isMouseOver(x,y))
+            {
+                int points =0;
+                for (MultipleChoice m: mcqs)
+                {
+                    if (m.grade())
+                    {
+                        points ++;
+                    }
+                }
+                grade = points*1f/mcqs.size();
+                complete = true;
+
+            }
+        }
+
+
+
     }
 
     public void setAssignment(String id)

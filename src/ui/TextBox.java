@@ -19,6 +19,7 @@ public class TextBox {
 
     protected TrueTypeFont font;
     protected Color myColor;
+    protected Color textColor;
 
     public int getHeight(){ return height;}
 
@@ -32,6 +33,7 @@ public class TextBox {
         width = w;
         height = h;
         myColor = new Color(0f,0f,0f,.4f);
+        textColor = Color.white;
     }
 
     public TextBox(String text, TrueTypeFont f, int x, int y, int w)
@@ -42,6 +44,7 @@ public class TextBox {
         this.y = y;
         width = w;
         height = font.getWidth(text);
+        textColor = Color.white;
 
         myColor = new Color(0f,0f,0f,.4f);
     }
@@ -49,6 +52,7 @@ public class TextBox {
     public void setBGColor(Color c)
     {
         myColor = c;
+
     }
 
     public void draw (Graphics g)
@@ -56,8 +60,8 @@ public class TextBox {
         g.setColor(myColor);
         g.fillRect(x,y,width, height);
 
-        g.setColor(Color.white);
-        g.setLineWidth(4);
+        g.setColor(textColor);
+        g.setLineWidth(1);
         g.drawRect(x,y,width, height);
 
         g.setFont(font);
@@ -65,7 +69,7 @@ public class TextBox {
         {
             for (String line: wrappedText)
             {
-                g.drawString(line, x+ 10, y+ 10 + font.getHeight()*1.3f* wrappedText.indexOf(line));
+                g.drawString(line, x+ 2, y+ 2 + font.getHeight()*1.3f* wrappedText.indexOf(line));
             }
         }
         else {
