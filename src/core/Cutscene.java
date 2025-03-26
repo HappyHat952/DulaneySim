@@ -58,6 +58,8 @@ public class Cutscene extends BasicGameState {
         x = screenWidth * .05f;
         y = screenHeight * .2f;
         sbg = stateBasedGame;
+        stateButton = new StateChangeButton((int)(Main.getScreenWidth() * .8f), (int)(Main.getScreenHeight()*.1f), Color.red,
+                "Finish Cutscene",  Main.LOCKER_ID, sbg);
     }
 
     @Override
@@ -77,6 +79,7 @@ public class Cutscene extends BasicGameState {
            g.drawString(testString,Main.getScreenWidth() * .35f, Main.getScreenHeight() * .45f);
            stateButton.render(g);
        }
+        Player.render(g);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package racer;
 
 import core.Main;
+import core.Player;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -94,7 +95,9 @@ public class RacerState extends BasicGameState {
         }
         g.setFont(Fonts.big);
         g.setColor(Color.black);
-        g.drawString("Use WASD TO MOVE", 20, 20);
+        g.drawString("Use WASD TO MOVE", 130, 20);
+
+        Player.render(g);
     }
 
     @Override

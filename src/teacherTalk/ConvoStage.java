@@ -35,6 +35,8 @@ public class ConvoStage {
     private int timer;
     private int wrongCount; // the count of incorrect choices;
 
+    private Conversation convo;
+
     //    public ConvoStage(ArrayList<String> dialogues, int id)
 //    {
 //        convoStage = dialogues;
@@ -42,7 +44,7 @@ public class ConvoStage {
 //        selected = -1;
 //        this.id = id;
 //    }
-    public ConvoStage(ArrayList<Dialogue> dialogues, int stageId, int teachId)
+    public ConvoStage(ArrayList<Dialogue> dialogues, int stageId, int teachId, Conversation c)
     {
         allDialogues = dialogues;
         choices = new ArrayList<>();
@@ -53,6 +55,7 @@ public class ConvoStage {
         currentDia = -1;
         this.stageId = stageId;
         this.teachId = teachId;
+        this.convo = c;
 
     }
 
@@ -84,6 +87,7 @@ public class ConvoStage {
         allBoxes = new ArrayList<>();
 
         int choiceY = (int)( Main.getScreenHeight()*.6f) ;
+        int choiceNum = 1;
 
         for (int i=0; i<allDialogues.size(); i++)
         {
@@ -92,8 +96,9 @@ public class ConvoStage {
             if (allDialogues.get(i) instanceof Choice)
             {
                 Choice c = (Choice)(d);
-                tb = new ChoiceTextBox(c.toString(), (int)(Main.getScreenWidth()*.56f),
+                tb = new ChoiceTextBox("["+choiceNum+"]" +c.toString(), (int)(Main.getScreenWidth()*.56f),
                         choiceY);
+                choiceNum ++;
                 choiceY+=tb.getHeight() +15;
                 choiceBoxes.add((ChoiceTextBox)tb);
                 if (c.getCorrect())
@@ -134,6 +139,7 @@ public class ConvoStage {
                 if (!choices.get(finalSelect).equals(correctChoice))
                 {
                     wrongCount++;
+                    convo.addMistake();
                 }
             }
 
@@ -149,12 +155,14 @@ public class ConvoStage {
             if (timer == allDialogues.get(currentDia).getReadTime())
             {
                 timer = 0;
+
                 //checks if the next dialogue exists AND if its in the same tier. If the next one is a same
                 // or bigger tier, make that the new current dialogue.
                 if (currentDia +1< allDialogues.size()
                         && allDialogues.get(currentDia+1).getTier()>= allDialogues.get(currentDia).getTier())
                 {
                     currentDia +=1;
+
                 }
                 // if you've reached the end, and the choice was right
                 else if (choices.get(finalSelect).getCorrect())
@@ -171,6 +179,14 @@ public class ConvoStage {
 
                     wrongCount++;
                 }
+                if (currentDia!= -1)
+                {
+                    convo.setImage(allDialogues.get(currentDia).getImgID());
+                }
+                else {
+                    convo.setImage(header.getImgID());
+                }
+
             }
         }
     }

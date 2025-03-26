@@ -1,9 +1,11 @@
 package teacherTalk;
 
 import core.Main;
+import core.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
+import setup.Fonts;
 import setup.Images;
 import ui.buttons.StateChangeButton;
 
@@ -35,7 +37,7 @@ public class Conversation {
         convo = "Teach: Mr. McVeigh\n" +
                 "Obj: Ask for a test regrade\n" +
                 "…\n" +
-                "HT2: Here is Your quiz. You got a 60%\n" +
+                "HT1: Here is Your quiz. You got a 60%\n" +
                 "_OCA: Can I retake it?\n" +
                 "HT2: I don’t think I’ll give a retake.\n" +
                 "_OWA: Can we have the quiz regraded bc fire drill\n" +
@@ -43,14 +45,14 @@ public class Conversation {
                 "__T2: Maybe you should have done better :P/\n"+
                 "__S: This guy is kind of weird...\n"+
                 "_OWA: Could I retake this test?\n" +
-                "__T2: It’s NOT a test! It’s a quiz\n" +
+                "__T3: It’s NOT a test! It’s a quiz\n" +
                 "_OCA: Could I retake this quiz?\n" +
                 "__T1: Sure!\n" +
                 "HT1: I'll think about it\n" +
                 "_OWA: The class Average was a 64%\n" +
                 "__T2: Womp Womp.\n" +
                 "_OWA: But I'm cool\n" +
-                "__T1: no ur not\n" +
+                "__T1: No.\n" +
                 "_OCA: pretty pretty please with a cherry on Top\n" +
                 "__T1: fine\n" +
                 "end";
@@ -111,7 +113,7 @@ public class Conversation {
                 }
                 if (!convoStage.isEmpty())
                 {
-                    stages.add(new ConvoStage( getDialogue(convoStage), stages.size(), teachId));
+                    stages.add(new ConvoStage( getDialogue(convoStage), stages.size(), teachId, this));
                 }
             }
 
@@ -129,9 +131,9 @@ public class Conversation {
         {
             stages.get(activeStage).update();
         }
-        if (stages.get(activeStage).isComplete())
+        if (!complete && stages.get(activeStage).isComplete())
         {
-            mistakes += stages.get(activeStage).getWrongCount();// sums up the mistakes the person makes.
+            // sums up the mistakes the person makes.
             if (activeStage+1<stages.size())
             {
                 activeStage++;
@@ -140,6 +142,7 @@ public class Conversation {
             {
                 active = false;
                 complete = true;
+                Player.adjustGPA(.5f);
             }
 
 
@@ -158,14 +161,20 @@ public class Conversation {
         g.drawString(""+mistakes, 40,40);
         if (active && !complete)
         {
+            g.setColor(Color.black);
+            g.setFont(Fonts.big);
+            g.drawString("Objective: "+ objective, Main.getScreenWidth()*.25f, Main.getScreenHeight()*.03f);
             stages.get(activeStage).draw(g);
         }
         if (complete)
         {
-            g.drawString("complete", 60,60);
+            assignmentButton.render(g);
         }
-        assignmentButton.render(g);
+
     }
+
+    public void addMistake(){ mistakes++;
+    Player.adjustGPA(-.2f);}
 
     public void keyPressed(int key, char c)
     {
@@ -199,7 +208,11 @@ public class Conversation {
 
     public void mousePressed(int button, int x, int y)
     {
-        assignmentButton.click(x,y);
+        if (complete)
+        {
+            assignmentButton.click(x,y);
+        }
+
     }
 
 }

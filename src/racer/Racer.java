@@ -30,7 +30,7 @@ public class Racer {
         w = image.getWidth();
         h = image.getHeight();
 
-        complete = true;
+        complete = false;
 
 
     }

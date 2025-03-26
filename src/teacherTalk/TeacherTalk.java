@@ -1,6 +1,7 @@
 package teacherTalk;
 
 import core.Main;
+import core.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -45,6 +46,7 @@ public class TeacherTalk extends BasicGameState {
         // This code renders shapes and images every frame.
        g.setBackground(Color.darkGray);
         convo.draw(g);
+        Player.render(g);
 
     }
 

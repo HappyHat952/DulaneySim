@@ -13,6 +13,8 @@ public class Dialogue {
     int tier; //what level of the conversation -- determines what comes next.
     int readTime; // frames
 
+    int imgID;
+
     String id;
 
     public Dialogue(int teachID, String text)
@@ -53,13 +55,21 @@ public class Dialogue {
         if (id.contains("T1"))
         {
             expression = ":)";
+            imgID = 0;
         }
         else if (id.contains("T2"))
         {
-            expression = ":(";
+            expression = ":D";
+            imgID = 1;
+        }
+        else if (id.contains("T3"))
+        {
+            expression = ">:(";
+            imgID = 2;
         }
         else {
             expression = "---";
+            imgID = 1;
         }
 
         readTime = dialogue.length() * 10;
@@ -75,8 +85,10 @@ public class Dialogue {
     public int getTier(){ return tier;}
     public int getReadTime(){ return readTime;}
 
+    public int getImgID(){ return imgID;}
+
     @Override
     public String toString() {
-        return tier +"||"+id+"|" +expression+"| " + person +": " +dialogue;
+        return person +": " +dialogue;
     }
 }

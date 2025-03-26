@@ -1,6 +1,7 @@
 package assignment;
 
 import core.Main;
+import core.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -16,8 +17,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
-
-import static core.Main.CUTSCENE_ID;
 
 public class Assignment extends BasicGameState {
     private int id;
@@ -38,6 +37,10 @@ public class Assignment extends BasicGameState {
 
     public int getID() {
         return id;
+    }
+
+    public boolean isComplete(){
+        return complete;
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -61,11 +64,11 @@ public class Assignment extends BasicGameState {
 
         g.setBackground(Color.orange);
         g.setColor(Color.white);
-        g.fillRect(50,0,Main.getScreenWidth() - 100, Main.getScreenHeight() );
+        g.fillRect(200,0,Main.getScreenWidth() - 400, Main.getScreenHeight() );
 
         g.setFont(Fonts.big);
         g.setColor(Color.red);
-        if (grade!= 0)
+        if (complete)
         {
             g.drawString((""+grade*100+"%"),Main.getScreenWidth()*.5f, Main.getScreenHeight()*.3f);
         }
@@ -95,6 +98,8 @@ public class Assignment extends BasicGameState {
             submitBtn.render(g);
         }
 
+        g.setColor(Color.black);
+        Player.render(g);
 
     }
 
@@ -107,9 +112,6 @@ public class Assignment extends BasicGameState {
     }
 
     public void keyPressed(int key, char c) {
-        if (c == 'x') {
-            sbg.enterState(CUTSCENE_ID);
-        }
         // This code happens every time the user presses a key
     }
 
@@ -132,6 +134,9 @@ public class Assignment extends BasicGameState {
                     if (m.grade())
                     {
                         points ++;
+                    }
+                    else {
+                        Player.adjustGPA(-.2f);
                     }
                 }
                 grade = points*1f/mcqs.size();
@@ -162,7 +167,7 @@ public class Assignment extends BasicGameState {
                 {
                     q.add(str);
                     assignment.add(str);
-                    mcqs.add (new MultipleChoice(q, mcqs.size()));
+                    mcqs.add (new MultipleChoice(q, mcqs.size(),this));
                     q = new ArrayList<>();
                 }
                 else

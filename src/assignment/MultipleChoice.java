@@ -22,9 +22,12 @@ public class MultipleChoice {
     char correct;
 
     int index;
+    boolean complete;
+
+    Assignment ass;
 
 
-    public MultipleChoice(ArrayList<String> mcq, int index)
+    public MultipleChoice(ArrayList<String> mcq, int index, Assignment a)
     {
         this.mcq = mcq;
         System.out.println(mcq);
@@ -32,11 +35,12 @@ public class MultipleChoice {
         number = index+1;
         options = new ArrayList<>();
         setInfo();
+        ass = a;
     }
 
     public void draw(Graphics g)
     {
-        float y = Main.getScreenHeight()*.1f+Main.getScreenHeight()*.4f*index;
+        float y = Main.getScreenHeight()*.1f+Main.getScreenHeight()*.2f*index;
         float x = Main.getScreenWidth()*.2f;
         g.setColor(Color.black);
         g.drawString(number +". "+header, x, y);
@@ -45,9 +49,10 @@ public class MultipleChoice {
         {
             s.draw(g);
         }
-        if (!right)
+        if (!right && ass.isComplete())
         {
-            g.setLineWidth(4);
+            g.setColor(Color.red);
+            g.setLineWidth(5);
             g.drawLine(x,y,x+50,y+50);
             g.drawLine(x+50, y, x, y+50);
         }
@@ -67,7 +72,7 @@ public class MultipleChoice {
                 options.add(mcq.get(i));
             }
 
-            float y = Main.getScreenHeight()*.1f+Main.getScreenHeight()*.4f*index;
+            float y = Main.getScreenHeight()*.1f+Main.getScreenHeight()*.2f*index;
             float x = Main.getScreenWidth()*.2f;
 
             correct = mcq.getLast().charAt(0);
@@ -75,7 +80,7 @@ public class MultipleChoice {
             for (String o: options)
             {
                 y+= 30;
-                optionClick.add(new Option((int)(x),(int)(y), (int)(Main.getScreenWidth()*.4f), o) );
+                optionClick.add(new Option((int)(x),(int)(y), (int)(Main.getScreenWidth()*.2f), o) );
             }
 
         } catch (NumberFormatException e) {
