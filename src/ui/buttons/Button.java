@@ -108,9 +108,9 @@ public class Button {
             }
             if (info != null)
             {
-                g.setFont(font);
-                g.setColor(Color.black);
-                g.drawString(info, x + w /2f - font.getWidth(info) /2f , y + h *.6f);
+//                g.setFont(font);
+//                g.setColor(Color.black);
+//                g.drawString(info, x + w /2f - font.getWidth(info) /2f , y + h *.6f);
             }
 
         }else if (name != null){
@@ -136,11 +136,14 @@ public class Button {
         }
     }
 
-    public void action(){}
+    public void action(){
+
+    }
 
     public int getX(){ return x;}
     public int getY(){ return y;}
     public int getWidth(){ return w;}
     public int getHeight(){ return h;}
     public String getName(){ return name;}
+
 }

@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import static core.Main.CUTSCENE_ID;
+
 public class Assignment extends BasicGameState {
     private int id;
     private StateBasedGame sbg;
@@ -79,6 +81,9 @@ public class Assignment extends BasicGameState {
     }
 
     public void keyPressed(int key, char c) {
+        if (c == 'x') {
+            sbg.enterState(CUTSCENE_ID);
+        }
         // This code happens every time the user presses a key
     }
 
