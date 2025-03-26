@@ -4,6 +4,7 @@ import core.Main;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import setup.Fonts;
 import setup.Images;
 import ui.buttons.StateChangeButton;
 
@@ -90,6 +91,9 @@ public class RacerState extends BasicGameState {
         {
             classButton.render(g);
         }
+        g.setFont(Fonts.big);
+        g.setColor(Color.black);
+        g.drawString("Use WASD TO MOVE", 20, 20);
     }
 
     @Override

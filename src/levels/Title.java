@@ -40,7 +40,6 @@ public class Title extends BasicGameState {
         g.setColor(Color.white);
         g.setFont(Fonts.big);
         g.drawString("Dulaney Simulator", Main.getScreenWidth() * .3f, Main.getScreenHeight() * .31f);
-        g.drawString("Press X to Start", Main.getScreenWidth() * .3f, Main.getScreenHeight() * .51f);
 
         button.render(g);
     }
