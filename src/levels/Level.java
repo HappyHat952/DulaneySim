@@ -1,6 +1,7 @@
 package levels;
 
 import assignment.AssignState;
+import core.CutScene;
 import racer.Obstacle;
 import teacherTalk.Conversation;
 
@@ -14,6 +15,8 @@ abstract public class Level {
     protected ArrayList<Obstacle> obstacles;
     protected Conversation convo;
     protected String testID;
+    protected ArrayList<CutScene> cutScenes = new ArrayList();
+
     //cutscene per grade level
     //sticker per grade level.
 

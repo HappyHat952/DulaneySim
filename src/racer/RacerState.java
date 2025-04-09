@@ -46,7 +46,26 @@ public class RacerState extends BasicGameState {
 
 
     public void cleanUp() {
-        obstacles.removeIf(o -> o.getY() > screenHeight);
+        for (Obstacle o: obstacles) {
+            if (o.getY() > screenHeight) {
+                o.setX(screenWidth * .5f - (float) o.getImage().getWidth() / 2);
+                o.setY(screenHeight * .14f);
+
+                double random = Math.random();
+                float xAdd;
+
+                if (random < .25) {
+                    xAdd = 4.5f;
+                } else if (random < .5) {
+                    xAdd = -4.5f;
+                } else if (random < .75) {
+                    xAdd = 10;
+                } else {
+                    xAdd = -10;
+                }
+                o.setxAdd(xAdd);
+            }
+        }
     }
 
     @Override
@@ -133,15 +152,15 @@ public class RacerState extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame stateBasedGame, int i) throws SlickException {
+        if (count < 60 & count % 15 == 0) {
+            obstacles.add(new Obstacle(Images.obstacle));
+        }
+
         if (travelled<= distanceToClass)
         {
             r.update();
             for (Obstacle o: obstacles) {
                 o.update();
-            }
-
-            if (count % 10 == 0 && Math.random() <.15f) {
-                obstacles.add(new Obstacle());
             }
 
             cleanUp();

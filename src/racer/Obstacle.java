@@ -14,8 +14,8 @@ public class Obstacle {
     protected float xAdd;
     protected Image image;
 
-    public Obstacle() {
-        image = Images.obstacle;
+    public Obstacle(Image image) {
+        this.image = image;
         x = Main.getScreenWidth() * .5f - (float) image.getWidth() / 2;
         w = image.getWidth();
         h = image.getHeight();
@@ -63,5 +63,21 @@ public class Obstacle {
 
     public void render(Graphics g) {
         g.drawImage(image, x, y);
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setxAdd(float xAdd) {
+        this.xAdd = xAdd;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public Image getImage() {
+        return image;
     }
 }

@@ -3,17 +3,13 @@ package core;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import racer.Obstacle;
-import racer.Racer;
 import setup.Fonts;
 import setup.Images;
 import ui.buttons.Button;
 import ui.buttons.CutsceneButton;
 import ui.buttons.StateChangeButton;
 
-import java.util.ArrayList;
-
-public class Cutscene extends BasicGameState {
+public class CutState extends BasicGameState {
     private int id;
     private StateBasedGame sbg;
     private Image image;
@@ -32,7 +28,7 @@ public class Cutscene extends BasicGameState {
     private boolean showButtons;
 
 
-    public Cutscene(int id) {
+    public CutState(int id) {
         this.id = id;
         level = 0;
     }
@@ -59,7 +55,7 @@ public class Cutscene extends BasicGameState {
         y = screenHeight * .2f;
         sbg = stateBasedGame;
         stateButton = new StateChangeButton((int)(Main.getScreenWidth() * .8f), (int)(Main.getScreenHeight()*.1f), Color.red,
-                "Finish Cutscene",  Main.LOCKER_ID, sbg);
+                "Finish CutState",  Main.LOCKER_ID, sbg);
     }
 
     @Override
