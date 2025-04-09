@@ -6,7 +6,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Fonts;
 import ui.buttons.Button;
@@ -16,50 +15,32 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
-public class Assignment extends BasicGameState {
+public class Assignment {
+
     private int id;
     private StateBasedGame sbg;
 
-    private ArrayList<String> assignment;
-    private ArrayList<MultipleChoice> mcqs;
+    private static ArrayList<String> assignment;
+    private static ArrayList<MultipleChoice> mcqs;
 
-    private boolean complete;
-    private float grade;
+    private static boolean complete;
+    private static float grade;
 
-    private StateChangeButton cutSceneButton;
-    private Button submitBtn;
 
-    public Assignment(int id) {
+    public Assignment(String testID) {
         this.id = id;
-    }
-
-    public int getID() {
-        return id;
-    }
-
-    public boolean isComplete(){
-        return complete;
-    }
-
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        // This code happens when you enter a game state for the *first time.*
-        gc.setShowFPS(true);
-        this.sbg= sbg;
         mcqs = new ArrayList<>();
-        setAssignment("Test 1");
-        cutSceneButton = new StateChangeButton((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f),
-                Color.orange,"Go To Lunch", Main.CUTSCENE_ID,sbg);
-        submitBtn = new Button((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f),75,
-                50,Color.red,"Submit");
+        setAssignment(testID);
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+    public boolean isComplete(){ return complete;}
+
+    public void update() throws SlickException {
         // This updates your game's logic every frame.  NO DRAWING.
     }
 
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+    public void render(Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
 
         g.setBackground(Color.orange);
@@ -89,14 +70,14 @@ public class Assignment extends BasicGameState {
                 System.out.println("mc is 'drawing' "+mcqs);
             }
         }
-        if (complete)
-        {
-            cutSceneButton.render(g);
-        }
-        else
-        {
-            submitBtn.render(g);
-        }
+//        if (complete)
+//        {
+//            cutSceneButton.render(g);
+//        }
+//        else
+//        {
+//            submitBtn.render(g);
+//        }
 
         g.setColor(Color.black);
         Player.render(g);
@@ -115,34 +96,32 @@ public class Assignment extends BasicGameState {
         // This code happens every time the user presses a key
     }
 
+    public void submit()
+    {
+        int points =0;
+        for (MultipleChoice m: mcqs)
+        {
+            if (m.grade())
+            {
+                points ++;
+            }
+            else {
+                Player.adjustGPA(-.2f);
+            }
+        }
+        grade = points*1f/mcqs.size();
+        complete = true;
+    }
+
     public void mousePressed(int button, int x, int y) {
         // This code happens every time the user presses the mouse
-        if (complete)
-        {
-            cutSceneButton.click(x,y);
-        }
-        else {
-            for (MultipleChoice m : mcqs)
-            {
-                m.click(x,y);
-            }
-            if (submitBtn.isMouseOver(x,y))
-            {
-                int points =0;
-                for (MultipleChoice m: mcqs)
-                {
-                    if (m.grade())
-                    {
-                        points ++;
-                    }
-                    else {
-                        Player.adjustGPA(-.2f);
-                    }
-                }
-                grade = points*1f/mcqs.size();
-                complete = true;
 
-            }
+        if (!complete) {
+
+                for (MultipleChoice m : mcqs)
+                {
+                    m.click(x,y);
+                }
         }
 
 
@@ -162,7 +141,7 @@ public class Assignment extends BasicGameState {
 
             while (!str.equals("end"))
             {
-              //  if (str.contains("Qstn: ") && !assignment.isEmpty())
+                //  if (str.contains("Qstn: ") && !assignment.isEmpty())
                 if (str.length() == 1 && !assignment.isEmpty())
                 {
                     q.add(str);
@@ -186,5 +165,4 @@ public class Assignment extends BasicGameState {
         }
 
     }
-
 }

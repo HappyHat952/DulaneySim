@@ -1,6 +1,6 @@
 package core;
 
-import assignment.Assignment;
+import assignment.AssignState;
 import levels.Title;
 import locker.Locker;
 import org.newdawn.slick.AppGameContainer;
@@ -38,9 +38,9 @@ public class Main extends StateBasedGame {
         game = new Game(GAME_ID);
         racer = new RacerState(RACER_ID);
         teacher = new TeacherTalk(TEACHER_ID);
-        assign = new Assignment(ASSIGN_ID);
+        assign = new AssignState(ASSIGN_ID);
         locker = new Locker(LOCKER_ID);
-        cutscene = new Cutscene(CUTSCENE_ID);
+        cutscene = new CutState(CUTSCENE_ID);
     }
 
     public static int getScreenWidth() {

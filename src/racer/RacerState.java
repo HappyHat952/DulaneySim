@@ -26,7 +26,7 @@ public class RacerState extends BasicGameState {
     private int counter;
     private int screenHeight;
     private int screenWidth;
-    private ArrayList<Obstacle> obstacles;
+    private static ArrayList<Obstacle> obstacles;
 
     private int distanceToClass;
     private int travelled;
@@ -37,6 +37,11 @@ public class RacerState extends BasicGameState {
 
     public RacerState(int id) {
         this.id = id;
+    }
+
+    public static void setObstacles(ArrayList<Obstacle> obstacs)
+    {
+        obstacles = obstacs;
     }
 
 

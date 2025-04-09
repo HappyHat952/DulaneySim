@@ -1,6 +1,7 @@
 package assignment;
 
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import setup.Fonts;
 import ui.TextBox;
 import ui.buttons.Button;
@@ -36,16 +37,27 @@ public class Option extends TextBox {
         }
     }
 
+    public void draw(Graphics g)
+    {
+        super.draw(g);
+        if (selected)
+        {
+            g.setLineWidth(2);
+            g.setColor(Color.gray);
+            g.drawOval(x,y, width,height);
+        }
+    }
+
     public void action()
     {
         selected = !selected;
-        if (selected)
-        {
-            myColor = Color.green;
-        }
-        else {
-            myColor = Color.white;
-        }
+//        if (selected)
+//        {
+//            myColor = Color.green;
+//        }
+//        else {
+//            myColor = Color.white;
+//        }
 
     }
 }

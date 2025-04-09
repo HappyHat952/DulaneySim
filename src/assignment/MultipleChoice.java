@@ -1,7 +1,6 @@
 package assignment;
 
 import core.Main;
-import core.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
