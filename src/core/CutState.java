@@ -63,8 +63,8 @@ public class CutState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-
-
+        Player.getCurrentLevel().setCutSceneID(0);
+        setCurrentScene();
     }
 
     @Override

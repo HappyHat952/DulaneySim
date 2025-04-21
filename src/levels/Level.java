@@ -42,12 +42,17 @@ abstract public class Level {
             System.out.println("Id is " + cutSceneID);
         } else {
             ((CutState) (sbg.getCurrentState())).goToLocker();
+            setCutSceneID(0);
             Player.addGrade();
         }
     }
 
     public CutScene getCurrentScene() {
         return cutScenes.get(cutSceneID);
+    }
+
+    public void setCutSceneID(int a) {
+        cutSceneID = a;
     }
 
 

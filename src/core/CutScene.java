@@ -11,9 +11,9 @@ import static core.Main.CUTSCENE_ID;
 
 public class CutScene {
 
-    private int id;
-    private StateBasedGame sbg;
-    private Image image;
+    protected int id;
+    protected StateBasedGame sbg;
+    protected Image image;
     private String title;
     private String op1;
     private String op2;
@@ -22,7 +22,7 @@ public class CutScene {
     private int totalFrames;
     private CutsceneButton button1;
     private CutsceneButton button2;
-    private Button leaveButton;
+    protected Button leaveButton;
     private int offset;
     private int buttonY;
     private int buttonW;
@@ -30,7 +30,7 @@ public class CutScene {
 
     public CutScene(int id, Image image, String title, String op1, String op2, String cons1, String cons2,
                     int totalFrames) {
-        leaveButton = new StateChangeButton((int) (Main.getScreenWidth() * .75f), (int) (Main.getScreenHeight() * .2f), Color.yellow,
+        leaveButton = new StateChangeButton((int) (Main.getScreenWidth() * .85f), (int) (Main.getScreenHeight() * .1f), Color.yellow,
                 "Leave", CUTSCENE_ID, sbg);
         this.id = id;
         this.image = image;
@@ -48,6 +48,10 @@ public class CutScene {
         button2 = new CutsceneButton(Main.getScreenWidth() - offset - buttonW, buttonY, buttonW, buttonH, Color.red, op2, cons2);
     }
 
+    public CutScene() {
+
+    }
+
     public void render(Graphics g, int currentFrame, String choice) {
         g.setBackground(Color.darkGray);
         if (currentFrame == 1) {
@@ -58,16 +62,19 @@ public class CutScene {
             g.setFont(Fonts.big);
             g.drawString(title, Main.getScreenWidth() * .4f, Main.getScreenHeight() * .1f);
         } else if (currentFrame == 2) {
-            g.drawRect(Main.getScreenWidth() * .25f, Main.getScreenHeight() * .15f, Main.getScreenWidth() * .5f,
+            g.setColor(Color.black);
+            g.setFont(Fonts.big);
+            g.fillRect(Main.getScreenWidth() * .25f, Main.getScreenHeight() * .15f, Main.getScreenWidth() * .5f,
                     Main.getScreenHeight() * .5f);
-            g.drawString(choice, 100, 100);
+            g.setColor(Color.white);
+            g.drawString(choice, Main.getScreenWidth() * .3f, Main.getScreenHeight() * .3f);
             leaveButton.render(g);
         }
     }
 
     public void mousePressed(int x, int y, StateBasedGame sbg, GameContainer gc) throws SlickException {
         this.sbg = sbg;
-        leaveButton = new StateChangeButton((int) (Main.getScreenWidth() * .75f), (int) (Main.getScreenHeight() * .2f), Color.yellow,
+        leaveButton = new StateChangeButton((int) (Main.getScreenWidth() * .85f), (int) (Main.getScreenHeight() * .1f), Color.yellow,
                 "Leave", CUTSCENE_ID, sbg);
         if (button1.isMouseOver(x, y)) {
             button1.action(sbg);

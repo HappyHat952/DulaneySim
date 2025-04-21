@@ -25,5 +25,6 @@ public class Freshman extends Level {
                 "What?! You're missing out on some tasty fud", 2));
         cutScenes.add(new CutScene(2, Images.fight, "FIGHT!", "FIGHT", "DON'T FIGHT", "You've got courage, that's " +
                 "for sure... The teachers aren't going to like this.", "You've avoided violence... for now", 2));
+        cutScenes.add(new Transition(3, Images.transition1));
     }
 }

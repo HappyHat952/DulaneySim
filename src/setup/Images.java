@@ -32,6 +32,7 @@ public class Images {
     static public Image lunch4;
     static public Image fight;
     static public Image transition1;
+    static public Image snowDay;
 
     // ui
     static public SpriteSheet volumeSheet;
@@ -46,7 +47,7 @@ public class Images {
             //racer
             racerBackground = new SpriteSheet("res/racer/racerBackground.png", 1920, 1080);
             racer = new Image("res/racer/racer.png");
-            obstacle = new Image("res/racer/obstacle.png");
+            obstacle = new Image("res/racer/spill.png");
 
             //locker
             locker = new Image("res/locker/locker.png");
@@ -65,6 +66,7 @@ public class Images {
             lunch4 = new Image("res/cutscene/lunch/lunch4.png");
             fight = new Image("res/cutscene/fight.png");
             transition1 = new Image("res/cutscene/transition1.png");
+            snowDay = new Image("res/cutscene/snowDay.png");
 
             // ui
             volumeSheet = new SpriteSheet("res/ui/volumeSheet.png", 100, 100);
