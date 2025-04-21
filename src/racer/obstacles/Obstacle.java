@@ -1,8 +1,9 @@
-package racer;
+package racer.obstacles;
 
 import core.Main;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import racer.RacerState;
 import setup.Images;
 
 public class Obstacle {
@@ -16,10 +17,7 @@ public class Obstacle {
     protected String name;
 
     public Obstacle() {
-        this.image = Images.obstacle;
-        x = Main.getScreenWidth() * .5f - (float) image.getWidth() / 2;
-        w = image.getWidth();
-        h = image.getHeight();
+//        this.image = Images.obstacle;
         y = Main.getScreenHeight() * .14f;
 
 

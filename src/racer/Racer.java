@@ -4,8 +4,8 @@ package racer;
 import core.Main;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import racer.obstacles.Obstacle;
 import setup.Images;
-import ui.buttons.StateChangeButton;
 
 public class Racer {
 
@@ -78,7 +78,7 @@ public class Racer {
     }
 
     public boolean isOver(Obstacle o) {
-        if (y >= o.getY() && y <= o.getY() + o.getH() && x+w > o.getX() && o.getX() + o.getW() > x) {
+        if (o.getY() >= (y + (h*.65)) && o.getY() <= y + h && x+w > o.getX() && o.getX() + o.getW() > x) {
             return true;
         }
         return false;

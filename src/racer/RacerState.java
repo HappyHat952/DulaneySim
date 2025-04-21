@@ -5,12 +5,13 @@ import core.Player;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import racer.obstacles.Obstacle;
+import racer.obstacles.Spill;
 import setup.Fonts;
 import setup.Images;
 import ui.buttons.StateChangeButton;
 
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
@@ -58,10 +59,9 @@ public class RacerState extends BasicGameState {
         distanceToClass = 10;
         travelled = 0;
 
-        obstaclesClass = new ArrayList<>();
-        obstaclesClass.add(Sign.class);
+        obstaclesClass = Player.getCurrentLevel().getObstacles();
 
-        obstaclesClass = o;
+//        obstaclesClass = o;
     }
 
 
@@ -128,8 +128,7 @@ public class RacerState extends BasicGameState {
         distanceToClass = 400;
         travelled = 0;
 
-        obstaclesClass = new ArrayList<>();
-        obstaclesClass.add(Sign.class);
+        obstaclesClass = Player.getCurrentLevel().getObstacles();
 
         classButton = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .03f),
                 Color.orange, "Enter Class", Main.TEACHER_ID, sbg);
@@ -171,9 +170,8 @@ public class RacerState extends BasicGameState {
         updateVolume(x, y);
     }
 
-    public Obstacle createNewObstacle()
-    {
-        int i = (int)(obstaclesClass.size() *Math.random());
+    public Obstacle createNewObstacle() {
+        int i = (int) (obstaclesClass.size() * Math.random());
 
         Class<? extends Obstacle> clazz = obstaclesClass.get(i);
         Obstacle obstacle = null;
@@ -181,7 +179,8 @@ public class RacerState extends BasicGameState {
         try {
             obstacle = clazz.getDeclaredConstructor().newInstance();
 
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
+                 InvocationTargetException e) {
             throw new RuntimeException(e);
         }
 

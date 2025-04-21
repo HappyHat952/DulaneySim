@@ -1,7 +1,7 @@
 package levels;
 
 import core.CutScene;
-import racer.Sign;
+import racer.obstacles.Spill;
 import setup.Images;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class Junior extends Level {
         grade = 10;
         gradeName = "Sophomore";
         obstacles = new ArrayList<>();
-        obstacles.add(Sign.class);
+        obstacles.add(Spill.class);
         cutSceneID = 0;
 
 //        protected ArrayList<Obstacle> obstacles;

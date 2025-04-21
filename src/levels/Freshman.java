@@ -1,10 +1,8 @@
 package levels;
 
 import core.CutScene;
-import racer.Obstacle;
-import racer.Sign;
+import racer.obstacles.Spill;
 import setup.Images;
-import teacherTalk.Conversation;
 
 import java.util.ArrayList;
 
@@ -16,7 +14,7 @@ public class Freshman extends Level {
         cutSceneID = 0;
 
          obstacles = new ArrayList<>();
-         obstacles.add(Sign.class);
+         obstacles.add(Spill.class);
 
         testID = "Test_1";
         convoID = "mcVeigh";

@@ -1,7 +1,8 @@
 package levels;
 
 import core.CutScene;
-import racer.Sign;
+import racer.obstacles.Mouse;
+import racer.obstacles.Spill;
 import setup.Images;
 
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ public class Sophomore extends Level {
         cutSceneID = 0;
 
         obstacles = new ArrayList<>();
-        obstacles.add(Sign.class);
+        obstacles.add(Spill.class);
+        obstacles.add(Mouse.class);
 
         testID = "Test_2";
         convoID = "mcVeigh";

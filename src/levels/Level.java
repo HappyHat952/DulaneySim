@@ -6,11 +6,9 @@ import core.CutScene;
 import core.CutState;
 import core.Player;
 import org.newdawn.slick.state.StateBasedGame;
-import racer.Obstacle;
+import racer.obstacles.Obstacle;
 import racer.RacerState;
-import teacherTalk.Conversation;
 import teacherTalk.TeacherTalk;
-import teacherTalk.newTalk.NewConversation;
 
 import java.util.ArrayList;
 
@@ -55,5 +53,7 @@ abstract public class Level {
         cutSceneID = a;
     }
 
-
+    public ArrayList<Class<? extends Obstacle>> getObstacles() {
+        return obstacles;
+    }
 }
