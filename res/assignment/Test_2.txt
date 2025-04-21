@@ -1,0 +1,19 @@
+Qstn: Which Hockey team has won the most Stanley cups
+a) Toronto Maple leaves
+b) Carolina Hurricanes
+c) Montreal Canadians
+d) Washington Capitals
+c
+Qstn: Which historic leader created an international postage service known as "Yam"
+a) Genghis Khan
+b) Alexander the Great
+c) George Washington
+d) Bob
+a
+Qstn: When was the Declaration of Independence adopted?
+a) July 4, 1774
+b) August 2, 1776
+c) September 8, 1984
+d) July 4, 1776
+d
+end

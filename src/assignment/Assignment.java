@@ -112,11 +112,9 @@ public class Assignment {
             {
                 points ++;
             }
-            else {
-                Player.adjustGPA(-.2f);
-            }
         }
         grade = points*1f/mcqs.size();
+        Player.assignmentGPAAdj(grade);
         complete = true;
     }
 

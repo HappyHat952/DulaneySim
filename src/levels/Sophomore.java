@@ -14,7 +14,7 @@ public class Sophomore extends Level {
         obstacles = new ArrayList<>();
         obstacles.add(Sign.class);
 
-        testID = "Test_1";
+        testID = "Test_2";
         convoID = "mcVeigh";
         cutScenes.add(new CutScene(1, Images.lunch2, "LUNCH TIME", "EAT", "DON'T EAT", "You're feeling a little " +
                 "sick from that taco salad...", "What, you didn't want to try the mexican radish? Coward", 2));

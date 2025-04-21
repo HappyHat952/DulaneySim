@@ -1,23 +1,23 @@
 Mr. Mcveigh
 O: Ask for a test regrade
 …
-+A-T2: *Mr. McVeigh hands you a test. Face Down. You haven't checked Schoology yet.*
++A-NO: *Mr. McVeigh hands you a test. Face Down. You haven't checked Schoology yet.*
 ____B: Turn the test over. Might as well find out your grade now.
 ____B: Check your grade on Schoology.
 +B-NO: *Your test grade is a 67! Your parents will destroy you if you fail Algebra 2.*
 ____BE1: Accept your fate. *This option will have consequences*
 ____C: Ask Mr. McVeigh for a retake.
-+C-T0: *Mr. Mcveigh is playing Chess and hasn't noticed you yet. You peak at the computer and see he is losing.*
++C-T1: *Mr. Mcveigh is playing Chess and hasn't noticed you yet. You peak at the computer and see he is losing.*
 ____D: Mr. McVeigh, could you please let me retake the test? I would greatly appreciate the opportunity to improve my grade.
 ____D: Can I retake this?
 ____E: STOP PLAYING CHESS AND GIVE ME AN A! *This option will have consequences*
-+D-T1: I haven't decide if I'll allow a retake yet...
++D-T0: I haven't decide if I'll allow a retake yet...
 ____F: But we had to take the test during the fire! I couldn't focus with all the smoke.
 ____F: The entire class failed. I'm going to be rejected by CCBC If I don't pass the class
 ____E: dude, you're the worst.
-+E-T3: I'M GOING TO GIVE YOU A 0% ON THE TEST
++E-T2: I'M GOING TO GIVE YOU A 0% ON THE TEST
 ____BE2: At least I'm not losing at Chess...
-+F-T2: Ok. That's a fair enough argument. I can give you a retest.
++F-T1: Ok. That's a fair enough argument. I can give you a retest.
 ____GE: Thank you so much Mr. McVeigh!
 ____GE: *mutter* it's the least you could do...
 +GE-T0: Yay! Mr. McVeigh has allowed you to take the retest... Let's see how you do on it. Your friends think you are lame now
@@ -25,7 +25,7 @@ ____cool:-12
 +BE1-T1: You do not get your test regraded. Your GPA drops by .4, and your parents have grounded you. Thankfully, your friends think you're cooler now.
 ____cool:+20
 ____GPA:-040
-+BE2-T1: You do not get your test regraded. Your GPA drops by .6, and your parents have grounded you. Thankfully, your friends think you're cooler now.
++BE2-T3: You do not get your test regraded. Your GPA drops by .6, and your parents have grounded you. Thankfully, your friends think you're cooler now.
 ____cool:+20
 ____GPA:-060
 end

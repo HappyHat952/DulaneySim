@@ -25,7 +25,7 @@ public class Player {
 
 
     public Player() {
-        GPA = 3.5f;
+        GPA = -1f;
         coolness = 50;
         grade = 9;
         currentLevel = new Freshman();
@@ -51,7 +51,15 @@ public class Player {
 
             g.setFont(f);
             g.setColor(Color.red);
-            g.drawString("GPA: "+ GPA, 15,125);
+            if (GPA<0)
+            {
+                g.drawString("GPA: ----", 15,125);
+            }
+            else
+            {
+                g.drawString("GPA: "+ GPA, 15,125);
+            }
+
             g.setColor(Color.blue);
             g.drawString("Coolness: "+ coolness, 15,165);
             g.setColor(Color.white);
@@ -66,12 +74,62 @@ public class Player {
     public static float getGPA() {
         return GPA;
     }
-    public static void adjustGPA(float amt) { GPA += amt;}
+    public static void adjustGPA(float amt) {
+        if (GPA + amt >0)
+        {
+            GPA += amt;
+        }
+        else {
+            GPA = 0;
+        }
+
+        GPA = (float)(Math.round(GPA*1000))/1000;
+    }
+
+    public static void assignmentGPAAdj (float grade)
+    {
+        float minGPA;
+        if (grade == 1)
+        {
+            minGPA = 5;
+        }
+        if (grade >=.9)
+        {
+            minGPA = 4;
+        }
+        else if (grade >= .8)
+        {
+            minGPA = 3;
+        }
+        else if (grade >= .7)
+        {
+            minGPA = 4;
+        }
+        else if (grade >= .6)
+        {
+            minGPA = 1;
+        }
+        else
+        {
+            minGPA = 0;
+        }
+
+        if (GPA<0)
+        {
+            GPA = minGPA;
+        }
+        else {
+            GPA = (GPA+ minGPA)/2;
+        }
+        GPA = (float)(Math.round(GPA*1000))/1000;
+    }
 
     public static float getCoolness() {
         return coolness;
     }
-    public static void addCoolness(float amt) {coolness += amt;}
+    public static void addCoolness(float amt) {
+        coolness += amt;
+    }
 
 
     public static int getGrade() {
@@ -87,7 +145,10 @@ public class Player {
         return stage;
     }
     public static void addGrade(){
-        grade++;
+        if (grade<12)
+        {
+            grade++;
+        }
         if (grade == 9) {
             currentLevel = new Freshman();
         } else if (grade == 10) {

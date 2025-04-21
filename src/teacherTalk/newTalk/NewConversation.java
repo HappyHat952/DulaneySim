@@ -69,24 +69,24 @@ public class NewConversation {
 
     }
 
-    public void render(Graphics g)
-    {
-        g.drawImage(Images.mcVBG,0,0);
-        g.drawImage(Images.mcVImage.getSubImage(0,imageID), 0,20);
-        if (!complete)
-        {
+    public void render(Graphics g) {
+        g.drawImage(Images.mcVBG, 0, 0);
+        if (!currNode.getTeachImgID().equals("NO")) {
+            g.drawImage(Images.mcVImage.getSubImage(0, currNode.getTeachImgIndex()), 0, 20);
+        }
+        if (!complete) {
             g.setColor(Color.black);
             g.setFont(Fonts.big);
-            String text = "Objective: "+ objective;
-            g.drawString(text, Main.getScreenWidth()*.98f - Fonts.big.getWidth(text),
-                    Main.getScreenHeight()*.01f);
-           currNode.render(g);
+            String text = "Objective: " + objective;
+            g.drawString(text, Main.getScreenWidth() * .98f - Fonts.big.getWidth(text),
+                    Main.getScreenHeight() * .01f);
+            currNode.render(g);
         }
-        if (complete)
-        {
+        if (complete) {
             assignmentButton.render(g);
         }
     }
+
 
     public void mousePressed(int button,int x, int y)
     {

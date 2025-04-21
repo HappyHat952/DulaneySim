@@ -32,12 +32,6 @@ public class Node {
         choicesTxt = new ArrayList<>();
         setConvo();
 
-        //checks the id is correct for nodes and options
-//        System.out.println("id: " + nodeID + "header: "+ headerTxt);
-//        System.out.println("options: ");
-//        for (Choice c: choices) {
-//            System.out.println(c);
-//        }
     }
 
     //ACCESSORS
@@ -62,7 +56,7 @@ public class Node {
     }
 
     public String toString() {
-        return nodeID + ": " + header;
+        return teachImgID +"-"+teachImgIndex+ ": " + header;
     }
 
 
@@ -127,10 +121,7 @@ public class Node {
         headerTxt = headerTxt.substring(teachImgID.length() + 1);
 
         header = new ConvoHeader(headerTxt);
-
-        if (teachImgID.charAt(0) < 10) {
-            teachImgIndex = teachImgID.charAt(0);
-        }
+        teachImgIndex =  (int) StringToFloat(teachImgID.substring(1),0);
 
         choicesTxt = new ArrayList<>();
         choices = new ArrayList<>();

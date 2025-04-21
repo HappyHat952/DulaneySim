@@ -1,8 +1,8 @@
-Qstn: Skibidi ____ Sigma
-a) Rizzler
-b) Toilet
-c) Beta
-d) Sigma
+Qstn: What is 3.2399 + 2.3293
+a) 5
+b) 5.5692
+c) 6
+d) 5.5439
 b
 Qstn: What is 1+1?
 a) Window
@@ -10,10 +10,28 @@ b) 2
 c) fish
 d) a couple
 b
-Qstn: What is the probability of rolling an even number on a dice?
-a) idk
-b) .7
-c) 1/2
-d) 3/5
+Qstn: What is the Roman Numeral for the number 0?
+a) O
+b) X
+c) N
+d) it doesn't exist.
+d
+Qstn: What is the smallest prime number?
+a) 1
+b) 2
+c) 3
+d) 194
+b
+Qstn: What is the name of a 9-sided shape
+a) Argon
+b) Dodecagon
+c) Nonagon
+d) Heptagon
+c
+Qstn: What is the volume of a pizza with radius z and depth a.
+a) circle.
+b) 2*Pi*z*a
+c) Pi*z*z*a
+d) Pi
 c
 end
