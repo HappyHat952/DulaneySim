@@ -6,7 +6,10 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Fonts;
 import setup.Images;
+import setup.Sounds;
 import ui.buttons.StateChangeButton;
+
+import static core.Main.CUTSCENE_ID;
 
 public class Title extends BasicGameState {
 
@@ -17,7 +20,6 @@ public class Title extends BasicGameState {
 
     public Title(int id) {
         this.id = id;
-
     }
 
     public int getID() {
@@ -28,8 +30,10 @@ public class Title extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame sbg) throws SlickException {
         this.sbg = sbg;
         Fonts.loadFonts();
-        button = new StateChangeButton((int)(Main.getScreenWidth() * .8f), (int)(Main.getScreenHeight()*.6f), Color.red,
-                "Start Game",  Main.LOCKER_ID, sbg);
+        Images.loadImages();
+        Sounds.loadSounds();
+        button = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .6f), Color.red,
+                "Start Game", Main.LOCKER_ID, sbg);
     }
 
 
@@ -50,28 +54,16 @@ public class Title extends BasicGameState {
 
 
     public void keyPressed(int key, char c) {
-        if (key == Input.KEY_G)
-        {
-            sbg.enterState(Main.GAME_ID);
+        if (c == 'a') {
+            sbg.enterState(CUTSCENE_ID);
         }
-        if (key == Input.KEY_T)
-        {
-            sbg.enterState(Main.TEACHER_ID);
-        }
-        if (key == Input.KEY_A)
-        {
-            sbg.enterState(Main.ASSIGN_ID);
-        }
-        if (key == Input.KEY_L)
-        {
-            sbg.enterState(Main.LOCKER_ID);
-        }
-
     }
 
     @Override
     public void mousePressed(int button, int x, int y) {
         super.mousePressed(button, x, y);
-        this.button.click(x,y);
+        this.button.click(x, y);
     }
+
+
 }

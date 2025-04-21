@@ -13,11 +13,12 @@ public class Images {
     static public SpriteSheet racerBackground;
     static public Image racer;
     static public Image obstacle;
-    static public Image locker;
 
     //locker
+    static public Image locker;
     static public Image home;
     static public Image help;
+    static public Image sticker;
 
     //conversation
     static public Image mcVBG;
@@ -26,7 +27,14 @@ public class Images {
 
     // cutscene
     static public Image lunch1;
+    static public Image lunch2;
+    static public Image lunch3;
+    static public Image lunch4;
     static public Image fight;
+    static public Image transition1;
+
+    // ui
+    static public SpriteSheet volumeSheet;
 
     // REMINDER TO SCALE TO SCREEN WIDTH AND HEIGHT
     public static void loadImages() {
@@ -44,14 +52,22 @@ public class Images {
             locker = new Image("res/locker/locker.png");
             home = new Image("res/locker/home.png");
             help = new Image("res/locker/help.png");
+            sticker = new Image("res/locker/sticker.png");
 
             //conversation
             mcVBG = new Image("res/conversation/backdrop/mcVeighBackdrop.png");
-            mcVImage = new SpriteSheet ("res/conversation/teachers/mcVeighSprite.png", 1920,1080);
+            mcVImage = new SpriteSheet("res/conversation/teachers/mcVeighSprite.png", 1920, 1080);
 
             //cutscene
             lunch1 = new Image("res/cutscene/lunch/lunch1.png");
+            lunch2 = new Image("res/cutscene/lunch/lunch2.png");
+            lunch3 = new Image("res/cutscene/lunch/lunch3.png");
+            lunch4 = new Image("res/cutscene/lunch/lunch4.png");
             fight = new Image("res/cutscene/fight.png");
+            transition1 = new Image("res/cutscene/transition1.png");
+
+            // ui
+            volumeSheet = new SpriteSheet("res/ui/volumeSheet.png", 100, 100);
 
 
         } catch (SlickException e) {

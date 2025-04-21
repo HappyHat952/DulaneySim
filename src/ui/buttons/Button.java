@@ -4,6 +4,9 @@ import core.Main;
 import org.newdawn.slick.*;
 import setup.Fonts;
 import org.lwjgl.input.Mouse;
+import setup.Sounds;
+
+import static locker.Locker.volume;
 
 public class Button {
     protected int x;
@@ -134,6 +137,9 @@ public class Button {
         if (isMouseOver(mouseX,mouseY))
         {
             action();
+            if (volume) {
+                Sounds.click.play();
+            }
         }
     }
 

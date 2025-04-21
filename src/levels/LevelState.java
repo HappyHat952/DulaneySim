@@ -8,6 +8,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import static locker.Locker.renderVolume;
+import static locker.Locker.updateVolume;
+
 public class LevelState extends BasicGameState {
     private int id;
 
@@ -32,6 +35,7 @@ public class LevelState extends BasicGameState {
         // This code renders shapes and images every frame.
         g.setColor(Color.white);
         g.drawString("Hello World!", Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
+        renderVolume(g);
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -48,5 +52,6 @@ public class LevelState extends BasicGameState {
 
     public void mousePressed(int button, int x, int y) {
         // This code happens every time the user presses the mouse
+        updateVolume(x, y);
     }
 }

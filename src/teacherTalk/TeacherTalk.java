@@ -13,6 +13,9 @@ import teacherTalk.newTalk.NewConversation;
 
 import java.util.ArrayList;
 
+import static locker.Locker.renderVolume;
+import static locker.Locker.updateVolume;
+
 public class TeacherTalk extends BasicGameState {
     private int id;
     private String talk;
@@ -60,6 +63,7 @@ public class TeacherTalk extends BasicGameState {
      //  convo.draw(g);
         convo2.render(g);
         Player.render(g);
+        renderVolume(g);
 
     }
 
@@ -78,6 +82,8 @@ public class TeacherTalk extends BasicGameState {
 
     public void mousePressed(int button, int x, int y) {
         // This code happens every time the user presses the mouse
+//        convo.mousePressed(button,x,y);
+        updateVolume(x, y);
      //   convo.mousePressed(button,x,y);
         convo2.mousePressed(button,x,y);
     }

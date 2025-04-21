@@ -12,6 +12,9 @@ import ui.buttons.StateChangeButton;
 
 import java.util.ArrayList;
 
+import static locker.Locker.renderVolume;
+import static locker.Locker.updateVolume;
+
 public class RacerState extends BasicGameState {
 
     private int id;
@@ -39,14 +42,13 @@ public class RacerState extends BasicGameState {
         this.id = id;
     }
 
-    public static void setObstacles(ArrayList<Obstacle> obstacs)
-    {
+    public static void setObstacles(ArrayList<Obstacle> obstacs) {
         obstacles = obstacs;
     }
 
 
     public void cleanUp() {
-        for (Obstacle o: obstacles) {
+        for (Obstacle o : obstacles) {
             if (o.getY() > screenHeight) {
                 o.setX(screenWidth * .5f - (float) o.getImage().getWidth() / 2);
                 o.setY(screenHeight * .14f);
@@ -86,7 +88,6 @@ public class RacerState extends BasicGameState {
     }
 
 
-
     @Override
     public int getID() {
         return id;
@@ -109,45 +110,44 @@ public class RacerState extends BasicGameState {
         distanceToClass = 400;
         travelled = 0;
 
-        classButton = new StateChangeButton((int)(Main.getScreenWidth()*.8f),(int)(Main.getScreenHeight()*.03f),
-                Color.orange,"Enter Class", Main.TEACHER_ID,sbg);
+        classButton = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .03f),
+                Color.orange, "Enter Class", Main.TEACHER_ID, sbg);
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         g.setBackground(Color.black);
         g.drawImage(background.getSprite(0, frame), 0, 0);
-        for (Obstacle o: obstacles) {
+        for (Obstacle o : obstacles) {
             o.render(g);
         }
         r.render(g);
-        if (complete)
-        {
+        if (complete) {
             classButton.render(g);
         }
         g.setFont(Fonts.big);
         g.setColor(Color.black);
-        g.drawString("Use WASD TO MOVE", 190, 20);
+        g.drawString("Use WASD TO MOVE", Main.getScreenWidth() * .71f, 20);
 
         g.setLineWidth(2);
         g.setColor(Color.black);
-        g.drawRect(10,190, 15,500);
+        g.drawRect(10, 190, 15, 500);
 
         g.setLineWidth(1);
         g.setColor(Color.red);
-        g.fillRect(10, 190+500*(1-travelled*1f/distanceToClass), 15, 500*(travelled*1f/distanceToClass));
+        g.fillRect(10, 190 + 500 * (1 - travelled * 1f / distanceToClass), 15, 500 * (travelled * 1f / distanceToClass));
 
         Player.render(g);
+        renderVolume(g);
     }
 
     @Override
     public void mousePressed(int button, int x, int y) {
         super.mousePressed(button, x, y);
-        if (complete)
-        {
-            classButton.click(x,y);
+        if (complete) {
+            classButton.click(x, y);
         }
-
+        updateVolume(x, y);
     }
 
     @Override
@@ -156,10 +156,9 @@ public class RacerState extends BasicGameState {
             obstacles.add(new Obstacle(Images.obstacle));
         }
 
-        if (travelled<= distanceToClass)
-        {
+        if (travelled <= distanceToClass) {
             r.update();
-            for (Obstacle o: obstacles) {
+            for (Obstacle o : obstacles) {
                 o.update();
             }
 
@@ -209,8 +208,7 @@ public class RacerState extends BasicGameState {
                     yAdd = 20;
                 }
             }
-        }
-        else {
+        } else {
             complete = true;
         }
 

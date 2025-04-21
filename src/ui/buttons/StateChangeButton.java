@@ -27,6 +27,7 @@ public class StateChangeButton extends Button {
     public void action()
     {
         sbg.enterState(destination);
+        System.out.println("leaving");
     }
 
 }

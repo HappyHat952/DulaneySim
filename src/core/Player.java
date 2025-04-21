@@ -1,7 +1,6 @@
 package core;
 
-import levels.Freshman;
-import levels.Level;
+import levels.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -69,6 +68,7 @@ public class Player {
     public static int getGrade() {
         return grade;
     }
+    public static void setGrade(int g) {grade = g;}
 
     public static Level getCurrentLevel() {
         return currentLevel;
@@ -76,6 +76,18 @@ public class Player {
 
     public static int stage() {
         return stage;
+    }
+    public static void addGrade(){
+        grade++;
+        if (grade == 9) {
+            currentLevel = new Freshman();
+        } else if (grade == 10) {
+            currentLevel = new Sophomore();
+        } else if (grade == 11) {
+            currentLevel = new Junior();
+        } else if (grade == 12) {
+            currentLevel = new Senior();
+        }
     }
 
 }

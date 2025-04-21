@@ -12,6 +12,7 @@ public class Game extends BasicGameState
 	private static StateBasedGame sbg;
 	private static Player p;
 
+
 	public Game(int id) 
 	{
 		this.id = id;
@@ -41,7 +42,6 @@ public class Game extends BasicGameState
 	{
 		// This code renders shapes and images every frame.
 		g.setColor(Color.white);
-		g.drawString("Hello World!", Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
 	}
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 
@@ -56,18 +56,6 @@ public class Game extends BasicGameState
 
 	public void keyPressed(int key, char c)
 	{
-		if (key == Input.KEY_X)
-		{
-			sbg.enterState(Main.RACER_ID);
-		}
-		if (key == Input.KEY_L)
-		{
-			sbg.enterState(Main.LOCKER_ID);
-		}
-		if (key == Input.KEY_A)
-		{
-			sbg.enterState(Main.CUTSCENE_ID);
-		}
 		// This code happens every time the user presses a key
 	}
 	
@@ -75,8 +63,7 @@ public class Game extends BasicGameState
 	{
 		// This code happens every time the user presses the mouse
 	}
-	
-	
+
 
 
 }
