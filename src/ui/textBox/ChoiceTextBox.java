@@ -1,11 +1,10 @@
-package ui;
+package ui.textBox;
 
 import core.Main;
 import org.newdawn.slick.Color;
-import org.newdawn.slick.TrueTypeFont;
 import setup.Fonts;
 
-public class ChoiceTextBox extends TextBox{
+public class ChoiceTextBox extends TextBox {
     boolean correct;
 
     public ChoiceTextBox(String text, int x, int y) {

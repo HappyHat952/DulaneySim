@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class MultipleChoice {
     //will contain all options + the question.
+    //will contain all options + the question.
     ArrayList<String> mcq;
     int number;
 

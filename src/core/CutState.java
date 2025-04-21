@@ -11,7 +11,6 @@ import ui.buttons.StateChangeButton;
 
 public class CutState extends BasicGameState {
     private int id;
-    private StateBasedGame sbg;
     private Image image;
     private int screenHeight;
     private int screenWidth;
@@ -27,11 +26,15 @@ public class CutState extends BasicGameState {
     private String title;
     private boolean showButtons;
 
+    private StateBasedGame sbg;
+    private GameContainer gc;
+
 
     public CutState(int id) {
         this.id = id;
-        level = 0;
     }
+
+
 
     @Override
     public void keyPressed(int key, char c) {
@@ -48,14 +51,16 @@ public class CutState extends BasicGameState {
     }
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        this.gc = gc;
+        this.sbg = sbg;
+
         screenHeight = Main.getScreenHeight();
         screenWidth = Main.getScreenWidth();
         x = screenWidth * .05f;
         y = screenHeight * .2f;
-        sbg = stateBasedGame;
         stateButton = new StateChangeButton((int)(Main.getScreenWidth() * .8f), (int)(Main.getScreenHeight()*.1f), Color.red,
-                "Finish CutState",  Main.LOCKER_ID, sbg);
+                "Finish Cutscene",  Main.LOCKER_ID, sbg);
     }
 
     @Override

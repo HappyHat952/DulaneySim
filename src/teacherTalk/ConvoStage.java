@@ -4,11 +4,10 @@ import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
-import ui.ChoiceTextBox;
-import ui.TeacherTextBox;
-import ui.TextBox;
+import ui.textBox.ChoiceTextBox;
+import ui.textBox.TeacherTextBox;
+import ui.textBox.TextBox;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class ConvoStage {

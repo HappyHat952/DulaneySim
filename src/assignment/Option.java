@@ -3,8 +3,7 @@ package assignment;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import setup.Fonts;
-import ui.TextBox;
-import ui.buttons.Button;
+import ui.textBox.TextBox;
 
 public class Option extends TextBox {
     boolean selected;

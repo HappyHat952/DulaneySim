@@ -1,7 +1,6 @@
-package ui;
+package ui.textBox;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Font;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.TrueTypeFont;
 
@@ -104,7 +103,7 @@ public class TextBox {
             if (lines.isEmpty() || font.getWidth(lines.getLast() + words.get(wordI)) >= width)
             {
                 lines.add("");
-                System.out.println(width);
+                //System.out.println(width);
             }
             if (!lines.isEmpty() && font.getWidth(lines.getLast() + words.get(wordI)) < width)
             {
@@ -116,6 +115,10 @@ public class TextBox {
 
         return lines;
     }
+
+
+    //accessor
+    public String toString(){ return rawText;}
 
 
 }

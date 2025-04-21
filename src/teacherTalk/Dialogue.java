@@ -89,6 +89,6 @@ public class Dialogue {
 
     @Override
     public String toString() {
-        return person +": " +dialogue;
+        return id + person +": " +dialogue;
     }
 }

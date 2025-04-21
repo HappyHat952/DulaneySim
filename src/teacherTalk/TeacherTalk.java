@@ -9,6 +9,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Images;
+import teacherTalk.newTalk.NewConversation;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class TeacherTalk extends BasicGameState {
     private int id;
     private String talk;
     private Conversation convo;
+    private static NewConversation convo2;
 
     public TeacherTalk(int id) {
         this.id = id;
@@ -30,11 +32,21 @@ public class TeacherTalk extends BasicGameState {
         gc.setShowFPS(true);
         convo = new Conversation(sbg);
         convo.activate();
+        convo2 = new NewConversation(sbg);
     }
 
     public void setConversation()
     {
 
+    }
+
+    public static void setConvoNode(String id)
+    {
+        convo2.setNode(id);
+    }
+    public static void endConvo()
+    {
+        convo2.end();
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -45,7 +57,8 @@ public class TeacherTalk extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
        g.setBackground(Color.darkGray);
-        convo.draw(g);
+     //  convo.draw(g);
+        convo2.render(g);
         Player.render(g);
 
     }
@@ -60,11 +73,12 @@ public class TeacherTalk extends BasicGameState {
 
     public void keyPressed(int key, char c) {
         // This code happens every time the user presses a key
-        convo.keyPressed(key,c);
+    //    convo.keyPressed(key,c);
     }
 
     public void mousePressed(int button, int x, int y) {
         // This code happens every time the user presses the mouse
-        convo.mousePressed(button,x,y);
+     //   convo.mousePressed(button,x,y);
+        convo2.mousePressed(button,x,y);
     }
 }

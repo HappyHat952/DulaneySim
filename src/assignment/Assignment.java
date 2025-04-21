@@ -67,7 +67,6 @@ public class Assignment {
             for (MultipleChoice mcq: mcqs)
             {
                 mcq.draw(g);
-                System.out.println("mc is 'drawing' "+mcqs);
             }
         }
 //        if (complete)
@@ -156,12 +155,12 @@ public class Assignment {
                     assignment.add(str);
 
                 }
-                System.out.println("multiple Choice created."+ mcqs.size());
-                str = s.nextLine();
 
+                str = s.nextLine();
             }
+            System.out.println("multiple Choice created."+ mcqs.size());
         } catch (FileNotFoundException e) {
-            System.out.println("fine wasn't found");
+            System.out.println("file wasn't found");
         }
 
     }

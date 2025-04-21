@@ -29,10 +29,11 @@ public class Button {
     {
         this.x = x;
         this.y = y;
-        this.w = w;
         name = s;
         font = f;
         color = c;
+        w = f.getWidth(s);
+        h = f.getHeight();
     }
 
     public Button(int x, int y, int w, int h, Color color) {
@@ -104,7 +105,7 @@ public class Button {
             if (name != null) {
                 g.setFont(font);
                 g.setColor(Color.black);
-                g.drawString(name, x + w / 2f - font.getWidth(name) / 2f, y + h / 2f);
+                g.drawString(name, x + w / 2f - font.getWidth(name) / 2f, y + h / 2f- font.getHeight() / 2f);
             }
             if (info != null)
             {
@@ -116,7 +117,7 @@ public class Button {
         }else if (name != null){
             g.setFont(font);
             g.setColor(Color.white);
-            g.drawString(name, x+w/2f - font.getWidth(name)/2f, y+ h/2f);
+            g.drawString(name, x+w/2f - font.getWidth(name)/2f, y+ h/2f- font.getHeight() / 2f);
         }
 
     }
