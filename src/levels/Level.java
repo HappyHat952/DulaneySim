@@ -1,12 +1,16 @@
 package levels;
 
 import assignment.AssignState;
+import assignment.Assignment;
 import core.CutScene;
 import core.CutState;
 import core.Player;
 import org.newdawn.slick.state.StateBasedGame;
 import racer.Obstacle;
+import racer.RacerState;
 import teacherTalk.Conversation;
+import teacherTalk.TeacherTalk;
+import teacherTalk.newTalk.NewConversation;
 
 import java.util.ArrayList;
 
@@ -15,8 +19,10 @@ abstract public class Level {
     protected int grade;
     protected String gradeName;
 
-    protected ArrayList<Obstacle> obstacles;
-    protected Conversation convo;
+    protected ArrayList<Class<? extends Obstacle>> obstacles;
+
+    protected String convoID;
+    protected Assignment assignment;
     protected String testID;
     protected ArrayList<CutScene> cutScenes = new ArrayList();
     protected int cutSceneID;
@@ -25,8 +31,9 @@ abstract public class Level {
     //sticker per grade level.
 
     public void setLevel() {
-        // AssignState.setAssignment(testID);
-
+        AssignState.setAssignment(testID);
+        TeacherTalk.setConversation(convoID);
+        RacerState.resetObstacles(obstacles);
     }
 
     public void nextCutScene(StateBasedGame sbg) {

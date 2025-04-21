@@ -13,9 +13,10 @@ public class Obstacle {
     protected int h;
     protected float xAdd;
     protected Image image;
+    protected String name;
 
-    public Obstacle(Image image) {
-        this.image = image;
+    public Obstacle() {
+        this.image = Images.obstacle;
         x = Main.getScreenWidth() * .5f - (float) image.getWidth() / 2;
         w = image.getWidth();
         h = image.getHeight();

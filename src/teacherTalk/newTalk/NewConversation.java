@@ -42,9 +42,9 @@ public class NewConversation {
     private static SpriteSheet teacherSheet;
     private static int teacherIndex;
 
-    public NewConversation(StateBasedGame sbg)
+    public NewConversation(StateBasedGame sbg, String convoID)
     {
-        readFile("mcVeigh");
+        readFile(convoID);
         System.out.println(nodesTxt.size());
         teacherSheet = Images.mcVImage;
 

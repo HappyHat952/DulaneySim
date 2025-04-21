@@ -19,13 +19,13 @@ public class Assignment {
     private int selectedMCQ;
     private StateBasedGame sbg;
 
-    private static ArrayList<String> assignment;
-    private static ArrayList<MultipleChoice> mcqs;
+    private  ArrayList<String> assignment;
+    private  ArrayList<MultipleChoice> mcqs;
 
-    private static QuestionBar qSelector;
+    private  QuestionBar qSelector;
 
-    private static boolean complete;
-    private static float grade;
+    private  boolean complete;
+    private  float grade;
 
 
     public Assignment(String testID) {

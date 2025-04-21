@@ -10,6 +10,8 @@ import setup.Images;
 import ui.buttons.StateChangeButton;
 
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import static locker.Locker.renderVolume;
@@ -19,20 +21,21 @@ public class RacerState extends BasicGameState {
 
     private int id;
     private StateBasedGame sbg;
-    Racer r;
-    private SpriteSheet background;
-    private int maxCount;
-    private int count;
-    private int frame;
+    private static Racer r;
+    private static SpriteSheet background;
+    private static int maxCount;
+    private static int count;
+    private static int frame;
     private static int yAdd;
     private int FPS;
     private int counter;
     private int screenHeight;
     private int screenWidth;
     private static ArrayList<Obstacle> obstacles;
+    private static ArrayList<Class<? extends Obstacle>> obstaclesClass;
 
-    private int distanceToClass;
-    private int travelled;
+    private static int distanceToClass;
+    private static int travelled;
 
     private boolean complete;
 
@@ -42,8 +45,23 @@ public class RacerState extends BasicGameState {
         this.id = id;
     }
 
-    public static void setObstacles(ArrayList<Obstacle> obstacs) {
-        obstacles = obstacs;
+    public static void resetObstacles(ArrayList<Class<? extends Obstacle>> o) {
+        background = Images.racerBackground;
+        maxCount = background.getVerticalCount();
+        r = new Racer();
+        obstacles = new ArrayList<>();
+        yAdd = 20;
+
+        count = 0;
+        frame = 0;
+
+        distanceToClass = 10;
+        travelled = 0;
+
+        obstaclesClass = new ArrayList<>();
+        obstaclesClass.add(Sign.class);
+
+        obstaclesClass = o;
     }
 
 
@@ -100,7 +118,7 @@ public class RacerState extends BasicGameState {
         screenWidth = Main.getScreenWidth();
         maxCount = background.getVerticalCount();
         r = new Racer();
-        obstacles = new ArrayList<Obstacle>();
+        obstacles = new ArrayList<>();
         count = 0;
         frame = 0;
         sbg = stateBasedGame;
@@ -109,6 +127,9 @@ public class RacerState extends BasicGameState {
 
         distanceToClass = 400;
         travelled = 0;
+
+        obstaclesClass = new ArrayList<>();
+        obstaclesClass.add(Sign.class);
 
         classButton = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .03f),
                 Color.orange, "Enter Class", Main.TEACHER_ID, sbg);
@@ -150,10 +171,28 @@ public class RacerState extends BasicGameState {
         updateVolume(x, y);
     }
 
+    public Obstacle createNewObstacle()
+    {
+        int i = (int)(obstaclesClass.size() *Math.random());
+
+        Class<? extends Obstacle> clazz = obstaclesClass.get(i);
+        Obstacle obstacle = null;
+
+        try {
+            obstacle = clazz.getDeclaredConstructor().newInstance();
+
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+        return obstacle;
+
+    }
+
     @Override
     public void update(GameContainer gc, StateBasedGame stateBasedGame, int i) throws SlickException {
         if (count < 60 & count % 15 == 0) {
-            obstacles.add(new Obstacle(Images.obstacle));
+            obstacles.add(createNewObstacle());
         }
 
         if (travelled <= distanceToClass) {

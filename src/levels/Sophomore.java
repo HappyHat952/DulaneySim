@@ -1,16 +1,21 @@
 package levels;
 
 import core.CutScene;
+import racer.Sign;
 import setup.Images;
+
+import java.util.ArrayList;
 
 public class Sophomore extends Level {
     public Sophomore() {
         grade = 10;
         gradeName = "Sophomore";
 
-//        protected ArrayList<Obstacle> obstacles;
-//        protected Conversation convo;
-        testID = "test1";
+        obstacles = new ArrayList<>();
+        obstacles.add(Sign.class);
+
+        testID = "Test_1";
+        convoID = "mcVeigh";
         cutScenes.add(new CutScene(1, Images.lunch2, "LUNCH TIME", "EAT", "DON'T EAT", "You're feeling a little " +
                 "sick from that taco salad...", "What, you didn't want to try the mexican radish? Coward", 2));
         cutScenes.add(new CutScene(2, Images.fight, "SNOW DAY!", "SKIP VIRTUAL CLASS", "LOG ON TO CLASS", "You enjoy some sledding" +

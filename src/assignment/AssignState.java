@@ -26,8 +26,8 @@ public class AssignState extends BasicGameState {
 
     private StateChangeButton cutSceneButton;
     private Button submitBtn;
-    private Assignment assignment;
-    private ArrayList<Assignment> allAssigned;
+    private static Assignment assignment;
+    private static ArrayList<Assignment> allAssigned;
 
     public AssignState(int id) {
         this.id = id;
@@ -37,7 +37,7 @@ public class AssignState extends BasicGameState {
         return id;
     }
 
-    public void setAssignment(String name) {
+    public static void setAssignment(String name) {
         assignment = new Assignment(name);
         allAssigned.add(assignment);
     }

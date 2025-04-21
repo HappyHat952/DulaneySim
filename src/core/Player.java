@@ -97,6 +97,7 @@ public class Player {
         } else if (grade == 12) {
             currentLevel = new Senior();
         }
+        currentLevel.setLevel();
     }
 
 }

@@ -18,6 +18,7 @@ import static locker.Locker.updateVolume;
 
 public class TeacherTalk extends BasicGameState {
     private int id;
+    private static StateBasedGame sbg;
     private String talk;
     private Conversation convo;
     private static NewConversation convo2;
@@ -35,12 +36,13 @@ public class TeacherTalk extends BasicGameState {
         gc.setShowFPS(true);
         convo = new Conversation(sbg);
         convo.activate();
-        convo2 = new NewConversation(sbg);
+        convo2 = new NewConversation(sbg, "mcVeigh");
+        this.sbg = sbg;
     }
 
-    public void setConversation()
+    public static void setConversation(String convoID)
     {
-
+        convo2 = new NewConversation(sbg, convoID);
     }
 
     public static void setConvoNode(String id)

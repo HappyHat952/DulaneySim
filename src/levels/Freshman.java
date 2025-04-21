@@ -2,6 +2,7 @@ package levels;
 
 import core.CutScene;
 import racer.Obstacle;
+import racer.Sign;
 import setup.Images;
 import teacherTalk.Conversation;
 
@@ -14,9 +15,11 @@ public class Freshman extends Level {
         gradeName = "Freshman";
         cutSceneID = 0;
 
-//        protected ArrayList<Obstacle> obstacles;
-//        protected Conversation convo;
-        testID = "test1";
+         obstacles = new ArrayList<>();
+         obstacles.add(Sign.class);
+
+        testID = "Test_1";
+        convoID = "mcVeigh";
         cutScenes.add(new CutScene(1, Images.lunch1, "LUNCH TIME", "EAT", "DON'T EAT", "That heavenly hot dog has" +
                 " granted you some street cred, but you'll be spending some extra time in the bathroom later...",
                 "What?! You're missing out on some tasty fud", 2));
