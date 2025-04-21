@@ -3,6 +3,7 @@ package core;
 import levels.*;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import setup.Fonts;
@@ -28,25 +29,26 @@ public class Player {
         grade = 9;
         currentLevel = new Freshman();
         stage = 1;
-        stats = new Button(10,10, "Stats", Fonts.big,
+        stats = new Button(10,80, "Stats", Fonts.big,
                 Color.black);
 
     }
 
     public static void render(Graphics g )
     {
+        Font f = Fonts.medium;
         if (stats.isMouseOver(Mouse.getX(), Main.getScreenHeight() - Mouse.getY()))
         {
             g.setColor(Color.black);
-            g.fillRect(10,10, 400,Fonts.big.getHeight()*4);
+            g.fillRect(0,90, 400,f.getHeight("l")*4);
 
-            g.setFont(Fonts.big);
+            g.setFont(f);
             g.setColor(Color.red);
-            g.drawString("GPA: "+ GPA, 15,15);
+            g.drawString("GPA: "+ GPA, 15,105);
             g.setColor(Color.blue);
-            g.drawString("Coolness: "+ coolness, 15,55);
+            g.drawString("Coolness: "+ coolness, 15,145);
             g.setColor(Color.white);
-            g.drawString("Grade: "+ grade, 15,105);
+            g.drawString("Grade: "+ grade, 15,195);
         }
         else {
             stats.render(g);
