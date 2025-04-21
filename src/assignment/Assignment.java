@@ -2,10 +2,7 @@ package assignment;
 
 import core.Main;
 import core.Player;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Fonts;
 import ui.buttons.Button;
@@ -19,10 +16,13 @@ import java.util.Scanner;
 public class Assignment {
 
     private int id;
+    private int selectedMCQ;
     private StateBasedGame sbg;
 
     private static ArrayList<String> assignment;
     private static ArrayList<MultipleChoice> mcqs;
+
+    private static QuestionBar qSelector;
 
     private static boolean complete;
     private static float grade;
@@ -32,10 +32,16 @@ public class Assignment {
         this.id = id;
         mcqs = new ArrayList<>();
         setAssignment(testID);
+        selectedMCQ = 0;
+        qSelector = new QuestionBar(this);
     }
 
     public boolean isComplete(){ return complete;}
+    public ArrayList<MultipleChoice> getMultipleChoice(){ return mcqs;}
+    public int getSelectedMCQ(){ return selectedMCQ;}
 
+
+    public void setSelectedMCQ(int index){ selectedMCQ = index;}
     public void update() throws SlickException {
         // This updates your game's logic every frame.  NO DRAWING.
     }
@@ -43,41 +49,36 @@ public class Assignment {
     public void render(Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
 
-        g.setBackground(Color.orange);
-        g.setColor(Color.white);
-        g.fillRect(200,0,Main.getScreenWidth() - 400, Main.getScreenHeight() );
+//        g.setBackground(Color.orange);
+//        g.setColor(Color.white);
+//        g.fillRect(0,200,Main.getScreenWidth() - 400, Main.getScreenHeight() );
 
         g.setFont(Fonts.big);
         g.setColor(Color.red);
         if (complete)
         {
-            g.drawString((""+grade*100+"%"),Main.getScreenWidth()*.5f, Main.getScreenHeight()*.3f);
+            String grde = (""+grade*100);
+            int maxLen = 5;
+            if (grde.length() >= maxLen)
+            {
+                grde = grde.substring(0,maxLen);
+            }
+            g.drawString((grde + "%"),Main.getScreenWidth()*.5f, Main.getScreenHeight()*.2f);
         }
 
         g.setColor(Color.black);
         g.setFont(Fonts.small);
-//        float y = Main.getScreenHeight()*.1f;
-//        for (String s: assignment)
-//        {
-//            y+= 20;
-//            g.drawString(s,Main.getScreenWidth()*.2f, y);
-//        }
+
         if (mcqs!= null && !mcqs.isEmpty())
         {
-            for (MultipleChoice mcq: mcqs)
-            {
-                mcq.draw(g);
-            }
+//            for (MultipleChoice mcq: mcqs)
+//            {
+//                mcq.draw(g);
+//            }
+            mcqs.get(selectedMCQ).draw(g);
         }
-//        if (complete)
-//        {
-//            cutSceneButton.render(g);
-//        }
-//        else
-//        {
-//            submitBtn.render(g);
-//        }
 
+        qSelector.render(g);
         g.setColor(Color.black);
         Player.render(g);
 
@@ -93,6 +94,13 @@ public class Assignment {
 
     public void keyPressed(int key, char c) {
         // This code happens every time the user presses a key
+        if (Input.KEY_1<= key && Input.KEY_9>= key)
+        {
+            if (key -2 < mcqs.size())
+            {
+                selectedMCQ = key - 2;
+            }
+        }
     }
 
     public void submit()
@@ -117,11 +125,14 @@ public class Assignment {
 
         if (!complete) {
 
-                for (MultipleChoice m : mcqs)
-                {
-                    m.click(x,y);
-                }
+//                for (MultipleChoice m : mcqs)
+//                {
+//                    m.click(x,y);
+//                }
+            mcqs.get(selectedMCQ).click(x,y);
+
         }
+        qSelector.mouseClick(button,x,y);
 
 
 

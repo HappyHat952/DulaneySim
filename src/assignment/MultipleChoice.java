@@ -3,6 +3,8 @@ package assignment;
 import core.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import setup.Fonts;
+import ui.buttons.Button;
 
 import java.util.ArrayList;
 
@@ -10,21 +12,20 @@ public class MultipleChoice {
     //will contain all options + the question.
     //will contain all options + the question.
     ArrayList<String> mcq;
-    int number;
+    private int number;
 
-    String header;
-    ArrayList<String> options;
+    private String header;
+    private ArrayList<String> options;
 
-    ArrayList<Option> optionClick;
+    private ArrayList<Option> optionClick;
 
-    boolean right;
+    private boolean right;
 
-    char correct;
+    private char correct;
 
-    int index;
-    boolean complete;
+    private int index;
 
-    Assignment ass;
+    private Assignment ass;
 
 
     public MultipleChoice(ArrayList<String> mcq, int index, Assignment a)
@@ -40,9 +41,10 @@ public class MultipleChoice {
 
     public void draw(Graphics g)
     {
-        float y = Main.getScreenHeight()*.1f+Main.getScreenHeight()*.2f*index;
+        float y = Main.getScreenHeight()*.3f;
         float x = Main.getScreenWidth()*.2f;
         g.setColor(Color.black);
+        g.setFont(Fonts.medium);
         g.drawString(number +". "+header, x, y);
 
         for (Option s: optionClick)
@@ -72,14 +74,14 @@ public class MultipleChoice {
                 options.add(mcq.get(i));
             }
 
-            float y = Main.getScreenHeight()*.1f+Main.getScreenHeight()*.2f*index;
+            float y = Main.getScreenHeight()*.3f;
             float x = Main.getScreenWidth()*.2f;
 
             correct = mcq.getLast().charAt(0);
 
             for (String o: options)
             {
-                y+= 30;
+                y+= Fonts.medium.getHeight()+10;
                 optionClick.add(new Option((int)(x),(int)(y), (int)(Main.getScreenWidth()*.2f), o) );
             }
 
@@ -108,6 +110,7 @@ public class MultipleChoice {
 
     public void click(int x, int y)
     {
+
         for (Option o: optionClick)
         {
             o.click(x,y);

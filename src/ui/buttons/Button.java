@@ -24,6 +24,7 @@ public class Button {
         this.x = x;
         this.y = y;
         this.w = w;
+        h = f.getHeight();
         name = s;
         font = f;
         color = c;
@@ -85,6 +86,7 @@ public class Button {
         font = Fonts.small;
     }
 
+    public void setColor(Color c){ color = c;}
     public void render(Graphics g) {
         if (image == null)
         {

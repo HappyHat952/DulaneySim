@@ -3,11 +3,17 @@ a) Rizzler
 b) Toilet
 c) Beta
 d) Sigma
-d
+b
 Qstn: What is 1+1?
 a) Window
 b) 2
 c) fish
 d) a couple
 b
+Qstn: What is the probability of rolling an even number on a dice?
+a) idk
+b) .7
+c) 1/2
+d) 3/5
+c
 end

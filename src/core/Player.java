@@ -18,6 +18,7 @@ public class Player {
     private static Level currentLevel;
     private static int stage;
     private static Button stats;
+    private static boolean displayOn;
 
 
     //info display (effects)
@@ -29,26 +30,32 @@ public class Player {
         grade = 9;
         currentLevel = new Freshman();
         stage = 1;
-        stats = new Button(10,80, "Stats", Fonts.big,
+        stats = new Button(0,110, "Stats", Fonts.big,
                 Color.black);
 
     }
 
     public static void render(Graphics g )
     {
+        boolean overStat =  stats.isMouseOver(Mouse.getX(), Main.getScreenHeight() - Mouse.getY());
+        if (Mouse.isGrabbed()&& overStat)
+        {
+            displayOn = !displayOn;
+        }
+
         Font f = Fonts.medium;
-        if (stats.isMouseOver(Mouse.getX(), Main.getScreenHeight() - Mouse.getY()))
+        if (displayOn || overStat)
         {
             g.setColor(Color.black);
-            g.fillRect(0,90, 400,f.getHeight("l")*4);
+            g.fillRect(0,90, 300,f.getHeight("l")*4);
 
             g.setFont(f);
             g.setColor(Color.red);
-            g.drawString("GPA: "+ GPA, 15,105);
+            g.drawString("GPA: "+ GPA, 15,125);
             g.setColor(Color.blue);
-            g.drawString("Coolness: "+ coolness, 15,145);
+            g.drawString("Coolness: "+ coolness, 15,165);
             g.setColor(Color.white);
-            g.drawString("Grade: "+ grade, 15,195);
+            g.drawString("Grade: "+ grade, 15,215);
         }
         else {
             stats.render(g);

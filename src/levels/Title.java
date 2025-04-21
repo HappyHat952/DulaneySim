@@ -57,6 +57,10 @@ public class Title extends BasicGameState {
         if (c == 'a') {
             sbg.enterState(CUTSCENE_ID);
         }
+        if (c == 't') {
+            sbg.enterState(Main.ASSIGN_ID);
+        }
+
     }
 
     @Override

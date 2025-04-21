@@ -9,7 +9,7 @@ public class Option extends TextBox {
     boolean selected;
 
     public Option(int x, int y,int w, String text) {
-        super (text, Fonts.small, x,  y,  w);
+        super (text, Fonts.medium, x,  y,  w);
         selected = false;
         wrappedText = wrapText(text);
         height = wrappedText.size()*font.getHeight();

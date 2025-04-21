@@ -52,8 +52,8 @@ public class AssignState extends BasicGameState {
         allAssigned.add(assignment);
         cutSceneButton = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .03f),
                 Color.orange, "Go To Lunch", Main.CUTSCENE_ID, sbg);
-        submitBtn = new Button((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .03f), 75,
-                50, Color.red, "Submit");
+        submitBtn = new Button((int) (Main.getScreenWidth() * .75f), (int) (Main.getScreenHeight() * .75f),
+                "SUBMIT ",Fonts.big,Color.red);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -64,9 +64,9 @@ public class AssignState extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
 
-        g.setBackground(Color.orange);
+        g.setBackground(Color.blue);
         g.setColor(Color.white);
-        g.fillRect(200, 0, Main.getScreenWidth() - 400, Main.getScreenHeight());
+        g.fillRect(0, Main.getScreenHeight()*.10f, Main.getScreenWidth(), Main.getScreenHeight());
 
 
         g.setColor(Color.black);
@@ -95,6 +95,8 @@ public class AssignState extends BasicGameState {
 
     public void keyPressed(int key, char c) {
         // This code happens every time the user presses a key
+        assignment.keyPressed(key,c);
+
     }
 
     public void mousePressed(int button, int x, int y) {
