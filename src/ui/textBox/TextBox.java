@@ -33,6 +33,7 @@ public class TextBox {
         height = h;
         myColor = new Color(0f,0f,0f,.4f);
         textColor = Color.white;
+        wrappedText = wrapText(text);
     }
 
     public TextBox(String text, TrueTypeFont f, int x, int y, int w)
