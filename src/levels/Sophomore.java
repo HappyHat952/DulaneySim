@@ -21,11 +21,8 @@ public class Sophomore extends Level {
         convoID = "Velten";
         convoSprite = Images.veltImage;
         convoBg = Images.veltBG;
-        cutScenes.add(new CutScene(1, Images.lunch2, "LUNCH TIME", "EAT", "DON'T EAT", "You're feeling a little " +
-                "sick from that taco salad...", "What, you didn't want to try the mexican radish? Coward", 2));
-        cutScenes.add(new CutScene(2, Images.snowDay, "SNOW DAY!", "SKIP VIRTUAL CLASS", "LOG ON TO CLASS", "You enjoy some sledding" +
-                " with friends, but you've been marked absent and now have 10 missings.", "You watch the snow fall outside, but stay inside working..." +
-                " your grades are safe.", 2));
+        this.cutScenes.add(new CutScene(1, Images.lunch2, "LUNCH TIME", "EAT", "DON'T EAT", "You're feeling a little sick from that taco salad... Pero fue muy divertido comer.", "What, you didn't want to try the mexican radish? You'rea loser.", 2));
+        this.cutScenes.add(new CutScene(2, Images.snowDay, "SNOW DAY!", "SKIP VIRTUAL CLASS", "LOG ON TO CLASS", "You enjoy some sledding with friends, but you've been marked absent and now have 10 missings. Better hop on the grind or your grades are gonna be cooked.", "You watch the snow fall outside, but stay inside working... Your teachers respect your grind, but you missed out on sledding withfriends :(", 2));
         cutScenes.add(new Transition(3, Images.transition1));
     }
 }

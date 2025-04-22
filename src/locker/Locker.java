@@ -48,24 +48,24 @@ public class Locker extends BasicGameState {
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // This code renders shapes and images every frame.
-       g.setBackground(Color.black);
+        g.setBackground(Color.black);
         g.drawImage(Images.locker, 0, 0);
         for (Button b: lockerButtons) {
             b.render(g);
         }
-       g.setFont(Fonts.big);
-       g.setColor(Color.black);
-       if (Player.getGPA()<0)
-       {
-           g.drawString("GPA:----", Main.getScreenWidth() * .120f, Main.getScreenHeight() * .27f);
-       }
-       else {
-           g.drawString("GPA: " + Player.getGPA(), Main.getScreenWidth() * .120f, Main.getScreenHeight() * .27f);
-       }
+        g.setFont(Fonts.big);
+        g.setColor(Color.black);
+        if (Player.getGPA()<0)
+        {
+            g.drawString("GPA:----", Main.getScreenWidth() * .120f, Main.getScreenHeight() * .27f);
+        }
+        else {
+            g.drawString("GPA: " + Player.getGPA(), Main.getScreenWidth() * .120f, Main.getScreenHeight() * .27f);
+        }
 
-       g.drawString("Grade: " + Player.getGrade(), Main.getScreenWidth() * .440f, Main.getScreenHeight() * .21f);
-       renderVolume(g);
-       renderStickers(g);
+        g.drawString("Grade: " + Player.getGrade(), Main.getScreenWidth() * .440f, Main.getScreenHeight() * .21f);
+        renderVolume(g);
+        renderStickers(g);
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
