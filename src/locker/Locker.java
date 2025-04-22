@@ -107,14 +107,14 @@ public class Locker extends BasicGameState {
         g.setFont(Fonts.medium);
         g.drawString("MY STICKERS", Main.getScreenWidth() * .11f, Main.getScreenHeight() * .5f);
         if (Player.getGrade() == 10) {
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .52f);
+            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .62f);
         } else if (Player.getGrade() == 11) {
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .52f);
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .52f);
+            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .62f);
+            g.drawImage(Images.sticker, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .62f);
         } else if (Player.getGrade() == 12) {
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .52f);
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .52f);
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .72f);
+            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .62f);
+            g.drawImage(Images.sticker, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .62f);
+            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .82f);
         }
         // ADD ONCE GRADUATED TO SHOW LAST ONE
     }

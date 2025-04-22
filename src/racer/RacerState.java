@@ -46,6 +46,12 @@ public class RacerState extends BasicGameState {
         this.id = id;
     }
 
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        resetObstacles(Player.getCurrentLevel().getObstacles());
+        init(container, game);
+    }
+
     public static void resetObstacles(ArrayList<Class<? extends Obstacle>> o) {
         background = Images.racerBackground;
         maxCount = background.getVerticalCount();

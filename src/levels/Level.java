@@ -5,6 +5,8 @@ import assignment.Assignment;
 import core.CutScene;
 import core.CutState;
 import core.Player;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import racer.obstacles.Obstacle;
 import racer.RacerState;
@@ -34,14 +36,16 @@ abstract public class Level {
         RacerState.resetObstacles(obstacles);
     }
 
-    public void nextCutScene(StateBasedGame sbg) {
+    public void nextCutScene(GameContainer gc, StateBasedGame sbg) throws SlickException {
         if (cutSceneID + 1 < cutScenes.size()) {
             cutSceneID++;
+            sbg.getCurrentState().init(gc, sbg);
             System.out.println("Id is " + cutSceneID);
         } else {
             ((CutState) (sbg.getCurrentState())).goToLocker();
             setCutSceneID(0);
             Player.addGrade();
+            System.out.println("Ending");
         }
     }
 

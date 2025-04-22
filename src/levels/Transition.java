@@ -30,8 +30,8 @@ public class Transition extends CutScene {
     public void mousePressed(int x, int y, StateBasedGame sbg, GameContainer gc) throws SlickException {
         this.sbg = sbg;
         if (leaveButton.isMouseOver(x, y)) {
-            Player.getCurrentLevel().nextCutScene(sbg);
-//            sbg.getCurrentState().init(gc, sbg);
+            Player.getCurrentLevel().nextCutScene(gc, sbg);
+            sbg.getCurrentState().init(gc, sbg);
 //            leaveButton.action();
 
         }

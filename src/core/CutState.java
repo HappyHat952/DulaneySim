@@ -39,13 +39,14 @@ public class CutState extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        this.gc = gc;
+        System.out.println("CALLING INIT");
+        this.gc = gameContainer;
         sbg = stateBasedGame;
         setCurrentScene();
         currentFrame = 1;
         choice = "";
-        stateButton = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .1f), Color.red,
-                "Finish CutState", LOCKER_ID, sbg);
+//        stateButton = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .1f), Color.red,
+//                "Finish CutState", LOCKER_ID, sbg);
 
     }
 
@@ -65,14 +66,19 @@ public class CutState extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         Player.getCurrentLevel().setCutSceneID(0);
         setCurrentScene();
+        System.out.println("so is this running either");
     }
 
     @Override
     public void mousePressed(int button, int x, int y) {
-        if (stateButton.isMouseOver(x, y)) {
-            stateButton.action();
-            Player.getCurrentLevel().nextCutScene(sbg);
-        }
+//        if (stateButton.isMouseOver(x, y)) {
+//            stateButton.action();
+//            try {
+//                Player.getCurrentLevel().nextCutScene(gc, sbg);
+//            } catch (SlickException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
         try {
             currentScene.mousePressed(x, y, sbg, gc);
         } catch (SlickException e) {
@@ -96,6 +102,8 @@ public class CutState extends BasicGameState {
     }
 
     public void goToLocker() {
+        System.out.println("we going to locker");
         sbg.enterState(LOCKER_ID);
+
     }
 }

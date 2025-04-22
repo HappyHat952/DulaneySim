@@ -27,6 +27,7 @@ public class CutScene {
     private int buttonY;
     private int buttonW;
     private int buttonH;
+    private int timer;
 
     public CutScene(int id, Image image, String title, String op1, String op2, String cons1, String cons2,
                     int totalFrames) {
@@ -41,9 +42,10 @@ public class CutScene {
         this.cons2 = cons2;
         this.totalFrames = totalFrames;
         offset = (int) (Main.getScreenWidth() * .02f);
-        buttonY = (int) (Main.getScreenHeight() *  .5f);
+        buttonY = (int) (Main.getScreenHeight() * .5f);
         buttonW = 250;
         buttonH = 150;
+        timer = 0;
         button1 = new CutsceneButton(offset, buttonY, buttonW, buttonH, Color.green, op1, cons1);
         button2 = new CutsceneButton(Main.getScreenWidth() - offset - buttonW, buttonY, buttonW, buttonH, Color.red, op2, cons2);
     }
@@ -54,6 +56,7 @@ public class CutScene {
 
     public void render(Graphics g, int currentFrame, String choice) {
         g.setBackground(Color.darkGray);
+        timer++;
         if (currentFrame == 1) {
             g.drawImage(image, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .2f);
             button1.render(g);
@@ -74,24 +77,20 @@ public class CutScene {
 
     public void mousePressed(int x, int y, StateBasedGame sbg, GameContainer gc) throws SlickException {
         this.sbg = sbg;
-        leaveButton = new StateChangeButton((int) (Main.getScreenWidth() * .85f), (int) (Main.getScreenHeight() * .1f), Color.yellow,
-                "Leave", CUTSCENE_ID, sbg);
-        if (button1.isMouseOver(x, y)) {
-            button1.action(sbg);
-        } else if (button2.isMouseOver(x, y)) {
-            button2.action(sbg);
-        } else if (leaveButton.isMouseOver(x, y)) {
-            Player.getCurrentLevel().nextCutScene(sbg);
-            sbg.getCurrentState().init(gc, sbg);
+//        leaveButton = new StateChangeButton((int) (Main.getScreenWidth() * .85f), (int) (Main.getScreenHeight() * .1f), Color.yellow,
+//                "Leave", CUTSCENE_ID, sbg);
+
+            if (button1.isMouseOver(x, y)) {
+                button1.action(sbg);
+            } else if (button2.isMouseOver(x, y)) {
+                button2.action(sbg);
+            } else if (leaveButton.isMouseOver(x, y)) {
+                    Player.getCurrentLevel().nextCutScene(gc, sbg);
+                    sbg.getCurrentState().init(gc, sbg);
 //            leaveButton.action();
 
         }
     }
-
-
-
-
-
 
 
 }
