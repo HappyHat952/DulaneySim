@@ -103,7 +103,7 @@ public class RacerState extends BasicGameState {
             r.moveRight();
         }
         if (c == 'x') {
-            sbg.enterState(Main.ASSIGN_ID);
+            sbg.enterState(Main.TEACHER_ID);
         }
     }
 

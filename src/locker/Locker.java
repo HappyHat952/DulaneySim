@@ -55,7 +55,14 @@ public class Locker extends BasicGameState {
         }
        g.setFont(Fonts.big);
        g.setColor(Color.black);
-       g.drawString("GPA: " + Player.getGPA(), Main.getScreenWidth() * .120f, Main.getScreenHeight() * .27f);
+       if (Player.getGPA()<0)
+       {
+           g.drawString("GPA:----", Main.getScreenWidth() * .120f, Main.getScreenHeight() * .27f);
+       }
+       else {
+           g.drawString("GPA: " + Player.getGPA(), Main.getScreenWidth() * .120f, Main.getScreenHeight() * .27f);
+       }
+
        g.drawString("Grade: " + Player.getGrade(), Main.getScreenWidth() * .440f, Main.getScreenHeight() * .21f);
        renderVolume(g);
        renderStickers(g);

@@ -5,6 +5,8 @@ import assignment.Assignment;
 import core.CutScene;
 import core.CutState;
 import core.Player;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
@@ -22,8 +24,11 @@ abstract public class Level {
     protected ArrayList<Class<? extends Obstacle>> obstacles;
 
     protected String convoID;
+    protected Image convoBg;
+    protected SpriteSheet convoSprite;
     protected Assignment assignment;
     protected String testID;
+
     protected ArrayList<CutScene> cutScenes = new ArrayList();
     protected int cutSceneID;
 
@@ -32,7 +37,7 @@ abstract public class Level {
 
     public void setLevel() {
         AssignState.setAssignment(testID);
-        TeacherTalk.setConversation(convoID);
+        TeacherTalk.setConversation(convoID, convoBg, convoSprite);
         RacerState.resetObstacles(obstacles);
     }
 
@@ -41,7 +46,9 @@ abstract public class Level {
             cutSceneID++;
             sbg.getCurrentState().init(gc, sbg);
             System.out.println("Id is " + cutSceneID);
+
         } else {
+            System.out.println("RECHED!");
             ((CutState) (sbg.getCurrentState())).goToLocker();
             setCutSceneID(0);
             Player.addGrade();

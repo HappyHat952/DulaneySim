@@ -19,6 +19,8 @@ public class Junior extends Level {
 //        protected Conversation convo;
         testID = "Test_1";
         convoID = "mcVeigh";
+        convoSprite = Images.veltImage;
+        convoBg = Images.veltBG;
         cutScenes.add(new CutScene(1, Images.lunch3, "LUNCH TIME", "EAT", "DON'T EAT", "You're feeling a little " +
                 "sick, but you've earned some street cred", "Taking the safe option... so you think you're smart?", 2));
 //        cutScenes.add(new CutScene(2, Images.fight, "SNOW DAY!", "SKIP VIRTUAL CLASS", "LOG ON TO CLASS", "You've got courage, that's " +

@@ -34,6 +34,7 @@ public class Assignment {
         setAssignment(testID);
         selectedMCQ = 0;
         qSelector = new QuestionBar(this);
+
     }
 
     public boolean isComplete(){ return complete;}

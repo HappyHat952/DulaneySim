@@ -18,7 +18,9 @@ public class Sophomore extends Level {
         obstacles.add(Mouse.class);
 
         testID = "Test_2";
-        convoID = "mcVeigh";
+        convoID = "Velten";
+        convoSprite = Images.veltImage;
+        convoBg = Images.veltBG;
         cutScenes.add(new CutScene(1, Images.lunch2, "LUNCH TIME", "EAT", "DON'T EAT", "You're feeling a little " +
                 "sick from that taco salad...", "What, you didn't want to try the mexican radish? Coward", 2));
         cutScenes.add(new CutScene(2, Images.snowDay, "SNOW DAY!", "SKIP VIRTUAL CLASS", "LOG ON TO CLASS", "You enjoy some sledding" +

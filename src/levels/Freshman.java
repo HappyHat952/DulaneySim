@@ -13,11 +13,13 @@ public class Freshman extends Level {
         gradeName = "Freshman";
         cutSceneID = 0;
 
-         obstacles = new ArrayList<>();
-         obstacles.add(Spill.class);
+        obstacles = new ArrayList<>();
+        obstacles.add(Spill.class);
 
         testID = "Test_1";
         convoID = "mcVeigh";
+        convoSprite = Images.mcVImage;
+        convoBg = Images.mcVBG;
         cutScenes.add(new CutScene(1, Images.lunch1, "LUNCH TIME", "EAT", "DON'T EAT", "That heavenly hot dog has" +
                 " granted you some street cred, but you'll be spending some extra time in the bathroom later...",
                 "What?! You're missing out on some tasty fud", 2));

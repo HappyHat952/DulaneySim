@@ -25,7 +25,7 @@ public class Player {
 
 
     public Player() {
-        GPA = -1f;
+        GPA = -1;
         coolness = 50;
         grade = 9;
         currentLevel = new Freshman();

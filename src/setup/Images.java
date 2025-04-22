@@ -25,6 +25,9 @@ public class Images {
     static public Image mcVBG;
     static public SpriteSheet mcVImage;
 
+    static public Image veltBG;
+    static public SpriteSheet veltImage;
+
 
     // cutscene
     static public Image lunch1;
@@ -60,6 +63,9 @@ public class Images {
             //conversation
             mcVBG = new Image("res/conversation/backdrop/mcVeighBackdrop.png");
             mcVImage = new SpriteSheet("res/conversation/teachers/mcVeighSprite.png", 1920, 1080);
+
+            veltBG = new Image("res/conversation/backdrop/veltenBackdrop.png");
+            veltImage = new SpriteSheet("res/conversation/teachers/veltenSprite.png",1906,1080);
 
             //cutscene
             lunch1 = new Image("res/cutscene/lunch/lunch1.png");

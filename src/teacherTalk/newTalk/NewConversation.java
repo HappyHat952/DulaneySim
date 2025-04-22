@@ -4,6 +4,7 @@ import core.Main;
 import core.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Fonts;
@@ -39,14 +40,17 @@ public class NewConversation {
     private int mistakes;
 
     private int imageID;
-    private static SpriteSheet teacherSheet;
+    private SpriteSheet teacherSheet;
+    private Image background;
     private static int teacherIndex;
 
-    public NewConversation(StateBasedGame sbg, String convoID)
+    public NewConversation(StateBasedGame sbg, String convoID, Image bg, SpriteSheet teach)
     {
         readFile(convoID);
         System.out.println(nodesTxt.size());
-        teacherSheet = Images.mcVImage;
+        teacherSheet = teach;
+        background = bg;
+
 
         nodes = new ArrayList<>();
         complete = false;
@@ -70,9 +74,9 @@ public class NewConversation {
     }
 
     public void render(Graphics g) {
-        g.drawImage(Images.mcVBG, 0, 0);
+        g.drawImage(background, 0, 0);
         if (!currNode.getTeachImgID().equals("NO")) {
-            g.drawImage(Images.mcVImage.getSubImage(0, currNode.getTeachImgIndex()), 0, 20);
+            g.drawImage(teacherSheet.getSubImage(0, currNode.getTeachImgIndex()), 0, 20);
         }
         if (!complete) {
             g.setColor(Color.black);
@@ -121,7 +125,7 @@ public class NewConversation {
         //add later
     }
 
-    public static void changeImage(int id)
+    public void changeImage(int id)
     {
         if (id>= 0 && id<teacherSheet.getVerticalCount())
         {

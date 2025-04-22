@@ -2,10 +2,7 @@ package teacherTalk;
 
 import core.Main;
 import core.Player;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Images;
@@ -36,13 +33,13 @@ public class TeacherTalk extends BasicGameState {
         gc.setShowFPS(true);
         convo = new Conversation(sbg);
         convo.activate();
-        convo2 = new NewConversation(sbg, "mcVeigh");
+        convo2 = new NewConversation(sbg, "mcVeigh", Images.mcVBG, Images.mcVImage);
         this.sbg = sbg;
     }
 
-    public static void setConversation(String convoID)
+    public static void setConversation(String convoID, Image bg, SpriteSheet teach)
     {
-        convo2 = new NewConversation(sbg, convoID);
+        convo2 = new NewConversation(sbg, convoID, bg, teach);
     }
 
     public static void setConvoNode(String id)
