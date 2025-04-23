@@ -8,6 +8,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import setup.Fonts;
 import ui.buttons.Button;
+import ui.messages.FloatMessage;
+import ui.messages.MessageManager;
 
 public class Player {
 
@@ -25,7 +27,7 @@ public class Player {
 
 
     public Player() {
-        GPA = -1;
+        GPA = 3;
         coolness = 50;
         grade = 9;
         currentLevel = new Freshman();
@@ -75,6 +77,7 @@ public class Player {
         return GPA;
     }
     public static void adjustGPA(float amt) {
+        float oldGPA = GPA;
         if (GPA + amt >0)
         {
             GPA += amt;
@@ -84,16 +87,23 @@ public class Player {
         }
 
         GPA = (float)(Math.round(GPA*1000))/1000;
+
+        MessageManager.addMessage(new FloatMessage(
+                ""+(float)Math.round(GPA-oldGPA*100)/100,30,400,
+                Color.red,120));
+
     }
 
     public static void assignmentGPAAdj (float grade)
     {
+
+        float oldGPA =GPA;
         float minGPA;
         if (grade == 1)
         {
             minGPA = 5;
         }
-        if (grade >=.9)
+        else if (grade >=.9)
         {
             minGPA = 4;
         }
@@ -122,6 +132,10 @@ public class Player {
             GPA = (GPA+ minGPA)/2;
         }
         GPA = (float)(Math.round(GPA*1000))/1000;
+
+        MessageManager.addMessage(new FloatMessage(
+                ""+(float)Math.round(GPA-oldGPA*100)/100,30,400,
+                Color.red,120));
     }
 
     public static float getCoolness() {
@@ -129,6 +143,10 @@ public class Player {
     }
     public static void addCoolness(float amt) {
         coolness += amt;
+
+        MessageManager.addMessage(new FloatMessage(
+                ""+amt,80,400,
+                Color.blue,120));
     }
 
 

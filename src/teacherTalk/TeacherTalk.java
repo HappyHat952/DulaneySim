@@ -7,6 +7,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import setup.Images;
 import teacherTalk.newTalk.NewConversation;
+import ui.messages.MessageManager;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,6 @@ public class TeacherTalk extends BasicGameState {
     private int id;
     private static StateBasedGame sbg;
     private String talk;
-    private Conversation convo;
     private static NewConversation convo2;
 
     public TeacherTalk(int id) {
@@ -31,8 +31,6 @@ public class TeacherTalk extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         // This code happens when you enter a game state for the *first time.*
         gc.setShowFPS(true);
-        convo = new Conversation(sbg);
-        convo.activate();
         convo2 = new NewConversation(sbg, "mcVeigh", Images.mcVBG, Images.mcVImage);
         this.sbg = sbg;
     }
@@ -53,7 +51,7 @@ public class TeacherTalk extends BasicGameState {
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         // This updates your game's logic every frame.  NO DRAWING.
-        convo.update();
+        MessageManager.update();
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -63,6 +61,7 @@ public class TeacherTalk extends BasicGameState {
         convo2.render(g);
         Player.render(g);
         renderVolume(g);
+        MessageManager.render(g);
 
     }
 

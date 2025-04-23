@@ -10,6 +10,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import racer.RacerState;
 import teacherTalk.TeacherTalk;
+import ui.messages.MessageManager;
 
 public class Main extends StateBasedGame {
     public final static int FRAMES_PER_SECOND = 60;
@@ -33,6 +34,8 @@ public class Main extends StateBasedGame {
 
     public Main(String name) {
         super(name);
+
+        MessageManager.init();
 
         title = new Title(TITLE_ID);
         game = new Game(GAME_ID);

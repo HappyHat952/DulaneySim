@@ -1,0 +1,10 @@
+Mr. Donut
+O: take a quiz.
++A-NO: Do you wanna take a quiz?
+____GE: yes.
+____B: no.
++B-NO: too abd
+____GE: darn it.
++GE-NO: Take the quiz.
+____cool:+10
+____GPA:+030

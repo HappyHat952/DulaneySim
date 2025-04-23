@@ -47,6 +47,7 @@ public class TextBox {
         textColor = Color.white;
 
         myColor = new Color(0f,0f,0f,.4f);
+        wrappedText = wrapText(text);
     }
 
     public void setBGColor(Color c)

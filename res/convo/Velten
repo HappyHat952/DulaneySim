@@ -7,11 +7,18 @@ ____B: Look at the screen
 ____C: Somethings bothering me...
 +C-NO: THE AP TEST IS TOMORROW! And I didn't study at all. I need to ask Mr. Velten for a review, anything...
 ____D: Ask Mr. Velten for a review packet.
-____BE: Sit and watch the Hockey Movie... I'll probably get *some* review out of it.
-+D-T1: Mr. Velten is throwing a tennis ball at his desk.
+____BE1: Sit and watch the Hockey Movie... I'll probably get *some* review out of it.
++D-T2: Mr. Velten is throwing a tennis ball at his desk.
 ____F: Could we please do some review for the test tomorrow?
-+F-T3: Sure
-____GE: yay!
+____G: Throw a tennis ball with him.
++F-T0: Hold on... I'm doing something important right now
+____H: It's just that I don't feel prepared for the test tomorrow.
+____G: Throw the tennis ball with him
++G-T2: You spend some time throwing the ball. But each toss of the ball reminds you that you are one second closer to the test and not at all prepared.
+____H: Could we review for tomorrow?
++H-T3: You realize that Hockey is the BEST game! And you're missing out on a really cool movie.
+____BE1: I guess I can watch...
+____GE: Yeah, but I still want to do well on this test.
 +BE1-T1: You do not get any review out of it, but you and your friends have a lot to talk about later
 ____cool:+10
 ____GPA:-015
