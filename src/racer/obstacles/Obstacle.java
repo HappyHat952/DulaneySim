@@ -3,6 +3,7 @@ package racer.obstacles;
 import core.Main;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Point;
 import racer.RacerState;
 import setup.Images;
 
@@ -15,13 +16,17 @@ public class Obstacle {
     protected float xAdd;
     protected Image image;
     protected String name;
+    protected int finalX;
 
     public Obstacle() {
 //        this.image = Images.obstacle;
         y = Main.getScreenHeight() * .14f;
-
+        finalX = (int) (Math.random() * Main.getScreenWidth());
 
         double random = Math.random();
+
+        Point start = new Point(Main.getScreenWidth()*.5f, y);
+        Point end = new Point(finalX, Main.getScreenHeight());
 
         if (random < .25) {
             xAdd = 4.5f;
