@@ -10,6 +10,7 @@ import racer.obstacles.Spill;
 import setup.Fonts;
 import setup.Images;
 import ui.buttons.StateChangeButton;
+import ui.messages.MessageManager;
 
 
 import java.lang.reflect.InvocationTargetException;
@@ -165,6 +166,8 @@ public class RacerState extends BasicGameState {
 
         Player.render(g);
         renderVolume(g);
+
+        MessageManager.render(g);
     }
 
     @Override
@@ -255,6 +258,8 @@ public class RacerState extends BasicGameState {
         } else {
             complete = true;
         }
+
+        MessageManager.update();
 
 //        if (travelled <= distanceToClass)
 //        {

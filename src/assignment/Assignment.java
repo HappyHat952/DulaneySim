@@ -117,17 +117,13 @@ public class Assignment {
         grade = points*1f/mcqs.size();
         Player.assignmentGPAAdj(grade);
         complete = true;
+        qSelector.grade();
     }
 
     public void mousePressed(int button, int x, int y) {
         // This code happens every time the user presses the mouse
 
         if (!complete) {
-
-//                for (MultipleChoice m : mcqs)
-//                {
-//                    m.click(x,y);
-//                }
             mcqs.get(selectedMCQ).click(x,y);
 
         }

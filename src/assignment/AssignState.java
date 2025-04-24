@@ -8,6 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import setup.Fonts;
 import ui.buttons.Button;
 import ui.buttons.StateChangeButton;
+import ui.messages.MessageManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -56,6 +57,7 @@ public class AssignState extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         // This updates your game's logic every frame.  NO DRAWING.
         assignment.update();
+        MessageManager.update();
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -80,6 +82,8 @@ public class AssignState extends BasicGameState {
         Player.render(g);
         renderVolume(g);
 
+        MessageManager.render(g);
+
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -103,10 +107,12 @@ public class AssignState extends BasicGameState {
         } else {
             if (submitBtn.isMouseOver(x, y)) {
                 assignment.submit();
-            } else {
-                assignment.mousePressed(button, x, y);
             }
+//            else {
+
+//            }
         }
+        assignment.mousePressed(button, x, y);
 
         updateVolume(x, y);
 

@@ -26,6 +26,7 @@ public class MultipleChoice {
     private int index;
 
     private Assignment ass;
+    private Option selected;
 
 
     public MultipleChoice(ArrayList<String> mcq, int index, Assignment a)
@@ -38,6 +39,9 @@ public class MultipleChoice {
         setInfo();
         ass = a;
     }
+
+    public boolean isRight(){ return right;}
+    public boolean isAttempted(){ return selected != null;}
 
     public void draw(Graphics g)
     {
@@ -110,10 +114,24 @@ public class MultipleChoice {
 
     public void click(int x, int y)
     {
-
-        for (Option o: optionClick)
+        if (selected== null)
         {
-            o.click(x,y);
+            for (Option o: optionClick)
+            {
+                o.click(x,y);
+                if (o.isMouseOver(x,y))
+                {
+                    selected = o;
+                }
+            }
         }
+        else {
+            selected.click(x,y);
+            if (selected.isMouseOver(x,y))
+            {
+                selected = null;
+            }
+        }
+
     }
 }
