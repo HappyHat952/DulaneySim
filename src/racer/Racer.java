@@ -45,6 +45,10 @@ public class Racer {
         return y;
     }
 
+    public int getH() {
+        return h;
+    }
+
     public void setX(int x) {
         this.x = x;
     }
@@ -78,7 +82,7 @@ public class Racer {
     }
 
     public boolean isOver(Obstacle o) {
-        if (o.getY() >= (y + (h*.65)) && o.getY() <= y + h && x+w > o.getX() && o.getX() + o.getW() > x) {
+        if (o.getY() >= (y + (h*.5)) && o.getY() <= y + h && x+w > o.getX() && o.getX() + o.getW() > x) {
             return true;
         }
         return false;

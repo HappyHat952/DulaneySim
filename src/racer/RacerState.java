@@ -42,6 +42,7 @@ public class RacerState extends BasicGameState {
     private boolean complete;
 
     private StateChangeButton classButton;
+    private static int hitTimer;
 
     public RacerState(int id) {
         this.id = id;
@@ -51,6 +52,7 @@ public class RacerState extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         resetObstacles(Player.getCurrentLevel().getObstacles());
         init(container, game);
+        hitTimer = 0;
     }
 
     public static void resetObstacles(ArrayList<Class<? extends Obstacle>> o) {
@@ -60,6 +62,7 @@ public class RacerState extends BasicGameState {
         obstacles = new ArrayList<>();
         yAdd = 20;
 
+        hitTimer = 0;
         count = 0;
         frame = 0;
 
@@ -164,6 +167,10 @@ public class RacerState extends BasicGameState {
         g.setColor(Color.red);
         g.fillRect(10, 190 + 500 * (1 - travelled * 1f / distanceToClass), 15, 500 * (travelled * 1f / distanceToClass));
 
+
+        if (hitTimer > 0) {
+            g.drawImage(Images.hit, r.getX(), (r.getY() + r.getH() * .6f));
+        }
         Player.render(g);
         renderVolume(g);
 
@@ -246,6 +253,7 @@ public class RacerState extends BasicGameState {
                     yAdd = 10;
                     counter = 60;
                     i--;
+                    hitTimer = 20;
                 }
             }
 
@@ -260,6 +268,10 @@ public class RacerState extends BasicGameState {
         }
 
         MessageManager.update();
+
+        if (hitTimer > 0) {
+            hitTimer--;
+        }
 
 //        if (travelled <= distanceToClass)
 //        {
