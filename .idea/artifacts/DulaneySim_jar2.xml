@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/DulaneySim_jar2</output-path>
     <root id="archive" name="DulaneySim.jar">
       <element id="module-output" name="DulaneySim" />
-      <element id="library" level="project" name="natives" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/slick-examples.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/jinput.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/slick.jar" path-in-jar="/" />
@@ -18,6 +17,7 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/natives-linux.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/tinylinepp.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/lwjgl_util_applet.jar" path-in-jar="/" />
+      <element id="library" level="project" name="natives" />
     </root>
   </artifact>
 </component>

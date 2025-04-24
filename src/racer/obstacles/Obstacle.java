@@ -40,6 +40,15 @@ public class Obstacle {
 
     }
 
+    public float getScale() {
+        int startY = (int) (Main.getScreenHeight() * 0.14f);
+        int endY = Main.getScreenHeight();
+
+        // Can adjust this later to make it better
+        float add = 2 * ((y-startY)/(endY-startY));
+        return (0.2f + add);
+    }
+
     public void update() {
         y += (float) RacerState.getyAdd() /2;
         if (RacerState.getyAdd() == 10) {
@@ -66,7 +75,8 @@ public class Obstacle {
     }
 
     public void render(Graphics g) {
-        g.drawImage(image, x, y);
+//        g.drawImage(image, x, y);
+        g.drawImage(image.getScaledCopy(getScale()), x, y);
     }
 
     public void setX(float x) {

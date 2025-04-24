@@ -12,6 +12,7 @@ public class Images {
     //racer
     static public SpriteSheet racerBackground;
     static public Image racer;
+    static public Image hit;
     static public Image spill;
     static public Image mouse;
 
@@ -51,6 +52,7 @@ public class Images {
             //racer
             racerBackground = new SpriteSheet("res/racer/racerBackground.png", 1920, 1080);
             racer = new Image("res/racer/racer.png");
+            hit = new Image("res/racer/hit.png");
             spill = new Image("res/racer/spill.png");
             mouse = new Image("res/racer/mouse.png");
 
