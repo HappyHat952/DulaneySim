@@ -8,6 +8,7 @@ import setup.Fonts;
 import setup.Images;
 import setup.Sounds;
 import ui.buttons.StateChangeButton;
+import ui.messages.MessageManager;
 
 import static core.Main.CUTSCENE_ID;
 
@@ -32,6 +33,7 @@ public class Title extends BasicGameState {
         Fonts.loadFonts();
         Images.loadImages();
         Sounds.loadSounds();
+        MessageManager.init();
         button = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .6f), Color.red,
                 "Start Game", Main.LOCKER_ID, sbg);
     }

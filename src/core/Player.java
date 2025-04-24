@@ -134,8 +134,8 @@ public class Player {
         GPA = (float)(Math.round(GPA*1000))/1000;
 
         MessageManager.addMessage(new FloatMessage(
-                ""+(float)Math.round(GPA-oldGPA*100)/100,30,400,
-                Color.red,120));
+                ""+(float)Math.round(GPA-oldGPA*100)/100,30,250,
+                Color.red,600));
     }
 
     public static float getCoolness() {
@@ -146,7 +146,7 @@ public class Player {
 
         MessageManager.addMessage(new FloatMessage(
                 ""+amt,80,400,
-                Color.blue,120));
+                Color.blue,300));
     }
 
 
