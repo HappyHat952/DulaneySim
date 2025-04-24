@@ -19,10 +19,10 @@ ____H: Could we review for tomorrow?
 +H-T3: You realize that Hockey is the BEST game! And you're missing out on a really cool movie.
 ____BE1: I guess I can watch...
 ____GE: Yeah, but I still want to do well on this test.
-+BE1-T1: You do not get any review out of it, but you and your friends have a lot to talk about later
++BE1-T2: You do not get any review out of it, but you and your friends have a lot to talk about later
 ____cool:+10
 ____GPA:-015
-+GE-T1: You review well for the AP exam, and you earn a 5! Your friends think ur a nerd for skipping on the movie though
++GE-T0: You review well for the AP exam, and you earn a 5! Your friends think ur a nerd for skipping on the movie though
 ____cool:-10
 ____GPA:+020
 end
