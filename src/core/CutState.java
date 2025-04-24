@@ -8,6 +8,7 @@ import setup.Images;
 import ui.buttons.Button;
 import ui.buttons.CutsceneButton;
 import ui.buttons.StateChangeButton;
+import ui.messages.MessageManager;
 
 import static core.Main.LOCKER_ID;
 import static locker.Locker.renderVolume;
@@ -55,11 +56,12 @@ public class CutState extends BasicGameState {
         currentScene.render(g, currentFrame, choice);
         Player.render(g);
         renderVolume(g);
+        MessageManager.render(g);
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame stateBasedGame, int i) throws SlickException {
-
+        MessageManager.update();
     }
 
     @Override

@@ -3,8 +3,11 @@ package teacherTalk.newTalk;
 import core.Main;
 import org.newdawn.slick.Color;
 import setup.Fonts;
+import setup.Sounds;
 import teacherTalk.TeacherTalk;
 import ui.textBox.TextBox;
+
+import static locker.Locker.volume;
 
 public class Choice extends TextBox {
 
@@ -41,6 +44,9 @@ public class Choice extends TextBox {
         {
             //actions (move to the next stage -- call conversation)
             TeacherTalk.setConvoNode(nextNodeID);
+            if (volume) {
+                Sounds.click.play();
+            }
         }
     }
 

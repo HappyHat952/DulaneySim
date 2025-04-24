@@ -3,7 +3,10 @@ package assignment;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import setup.Fonts;
+import setup.Sounds;
 import ui.textBox.TextBox;
+
+import static locker.Locker.volume;
 
 public class Option extends TextBox {
     boolean selected;
@@ -33,6 +36,9 @@ public class Option extends TextBox {
         if (isMouseOver(x,y))
         {
             action();
+        }
+        if (volume) {
+            Sounds.click.play();
         }
     }
 

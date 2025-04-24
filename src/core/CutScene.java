@@ -88,8 +88,13 @@ public class CutScene {
 
         if (button1.isMouseOver(x, y)) {
             button1.action(sbg);
+            Player.adjustGPA(-0.3f);
+            Player.addCoolness(+13);
         } else if (button2.isMouseOver(x, y)) {
             button2.action(sbg);
+            Player.adjustGPA(+0.3f);
+            Player.addCoolness(-13);
+
         } else if (leaveButton.isMouseOver(x, y)) {
             Player.getCurrentLevel().nextCutScene(gc, sbg);
             sbg.getCurrentState().init(gc, sbg);

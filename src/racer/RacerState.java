@@ -157,7 +157,7 @@ public class RacerState extends BasicGameState {
         }
         g.setFont(Fonts.big);
         g.setColor(Color.black);
-        g.drawString("Use WASD TO MOVE", Main.getScreenWidth() * .71f, 20);
+        g.drawString("Use WASD TO MOVE", Main.getScreenWidth() * .71f, 90);
 
         g.setLineWidth(2);
         g.setColor(Color.black);
@@ -165,7 +165,14 @@ public class RacerState extends BasicGameState {
 
         g.setLineWidth(1);
         g.setColor(Color.red);
-        g.fillRect(10, 190 + 500 * (1 - travelled * 1f / distanceToClass), 15, 500 * (travelled * 1f / distanceToClass));
+        if (1- travelled *1f/distanceToClass< 1)
+        {
+            g.fillRect(10, 190 + 500 * (1 - travelled * 1f / distanceToClass), 15, 500 * (travelled * 1f / distanceToClass));
+        }
+        else {
+            g.fillRect(10, 190, 15, 500);
+        }
+
 
 
         if (hitTimer > 0) {

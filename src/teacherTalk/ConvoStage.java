@@ -36,13 +36,6 @@ public class ConvoStage {
 
     private Conversation convo;
 
-    //    public ConvoStage(ArrayList<String> dialogues, int id)
-//    {
-//        convoStage = dialogues;
-//        //setConvo(dialogues);
-//        selected = -1;
-//        this.id = id;
-//    }
     public ConvoStage(ArrayList<Dialogue> dialogues, int stageId, int teachId, Conversation c)
     {
         allDialogues = dialogues;

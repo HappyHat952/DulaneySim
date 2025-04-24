@@ -62,6 +62,7 @@ public class QuestionBar {
             for (int i= 0; i<buttons.length; i++)
             {
                 Button b = buttons[i];
+                b.click(x,y);
                 if (b.isMouseOver(x,y))
                 {
                     assign.setSelectedMCQ(i);
