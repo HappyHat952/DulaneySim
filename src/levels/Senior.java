@@ -23,7 +23,7 @@ public class Senior extends Level {
 
 //        protected ArrayList<Obstacle> obstacles;
 //        protected Conversation convo;
-        testID = "Test_1";
+        testID = "Test_4";
         convoID = "Shaw";
         convoSprite = Images.shawImage;
         convoBg = Images.shawBG;
@@ -33,6 +33,6 @@ public class Senior extends Level {
         cutScenes.add(new CutScene(2, Images.parking, "PARKING", "PARK ILLEGALLY", "FIND ANOTHER SPOT", "You come back to your car later and "
                 + "see it's been rear ended by a teacher. Looks like someone wanted to teach you a lesson...", "You are forced to park at the top of Padonia, and must walk" +
                 " miles to get to school. But your car is safe.", 2, Images.parking1, Images.parking2));
-        cutScenes.add(new Transition(2, Images.transition1));
+        //cutScenes.add(new Transition(2, Images.transition1));
     }
 }

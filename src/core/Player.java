@@ -97,6 +97,11 @@ public class Player {
                 "GPA: "+(float)Math.round((GPA-oldGPA)*100)/100,Main.getScreenWidth()/2,250,
                 Color.red,140));
 
+        if (GPA< 1.5)
+        {
+            Game.sbg.enterState(Main.EXPL_ID);
+        }
+
     }
 
     public static void assignmentGPAAdj (float grade)
@@ -141,6 +146,11 @@ public class Player {
         MessageManager.addMessage(new FloatMessage(
                 "GPA: "+(float)Math.round((GPA-oldGPA)*100)/100,Main.getScreenWidth()/2,250,
                 Color.red,140));
+        if (GPA< 1.5)
+        {
+            Game.sbg.enterState(Main.EXPL_ID);
+        }
+
     }
 
     public static float getCoolness() {

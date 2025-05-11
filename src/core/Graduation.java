@@ -39,6 +39,10 @@ public class Graduation extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.setColor(Color.white);
         g.drawImage(Images.graduation,0,0);
+
+        g.setFont(Fonts.big);
+        g.drawString("You Graduate with a GPA of "+Player.getGPA(),
+                Main.getScreenWidth()*.2f, Main.getScreenHeight()/2);
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {

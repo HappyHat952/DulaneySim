@@ -37,8 +37,12 @@ public class Expulsion extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.drawImage(Images.expulsion,0,0);
+        g.setFont(Fonts.big);
+
+        g.drawString("You are expelled for your GPA of "+Player.getGPA()+". Your parents kick you out",
+                Main.getScreenWidth()*.2f, Main.getScreenHeight()/2);
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {

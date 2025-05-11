@@ -21,7 +21,7 @@ public class Junior extends Level {
 
 //        protected ArrayList<Obstacle> obstacles;
 //        protected Conversation convo;
-        testID = "Test_1";
+        testID = "Test_3";
         convoID = "Malafarina";
         convoSprite = Images.malImage;
         convoBg = Images.malBG;

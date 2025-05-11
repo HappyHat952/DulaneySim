@@ -32,7 +32,6 @@ public class MultipleChoice {
     public MultipleChoice(ArrayList<String> mcq, int index, Assignment a)
     {
         this.mcq = mcq;
-        System.out.println(mcq);
         this.index = index;
         number = index+1;
         options = new ArrayList<>();

@@ -9,7 +9,7 @@ import setup.Fonts;
 public class Game extends BasicGameState 
 {	
 	private int id;
-	private static StateBasedGame sbg;
+	public static StateBasedGame sbg;
 	private static Player p;
 
 

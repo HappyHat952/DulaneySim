@@ -48,8 +48,7 @@ abstract public class Level {
             System.out.println("Id is " + cutSceneID);
 
         } else {
-            System.out.println("RECHED!");
-            if (Player.getGrade() == 9)
+            if (Player.getGrade() == 12)
             {
                 ((CutState) (sbg.getCurrentState())).goToGraduation();
             }
