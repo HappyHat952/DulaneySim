@@ -57,27 +57,26 @@ public class QuestionBar {
     }
     public void mouseClick(int button, int x, int y)
     {
-        if (mouseOver(x,y))
-        {
-            for (int i= 0; i<buttons.length; i++)
-            {
-                Button b = buttons[i];
-                b.click(x,y);
-                if (b.isMouseOver(x,y))
-                {
-                    assign.setSelectedMCQ(i);
+
+        for (int i= 0; i<buttons.length; i++) {
+            Button b = buttons[i];
+            b.click(x, y);
+            if (assign.getSelectedMCQ() == i ||
+                    b.isMouseOver(x, y)) {
+                assign.setSelectedMCQ(i);
+                if (!assign.isComplete()) {
                     b.setColor(Color.blue);
                 }
-                else if (assign.getMultipleChoice().get(i).isAttempted())
-                {
+
+            } else if (!assign.isComplete()) {
+                if (assign.getMultipleChoice().get(i).isAttempted()) {
                     b.setColor(Color.darkGray);
-                }
-                else
-                {
+                } else {
                     b.setColor(Color.lightGray);
                 }
             }
         }
+
 
     }
 }

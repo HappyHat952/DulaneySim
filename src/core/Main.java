@@ -23,6 +23,9 @@ public class Main extends StateBasedGame {
     public static final int ASSIGN_ID = 4;
     public static final int LOCKER_ID = 5;
     public static final int CUTSCENE_ID = 6;
+    public static final int GRAD_ID = 7;
+    public static final int EXPL_ID  = 8;
+
 
     private BasicGameState title;
     private BasicGameState game;
@@ -31,6 +34,8 @@ public class Main extends StateBasedGame {
     private BasicGameState assign;
     private BasicGameState locker;
     private BasicGameState cutscene;
+    private BasicGameState grad;
+    private BasicGameState expl;
 
     public Main(String name) {
         super(name);
@@ -44,6 +49,8 @@ public class Main extends StateBasedGame {
         assign = new AssignState(ASSIGN_ID);
         locker = new Locker(LOCKER_ID);
         cutscene = new CutState(CUTSCENE_ID);
+        grad = new Graduation(GRAD_ID);
+        expl = new Expulsion (EXPL_ID);
     }
 
     public static int getScreenWidth() {
@@ -63,6 +70,8 @@ public class Main extends StateBasedGame {
         addState(assign);
         addState(locker);
         addState(cutscene);
+        addState(grad);
+        addState(expl);
     }
 
     public static void main(String[] args) {

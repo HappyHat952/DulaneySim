@@ -10,6 +10,7 @@ import ui.buttons.CutsceneButton;
 import ui.buttons.StateChangeButton;
 import ui.messages.MessageManager;
 
+import static core.Main.GRAD_ID;
 import static core.Main.LOCKER_ID;
 import static locker.Locker.renderVolume;
 import static locker.Locker.updateVolume;
@@ -107,4 +108,10 @@ public class CutState extends BasicGameState {
         sbg.enterState(LOCKER_ID);
 
     }
+
+public void goToGraduation() {
+    System.out.println("graduate");
+    sbg.enterState(GRAD_ID);
+
+}
 }

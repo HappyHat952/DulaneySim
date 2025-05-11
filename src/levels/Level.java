@@ -49,7 +49,14 @@ abstract public class Level {
 
         } else {
             System.out.println("RECHED!");
-            ((CutState) (sbg.getCurrentState())).goToLocker();
+            if (Player.getGrade() == 9)
+            {
+                ((CutState) (sbg.getCurrentState())).goToGraduation();
+            }
+            else{
+                ((CutState) (sbg.getCurrentState())).goToLocker();
+            }
+
             setCutSceneID(0);
             Player.addGrade();
             System.out.println("Ending");

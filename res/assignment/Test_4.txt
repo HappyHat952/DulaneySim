@@ -1,0 +1,43 @@
+Qstn: What is the acceleration caused by gravity on Earth?
+a) 9.81 m/s
+b) 9.81 m/s^2
+c) 9.18 m/s
+d) 9.18 m/s^2
+b
+Qstn: What is the fruit that fell on Newton?
+a) orange
+b) tomato
+c) banana
+d) apple
+d
+Qstn: How is Isaac Newton related to Albert Einstein on a family tree?
+a) Newton is Einstein's great-great-grandfather
+b) Newton is Einstein's great-great-uncle
+c) Newton is a distant cousin of Einstein's
+d) They are not related
+d
+Qstn: What is the law of the Conservation of Energy
+a) You always need energy to exercise
+b) Save energy by turning off the lights.
+c) Energy is neither created nor destroyed
+d) Conservation of Energy is not real
+c
+Qstn: What color do you get by mixing all the colors of light?
+a) red
+b) black
+c) white
+d) rainbow
+c
+Qstn: Is lightning hotter than the sun, less hot than the sun, or neither?
+a) hotter
+b) less hot
+c) neither
+d) both
+a
+Qstn: What is the speed after 3 seconds of a particle that accelerates from rest at a rate of 4 m/s^2?
+a) .75 m/s
+b) 64 m/s
+c) 0 m/s
+d) 12 m/s
+d
+end

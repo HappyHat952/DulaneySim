@@ -1,0 +1,31 @@
+Qstn: What color is represented in RGB by (255,255,0)
+a) red
+b) green
+c) brown
+d) yellow
+d
+Qstn: A ____ is equivalent to 8 ____.
+a) byte; bits
+b) bit, bytes
+c) bite bits
+d) bit, bites
+a
+Qstn: What does OOP stand for?
+a) Observational Obfuscation Paleontology
+b) Optical Orbit Pathways
+c) Object-Oriented Programming
+d) POO, backwards
+c
+Qstn: Which of the following is not a type of loop in programming
+a) for loop
+b) while loop
+c) enhanced for loop
+d) operational loop
+d
+Qstn: Who is the CEO of Facebook?
+a) Bill Gates
+b) Mark Zuckerberg
+c) Jeff Bezos
+d) Steve Jobs
+b
+end

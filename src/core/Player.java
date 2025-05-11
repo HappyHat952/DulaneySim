@@ -21,6 +21,9 @@ public class Player {
     private static int stage;
     private static Button stats;
     private static boolean displayOn;
+    private static boolean graduated;
+    private static boolean expelled;
+
 
 
     //info display (effects)
@@ -177,8 +180,10 @@ public class Player {
             currentLevel = new Junior();
         } else if (grade == 12) {
             currentLevel = new Senior();
-        }
-        currentLevel.setLevel();
+        }else {
+                graduated = true;
+            }
+            currentLevel.setLevel();
     }
 
 }

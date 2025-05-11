@@ -64,6 +64,10 @@ public class Images {
     static public Image coolLunch;
     static public Image wimpLunch;
 
+    static public Image graduation;
+    static public Image expulsion;
+
+
     // ui
     static public SpriteSheet volumeSheet;
 
@@ -129,6 +133,12 @@ public class Images {
 
             coolLunch = new Image("res/cutscene/lunch/coolLunch.png").getScaledCopy(400, 400);
             wimpLunch = new Image("res/cutscene/lunch/wimpLunch.png");
+
+            //
+            graduation = new Image ("res/title/gradImage.png");
+            expulsion = new Image ("res/title/expelled.png");
+
+
 
             // ui
             volumeSheet = new SpriteSheet("res/ui/volumeSheet.png", 100, 100);
