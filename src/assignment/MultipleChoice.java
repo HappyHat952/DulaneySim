@@ -85,7 +85,8 @@ public class MultipleChoice {
             for (String o: options)
             {
                 y+= Fonts.medium.getHeight()+10;
-                optionClick.add(new Option((int)(x),(int)(y), (int)(Main.getScreenWidth()*.2f), o) );
+                optionClick.add(new Option((int)(x),(int)(y),  o) );
+                //(int)(Main.getScreenWidth()*.2f),
             }
 
         } catch (NumberFormatException e) {

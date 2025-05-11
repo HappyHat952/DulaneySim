@@ -41,8 +41,18 @@ public class Expulsion extends BasicGameState {
         g.drawImage(Images.expulsion,0,0);
         g.setFont(Fonts.big);
 
-        g.drawString("You are expelled for your GPA of "+Player.getGPA()+". Your parents kick you out",
-                Main.getScreenWidth()*.2f, Main.getScreenHeight()/2);
+        if (Player.getGPA()< 1)
+        {
+            g.drawString("You are expelled for your GPA of "+Player.getGPA()+". Your parents kick you out",
+                    Main.getScreenWidth()*.2f, Main.getScreenHeight()/2);
+        }
+        else if (Player.getCoolness()< -20)
+        {
+            g.drawString("You got expelled for being too lame. Your parents kick you out",
+                    Main.getScreenWidth()*.2f, Main.getScreenHeight()/2);
+        }
+
+
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {

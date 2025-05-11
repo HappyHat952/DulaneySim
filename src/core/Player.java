@@ -97,7 +97,7 @@ public class Player {
                 "GPA: "+(float)Math.round((GPA-oldGPA)*100)/100,Main.getScreenWidth()/2,250,
                 Color.red,140));
 
-        if (GPA< 1.5)
+        if (GPA< 1.0)
         {
             Game.sbg.enterState(Main.EXPL_ID);
         }
@@ -146,7 +146,7 @@ public class Player {
         MessageManager.addMessage(new FloatMessage(
                 "GPA: "+(float)Math.round((GPA-oldGPA)*100)/100,Main.getScreenWidth()/2,250,
                 Color.red,140));
-        if (GPA< 1.5)
+        if (GPA< 1.0)
         {
             Game.sbg.enterState(Main.EXPL_ID);
         }
@@ -162,6 +162,11 @@ public class Player {
         MessageManager.addMessage(new FloatMessage(
                 "coolness: "+amt,Main.getScreenWidth()/2,300,
                 Color.blue,140));
+
+        if (coolness<= -20)
+        {
+            Game.sbg.enterState(Main.EXPL_ID);
+        }
     }
 
 

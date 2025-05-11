@@ -42,7 +42,23 @@ public class Graduation extends BasicGameState {
 
         g.setFont(Fonts.big);
         g.drawString("You Graduate with a GPA of "+Player.getGPA(),
-                Main.getScreenWidth()*.2f, Main.getScreenHeight()/2);
+                Main.getScreenWidth()*.2f, Main.getScreenHeight()/2 - 140);
+        String message;
+        if (Player.getCoolness()< 10)
+        {
+            message = "You didn't make many friends...";
+        }
+        else if (Player.getCoolness()>70)
+        {
+            message = "YOU WERE THE COOLEST KID AT SCHOOL!";
+        }
+        else
+        {
+            message = "Not bad... you had a coolness of " + Player.getCoolness();
+        }
+
+        g.drawString("You Graduate with a GPA of "+Player.getGPA(),
+                Main.getScreenWidth()*.2f, Main.getScreenHeight()/2 - 75);
     }
 
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {

@@ -49,6 +49,19 @@ public class TextBox {
         myColor = new Color(0f,0f,0f,.4f);
         wrappedText = wrapText(text);
     }
+    public TextBox(String text, TrueTypeFont f, int x, int y)
+    {
+        rawText = text;
+        font = f;
+        this.x = x;
+        this.y = y;
+        width = font.getWidth("a)     "+text);
+        height = font.getHeight(text);
+        textColor = Color.white;
+
+        myColor = new Color(0f,0f,0f,.4f);
+        wrappedText = wrapText(text);
+    }
 
     public void setBGColor(Color c)
     {

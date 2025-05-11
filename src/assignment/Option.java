@@ -11,8 +11,8 @@ import static locker.Locker.volume;
 public class Option extends TextBox {
     boolean selected;
 
-    public Option(int x, int y,int w, String text) {
-        super (text, Fonts.medium, x,  y,  w);
+    public Option(int x, int y, String text) {
+        super (text, Fonts.medium, x,  y);
         selected = false;
         wrappedText = wrapText(text);
         height = wrappedText.size()*font.getHeight();
