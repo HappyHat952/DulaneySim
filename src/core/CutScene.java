@@ -61,7 +61,7 @@ public class CutScene {
     }
 
     public void render(Graphics g, int currentFrame, String choice) {
-        g.setBackground(Color.black);
+        g.setBackground(Color.white);
         if (currentFrame == 1) {
             g.drawImage(image, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .2f);
             button1.render(g);
@@ -70,6 +70,7 @@ public class CutScene {
             g.setFont(Fonts.big);
             g.drawString(title, Main.getScreenWidth() * .4f, Main.getScreenHeight() * .1f);
         } else if (currentFrame == 2) {
+            g.setBackground(Color.black);
             g.setColor(Color.black);
             g.setFont(Fonts.big);
             if (consequence == null) {
