@@ -20,6 +20,9 @@ public class CutScene {
     private String op2;
     private String cons1;
     private String cons2;
+    protected Image image1;
+    protected Image image2;
+    protected Image emoji;
     private int totalFrames;
     private CutsceneButton button1;
     private CutsceneButton button2;
@@ -31,7 +34,7 @@ public class CutScene {
     private TextBox consequence;
 
     public CutScene(int id, Image image, String title, String op1, String op2, String cons1, String cons2,
-                    int totalFrames) {
+                    int totalFrames, Image image1, Image image2) {
         leaveButton = new StateChangeButton((int) (Main.getScreenWidth() * .85f), (int) (Main.getScreenHeight() * .1f), Color.yellow,
                 "Leave", CUTSCENE_ID, sbg);
         // HELLO
@@ -42,6 +45,8 @@ public class CutScene {
         this.op2 = op2;
         this.cons1 = cons1;
         this.cons2 = cons2;
+        this.image1 = image1;
+        this.image2 = image2;
         this.totalFrames = totalFrames;
         offset = (int) (Main.getScreenWidth() * .02f);
         buttonY = (int) (Main.getScreenHeight() * .5f);
@@ -68,10 +73,12 @@ public class CutScene {
             g.setColor(Color.black);
             g.setFont(Fonts.big);
             if (consequence == null) {
-                consequence = new TextBox(choice, Fonts.big, (int) (Main.getScreenWidth() * .25f), (int) (Main.getScreenHeight() * .15f),
+                consequence = new TextBox(choice, Fonts.big, (int) (Main.getScreenWidth() * .25f), (int) (Main.getScreenHeight() * .05f),
                         (int) (Main.getScreenWidth() * .5f), (int) (Main.getScreenHeight() * .5f));
             }
             consequence.draw(g);
+            g.drawImage(emoji, Main.getScreenWidth() * .5f - emoji.getWidth()/2, Main.getScreenHeight() * .6f);
+
 //            g.setColor(Color.black);
 //            g.setFont(Fonts.big);
 //            g.fillRect(Main.getScreenWidth() * .25f, Main.getScreenHeight() * .15f, Main.getScreenWidth() * .5f,
@@ -91,11 +98,12 @@ public class CutScene {
             button1.action(sbg);
             Player.adjustGPA(-0.3f);
             Player.addCoolness(+13);
+            emoji = image1;
         } else if (button2.isMouseOver(x, y)) {
             button2.action(sbg);
             Player.adjustGPA(+0.3f);
             Player.addCoolness(-13);
-
+            emoji = image2;
         } else if (leaveButton.isMouseOver(x, y)) {
             Player.getCurrentLevel().nextCutScene(gc, sbg);
             sbg.getCurrentState().init(gc, sbg);

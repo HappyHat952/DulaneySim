@@ -13,20 +13,17 @@ public class Racer {
     private int y;
     private int w;
     private int h;
-    private int baseY;
-    private boolean isJumping;
-    private final int jumpHeight = 500;
+
     private Image image;
 
     private boolean complete;
 
     public Racer() {
-        image = Images.racer;
-        isJumping = false;
+        image = Images.racer.getScaledCopy(150, 250);
 
         x = Main.getScreenWidth()/2 - image.getWidth();
         y = Main.getScreenHeight() - (image.getHeight() + 10);
-        baseY = Main.getScreenHeight() - (image.getHeight() + 10);
+
         w = image.getWidth();
         h = image.getHeight();
 
@@ -62,23 +59,23 @@ public class Racer {
     }
 
     public void update() {
-        if (isJumping) {
-            if (y == baseY - jumpHeight) {
-                isJumping = false;
-            } else {
-                y -= 25;
-            }
-        }
 
-        if (!isJumping && y < baseY) {
-            y += 25;
-        }
     }
 
     public void moveRight() {
-        if (x + 15 + image.getWidth() < Main.getScreenWidth()) {
-            x += 15;
+        float maxX = Main.getScreenWidth() * 0.87f;
+        int maxMove = 15;
+
+        float spaceRemaining = maxX - (x + image.getWidth());
+
+        if (spaceRemaining >= 15) {
+            x += maxMove;
+        } else if (spaceRemaining > 0) {
+            x += spaceRemaining;
         }
+//        if (x + 15 + image.getWidth() < Main.getScreenWidth() +) {
+//            x += 15;
+//        }
     }
 
     public boolean isOver(Obstacle o) {
@@ -89,19 +86,16 @@ public class Racer {
     }
 
     public void moveLeft() {
-        if (x - 15 > 0) {
-            x -= 15;
+        int maxMove = 15;
+        float minX = Main.getScreenWidth() * 0.13f;
+
+        float spaceRemaining = x - minX;
+
+        if (spaceRemaining >= maxMove) {
+            x -= maxMove;
+        } else if (spaceRemaining > 0) {
+            x -= spaceRemaining;
         }
     }
 
-    public void moveUp() {
-        if (y == Main.getScreenHeight() - (image.getHeight() + 10)) {
-            isJumping = true;
-        }
-    }
-
-    public boolean isJumping()
-    {
-        return isJumping;
-    }
 }

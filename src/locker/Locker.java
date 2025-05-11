@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Locker extends BasicGameState {
     private int id;
-    private Button home;
+    private Button run;
     private ArrayList<Button> lockerButtons;
 
     private static Image volumeOn;
@@ -33,10 +33,9 @@ public class Locker extends BasicGameState {
         // This code happens when you enter a game state for the *first time.*
         gc.setShowFPS(true);
         lockerButtons = new ArrayList<>();
-        home = new StateChangeButton((int) (Main.getScreenWidth() * .735f), (int) (Main.getScreenHeight() * .35f),
-                Images.home.getScaledCopy((int) (Main.getScreenWidth() * .08f), (int) (Main.getScreenHeight() * .14f)),
-                sbg, "Run To Class", Main.RACER_ID);
-        lockerButtons.add(home);
+        run = new StateChangeButton((int) (Main.getScreenWidth() * .728f), (int) (Main.getScreenHeight() * .42f),
+                Images.runButton, sbg, "Run To Class", Main.RACER_ID);
+        lockerButtons.add(run);
         volume = true;
         volumeOn = Images.volumeSheet.getSprite(0, 0);
         volumeOff = Images.volumeSheet.getSprite(0, 1);
@@ -113,16 +112,21 @@ public class Locker extends BasicGameState {
         g.setColor(Color.black);
         g.setFont(Fonts.medium);
         g.drawString("MY STICKERS", Main.getScreenWidth() * .11f, Main.getScreenHeight() * .5f);
-        if (Player.getGrade() == 10) {
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .62f);
-        } else if (Player.getGrade() == 11) {
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .62f);
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .62f);
-        } else if (Player.getGrade() == 12) {
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .62f);
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .62f);
-            g.drawImage(Images.sticker, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .82f);
-        }
+
+        g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .60f);
+        g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .60f);
+        g.drawImage(Images.sticker11, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .80f);
+
+//        if (Player.getGrade() == 10) {
+//            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
+//        } else if (Player.getGrade() == 11) {
+//            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
+//            g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .58f);
+//        } else if (Player.getGrade() == 12) {
+//            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
+//            g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .58f);
+//            g.drawImage(Images.sticker11, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .78f);
+//        }
         // ADD ONCE GRADUATED TO SHOW LAST ONE
     }
 }

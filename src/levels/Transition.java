@@ -10,9 +10,9 @@ import ui.buttons.StateChangeButton;
 import static core.Main.CUTSCENE_ID;
 
 public class Transition extends CutScene {
-    public Transition(int id, Image image, String title, String op1, String op2, String cons1, String cons2, int totalFrames) {
-        super(id, image, title, op1, op2, cons1, cons2, totalFrames);
-    }
+//    public Transition(int id, Image image, String title, String op1, String op2, String cons1, String cons2, int totalFrames) {
+//        super(id, image, title, op1, op2, cons1, cons2, totalFrames);
+//    }
 
     public Transition(int id, Image image) {
         super();

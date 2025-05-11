@@ -1,6 +1,9 @@
 package levels;
 
 import core.CutScene;
+import racer.obstacles.Couple;
+import racer.obstacles.LunchTray;
+import racer.obstacles.Mouse;
 import racer.obstacles.Spill;
 import setup.Images;
 
@@ -8,11 +11,14 @@ import java.util.ArrayList;
 
 public class Senior extends Level {
     public Senior() {
-        grade = 10;
-        gradeName = "Sophomore";
+        grade = 12;
+        gradeName = "Senior";
 
         obstacles = new ArrayList<>();
         obstacles.add(Spill.class);
+        obstacles.add(Mouse.class);
+        obstacles.add(Couple.class);
+        obstacles.add(LunchTray.class);
         cutSceneID = 0;
 
 //        protected ArrayList<Obstacle> obstacles;
@@ -22,9 +28,9 @@ public class Senior extends Level {
         convoSprite = Images.veltImage;
         convoBg = Images.veltBG;
         cutScenes.add(new CutScene(1, Images.lunch4, "LUNCH TIME", "EAT", "DON'T EAT", "You're feeling a little " +
-                "sick, but you've earned some street cred", "Taking the safe option... so you think you're smart?", 2));
-//        cutScenes.add(new CutScene(2, Images.fight, "SNOW DAY!", "SKIP VIRTUAL CLASS", "LOG ON TO CLASS", "You've got courage, that's " +
-//                "for sure... The teachers aren't going to like this.", "You've avoided violence... for now", 2));
+                "sick, but you've earned some street cred", "Taking the safe option... so you think you're smart?", 2, Images.coolLunch, Images.wimpLunch));
+        cutScenes.add(new CutScene(2, Images.parking, "SNOW DAY!", "SKIP VIRTUAL CLASS", "LOG ON TO CLASS", "You've got courage, that's " +
+                "for sure... The teachers aren't going to like this.", "You've avoided violence... for now", 2, Images.parking1, Images.parking2));
         cutScenes.add(new Transition(2, Images.transition1));
     }
 }
