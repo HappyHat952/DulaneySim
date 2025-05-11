@@ -31,7 +31,7 @@ public class TeacherTalk extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         // This code happens when you enter a game state for the *first time.*
         gc.setShowFPS(true);
-        convo2 = new NewConversation(sbg, "Malafarina", Images.mcVBG, Images.mcVImage);
+        convo2 = new NewConversation(sbg, "Malafarina", Images.malBG, Images.malImage);
         this.sbg = sbg;
     }
 

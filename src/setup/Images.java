@@ -35,6 +35,9 @@ public class Images {
     static public Image veltBG;
     static public SpriteSheet veltImage;
 
+    static public Image malBG;
+    static public SpriteSheet malImage;
+
 
     // cutscene
     static public Image lunch1;
@@ -86,7 +89,7 @@ public class Images {
             help = new Image("res/locker/help.png");
             sticker9 = new Image("res/locker/sticker9.png");
             sticker10 = new Image("res/locker/sticker10.png");
-            sticker11 = new Image("res/locker/sticker.png");
+            sticker11 = new Image("res/locker/sticker11.png").getScaledCopy(sticker10.getWidth(), sticker10.getHeight());
             sticker12 = new Image("res/locker/sticker.png");
 
             //conversation
@@ -95,6 +98,9 @@ public class Images {
 
             veltBG = new Image("res/conversation/backdrop/veltenBackdrop.png");
             veltImage = new SpriteSheet("res/conversation/teachers/veltenSprite.png",1906,1080);
+
+            malBG = new Image("res/conversation/backdrop/MalafarinaBg.png");
+            malImage = new SpriteSheet("res/conversation/teachers/malafarinaSprite.png", 1024, 1024);
 
             //cutscene
             lunch1 = new Image("res/cutscene/lunch/lunch1.png");

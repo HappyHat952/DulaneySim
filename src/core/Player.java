@@ -46,26 +46,28 @@ public class Player {
         }
 
         Font f = Fonts.medium;
-        if (displayOn || overStat)
+        //if (displayOn || overStat)
+        if (true)
         {
+            int xBuffer = 300;
             g.setColor(Color.black);
-            g.fillRect(0,90, 300,f.getHeight("l")*4);
+            g.fillRect(xBuffer,0, 300,f.getHeight("l")*4);
 
             g.setFont(f);
             g.setColor(Color.red);
             if (GPA<0)
             {
-                g.drawString("GPA: ----", 15,125);
+                g.drawString("GPA: ----", xBuffer + 15,35);
             }
             else
             {
-                g.drawString("GPA: "+ GPA, 15,125);
+                g.drawString("GPA: "+ GPA, xBuffer +15,35);
             }
 
             g.setColor(Color.blue);
-            g.drawString("Coolness: "+ coolness, 15,165);
+            g.drawString("Coolness: "+ coolness, xBuffer +15,75);
             g.setColor(Color.white);
-            g.drawString("Grade: "+ grade, 15,215);
+            g.drawString("Grade: "+ grade, xBuffer +15,125);
         }
         else {
             stats.render(g);
@@ -89,7 +91,7 @@ public class Player {
         GPA = (float)(Math.round(GPA*1000))/1000;
 
         MessageManager.addMessage(new FloatMessage(
-                ""+(float)Math.round((GPA-oldGPA)*100)/100,30,400,
+                "GPA: "+(float)Math.round((GPA-oldGPA)*100)/100,Main.getScreenWidth()/2,250,
                 Color.red,140));
 
     }
@@ -134,7 +136,7 @@ public class Player {
         GPA = (float)(Math.round(GPA*1000))/1000;
 
         MessageManager.addMessage(new FloatMessage(
-                ""+(float)Math.round((GPA-oldGPA)*100)/100,10,250,
+                "GPA: "+(float)Math.round((GPA-oldGPA)*100)/100,Main.getScreenWidth()/2,250,
                 Color.red,140));
     }
 
@@ -145,7 +147,7 @@ public class Player {
         coolness += amt;
 
         MessageManager.addMessage(new FloatMessage(
-                ""+amt,130,400,
+                "coolness: "+amt,Main.getScreenWidth()/2,300,
                 Color.blue,140));
     }
 

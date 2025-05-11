@@ -37,15 +37,33 @@ public class Assignment {
 
     }
 
-    public boolean isComplete(){ return complete;}
-    public ArrayList<MultipleChoice> getMultipleChoice(){ return mcqs;}
-    public int getSelectedMCQ(){ return selectedMCQ;}
+public boolean isComplete(){ return complete;}
+public boolean allVisited(){
 
-
-    public void setSelectedMCQ(int index){ selectedMCQ = index;}
-    public void update() throws SlickException {
-        // This updates your game's logic every frame.  NO DRAWING.
+    for (MultipleChoice mcq: mcqs)
+    {
+        if (!mcq.isAttempted())
+        {
+            return false;
+        }
     }
+    return true;
+}
+public ArrayList<MultipleChoice> getMultipleChoice(){ return mcqs;}
+public int getSelectedMCQ(){ return selectedMCQ;}
+
+
+public void setSelectedMCQ(int index){ selectedMCQ = index;}
+public void selectNextMCQ(){
+    if (selectedMCQ +1< mcqs.size())
+    {
+        selectedMCQ ++;
+    }
+}
+public void update() throws SlickException {
+    // This updates your game's logic every frame.  NO DRAWING.
+}
+
 
     public void render(Graphics g) throws SlickException {
         // This code renders shapes and images every frame.

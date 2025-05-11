@@ -3,33 +3,33 @@ O: Get on Mr. Malafarina's good side
 ...
 +A-NO: It's the last day of the quarter. You check your grade and you have an 89% in Computer Science! Your parents will kill you if you don't get an A.
 ____B: Go up to Mr. Mal's desk.
-+B-NO: He's working on a project right now. You hear lasers firing and see spaceships on the screen. He's very focused and doesn't notice you.
++B-T2: He's working on a project right now. You hear lasers firing and see spaceships on the screen. He's very focused and doesn't notice you.
 ____BE1: Accept your grade and leave him alone.
 ____D: Interrupt him.
-+D-NO: "What's the matter? I'm working on Astraeus right now."
++D-T2: "What's the matter? I'm working on Astraeus right now."
 ____E: "Astraeus? I love that game! That unit was so fun and I enjoyed it so much."
 ____F: "Can you round my grade? I have an 89% right now."
-+E-NO: "Really? Well since you enjoyed it so much, I'm thinking of making the Astraeus unit yearlong. What do you think?"
++E-T0: "Really? Well since you enjoyed it so much, I'm thinking of making the Astraeus unit yearlong. What do you think?"
 ____G: "YEARLONG?! Please no..."
 ____H: "Hmmmm... that's a great idea! I'm sure everyone will love that!"
-+G-NO: "How dare you disrespect my game... I'm taking 10 points off your grade right now!"
++G-T3: "How dare you disrespect my game... I'm taking 10 points off your grade right now!"
 ____BE2: "Whoops..."
-+H-NO: "Thanks for the feedback! I need to get back to coding now."
++H-T1: "Thanks for the feedback! I need to get back to coding now."
 ____GE1: You go back to your desk, unsure if you did enough to save your grade.
-+F-NO: "Why should I? You turned in your project a day late at 3 a.m."
++F-T3: "Why should I? You turned in your project a day late at 3 a.m."
 ____I: *Lie* "My flash drive corrupted and I had to recode the entire project."
 ____J: *Be honest* "Our group underestimated what we had to get done, and we all have AP exams we've been studying for."
-+I-NO: "Nice try, but I can see you're using the same flash drive. Maybe next time don't make up an excuse."
++I-T3: "Nice try, but I can see you're using the same flash drive. Maybe next time don't make up an excuse."
 ____BE1: Well that was embarrassing.
-+J-NO: "I see. I'll think about it. Thank you for being honest."
++J-T0: "I see. I'll think about it. Thank you for being honest."
 ____GE1: You head back to your computer, not sure if your grade is safe or not.
-+BE1-T1: Your grade stays at a B, and the 89% haunts you while you sleep. Your parents are disappointed.
++BE1-NO: Your grade stays at a B, and the 89% haunts you while you sleep. Your parents are disappointed.
 ____cool:-10
 ____GPA:-015
-+BE2-T1: Your grade drops to a 79%, and your parents are furious! RIP your grade... But at least you were honest.
++BE2-NO: Your grade drops to a 79%, and your parents are furious! RIP your grade... But at least you were honest.
 ____cool:+20
 ____GPA:-025
-+GE1-T1: You check Schoology and see a beautiful 90% in your gradebook. Your GPA is saved! But you were kind of a goody two shoes...
++GE1-NO: You check Schoology and see a beautiful 90% in your gradebook. Your GPA is saved! But you were kind of a goody two shoes...
 ____cool:-10
 ____GPA:+020
 end

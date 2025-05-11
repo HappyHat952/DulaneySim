@@ -24,6 +24,7 @@ public class AssignState extends BasicGameState {
 
     private StateChangeButton cutSceneButton;
     private Button submitBtn;
+    private Button nextBtn;
     private static Assignment assignment;
     private static ArrayList<Assignment> allAssigned;
 
@@ -52,6 +53,9 @@ public class AssignState extends BasicGameState {
                 Color.orange, "Go To Lunch", Main.CUTSCENE_ID, sbg);
         submitBtn = new Button((int) (Main.getScreenWidth() * .75f), (int) (Main.getScreenHeight() * .75f),
                 "SUBMIT ",Fonts.big,Color.red);
+
+        nextBtn = new Button((int) (Main.getScreenWidth() * .75f), (int) (Main.getScreenHeight() * .75f),
+                "NEXT ",Fonts.big,Color.green);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -74,8 +78,12 @@ public class AssignState extends BasicGameState {
         assignment.render(g);
         if (assignment.isComplete()) {
             cutSceneButton.render(g);
-        } else {
+        }
+        else if (assignment.allVisited()){
             submitBtn.render(g);
+        }
+        else {
+            nextBtn.render(g);
         }
 
         g.setColor(Color.black);
@@ -106,11 +114,17 @@ public class AssignState extends BasicGameState {
             cutSceneButton.click(x, y);
         } else {
             if (submitBtn.isMouseOver(x, y)) {
-                assignment.submit();
-            }
-//            else {
+                if (assignment.allVisited())
+                {
+                    assignment.submit();
+                }
+                else
+                {
+                    assignment.selectNextMCQ();
+                }
 
-//            }
+            }
+
         }
         assignment.mousePressed(button, x, y);
 
