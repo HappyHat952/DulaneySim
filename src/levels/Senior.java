@@ -24,13 +24,15 @@ public class Senior extends Level {
 //        protected ArrayList<Obstacle> obstacles;
 //        protected Conversation convo;
         testID = "Test_1";
-        convoID = "mcVeigh";
-        convoSprite = Images.veltImage;
-        convoBg = Images.veltBG;
-        cutScenes.add(new CutScene(1, Images.lunch4, "LUNCH TIME", "EAT", "DON'T EAT", "You're feeling a little " +
-                "sick, but you've earned some street cred", "Taking the safe option... so you think you're smart?", 2, Images.coolLunch, Images.wimpLunch));
-        cutScenes.add(new CutScene(2, Images.parking, "SNOW DAY!", "SKIP VIRTUAL CLASS", "LOG ON TO CLASS", "You've got courage, that's " +
-                "for sure... The teachers aren't going to like this.", "You've avoided violence... for now", 2, Images.parking1, Images.parking2));
+        convoID = "Shaw";
+        convoSprite = Images.shawImage;
+        convoBg = Images.shawBG;
+        cutScenes.add(new CutScene(1, Images.lunch4, "LUNCH TIME", "EAT", "DON'T EAT", "That hamburger was dryer than the sahara desert, "
+                + "and there seemed to be a new ecosystem growing in your strawberries. Yum", "Last lunch of the year and you're too scared " +
+                "to try? Bruh", 2, Images.coolLunch, Images.wimpLunch));
+        cutScenes.add(new CutScene(2, Images.parking, "PARKING", "PARK ILLEGALLY", "FIND ANOTHER SPOT", "You come back to your car later and "
+                + "see it's been rear ended by a teacher. Looks like someone wanted to teach you a lesson...", "You are forced to park at the top of Padonia, and must walk" +
+                " miles to get to school. But your car is safe.", 2, Images.parking1, Images.parking2));
         cutScenes.add(new Transition(2, Images.transition1));
     }
 }

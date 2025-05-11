@@ -49,7 +49,7 @@ public class Player {
         //if (displayOn || overStat)
         if (true)
         {
-            int xBuffer = 300;
+            int xBuffer = 100;
             g.setColor(Color.black);
             g.fillRect(xBuffer,0, 300,f.getHeight("l")*4);
 

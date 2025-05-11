@@ -113,20 +113,21 @@ public class Locker extends BasicGameState {
         g.setFont(Fonts.medium);
         g.drawString("MY STICKERS", Main.getScreenWidth() * .11f, Main.getScreenHeight() * .5f);
 
-        g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .60f);
-        g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .60f);
-        g.drawImage(Images.sticker11, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .80f);
-
-//        if (Player.getGrade() == 10) {
-//            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
-//        } else if (Player.getGrade() == 11) {
-//            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
-//            g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .58f);
-//        } else if (Player.getGrade() == 12) {
-//            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
-//            g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .58f);
-//            g.drawImage(Images.sticker11, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .78f);
-//        }
+        if (Player.getGrade() == 10) {
+            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
+        } else if (Player.getGrade() == 11) {
+            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
+            g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .58f);
+        } else if (Player.getGrade() == 12) {
+            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .58f);
+            g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .58f);
+            g.drawImage(Images.sticker11, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .78f);
+        } else if (Player.getGrade() != 9) {
+            g.drawImage(Images.sticker9, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .60f);
+            g.drawImage(Images.sticker10, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .60f);
+            g.drawImage(Images.sticker11, Main.getScreenWidth() * .05f, Main.getScreenHeight() * .80f);
+            g.drawImage(Images.sticker12, Main.getScreenWidth() * .2f, Main.getScreenHeight() * .80f);
+        }
         // ADD ONCE GRADUATED TO SHOW LAST ONE
     }
 }

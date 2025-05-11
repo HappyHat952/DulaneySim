@@ -1,0 +1,42 @@
+Mr. Shaw
+O: Understand AP Physics (impossible)
+...
++A-NO: You're in class, learning about electric fields & currents. You are completely lost.
+____B: Ask Mr. Shaw for help.
++B-T0: "Hey! What's up?"
+____C: "I'm really lost right now, I don't understand how to use the right hand rule."
+____D: "This class is impossible." *cooler option*
++C-T1: "That's okay! Remember, when you use the right hand rule, your thumb points in the direction of the current, and then your fingers wrap around to show you the direction of the magnetic field!"
+____GE1: "Oh, that makes sense. Thank you!"
+____E: "But how do I interpret what the curled fingers mean?"
++E-T1: "Well, think about how your fingers hit the page. If they are going into the page, then you draw X's, like an arrow going away from you. If they are curling away from the page, then you draw dots, like an arrow coming towards you."
+____GE2: "Oh... thank you! I feel better now."
++D-T4: "Don't say that... Would a visit from Vector-Man or a song cheer you up?"
+____F: "VECTOR MAN!!!"
+____G: "A SONG!!!"
++F-T2: "Mr. Shaw told me you needed some help from Vector Man! What's wrong?"
+____H: "I'm confused about the right-hand rule, can you explain it to me?"
+____BE1: "Nevermind..." *This action has consequences*
++H-T2: "Not to worry, Vector man is an expert! Remember, when you use the right hand rule, your thumb points in the direction of the current, and then your fingers wrap around to show you the direction of the magnetic field!"
+____GE1: "That makes sense. Thanks Vector-Man!"
+____I: "Hey, how come we've never seen you and Mr.Shaw in the same room together..."
++I-T5: *Vector-man runs out and Mr. Shaw returns* "What are you talking about... Vector-Man had to go so I'm back now. Go back to your desk!"
+____GE3: *smiling* "Alright..."
++G-T3: *singing and playing guitar* "Green alligators and long-necked geese, hump backed camels and chimpanzees... Cats, rats, and elephants.. As sure as you were born, you'll never see a unicorn."
+____BE2: "Yippee!"
++BE1-NO: You failed to learn any more physics, and now you're even more lost. You fail the text the next day.
+____cool:-10
+____GPA:-015
++BE2-NO: You failed to learn any more physics, and now you're even more lost. But at least you got a song!
+____cool:+20
+____GPA:-015
++GE1-NO: You cleared up some misunderstandings and are much more confident now. You get a B on your next test!
+____cool:-10
+____GPA:+020
++GE2-NO: You cleared up some misunderstandings and are much more confident now. You get an A on your next test!
+____cool:-10
+____GPA:+025
++GE3-NO: You discovered the secrets of Vector Man... And learned some physics too!
+____cool:+30
+____GPA:+015
+end
