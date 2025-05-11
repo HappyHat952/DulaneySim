@@ -8,6 +8,7 @@ public class Images {
 
     //title/general
     static public Image title;
+    static public Image logo;
 
     //racer
     static public SpriteSheet racerBackground;
@@ -15,12 +16,17 @@ public class Images {
     static public Image hit;
     static public Image spill;
     static public Image mouse;
+    static public Image couple;
+    static public Image lunchTray;
 
     //locker
     static public Image locker;
-    static public Image home;
+    static public Image runButton;
     static public Image help;
-    static public Image sticker;
+    static public Image sticker9;
+    static public Image sticker10;
+    static public Image sticker11;
+    static public Image sticker12;
 
     //conversation
     static public Image mcVBG;
@@ -36,8 +42,22 @@ public class Images {
     static public Image lunch3;
     static public Image lunch4;
     static public Image fight;
+    static public Image fight1;
+    static public Image fight2;
+
     static public Image transition1;
     static public Image snowDay;
+    static public Image snow1;
+    static public Image snow2;
+    static public Image bathroom;
+    static public Image bathroom1;
+    static public Image bathroom2;
+    static public Image parking;
+    static public Image parking1;
+    static public Image parking2;
+
+    static public Image coolLunch;
+    static public Image wimpLunch;
 
     // ui
     static public SpriteSheet volumeSheet;
@@ -48,19 +68,26 @@ public class Images {
         try {
             //Title/general
             title = new Image("res/title/title.png").getScaledCopy(1920, 1080);
+            logo = new Image("res/title/logo.png");
 
             //racer
-            racerBackground = new SpriteSheet("res/racer/racerBackground.png", 1920, 1080);
+            racerBackground = new SpriteSheet("res/racer/racerBackgroundLoop.png", 1920, 1080);
+
             racer = new Image("res/racer/racer.png");
             hit = new Image("res/racer/hit.png");
             spill = new Image("res/racer/spill.png");
             mouse = new Image("res/racer/mouse.png");
+            couple = new Image("res/racer/couple.png");
+            lunchTray = new Image("res/racer/lunchTray.png");
 
             //locker
             locker = new Image("res/locker/locker.png");
-            home = new Image("res/locker/home.png");
+            runButton = new Image("res/locker/runButton.png");
             help = new Image("res/locker/help.png");
-            sticker = new Image("res/locker/sticker.png");
+            sticker9 = new Image("res/locker/sticker9.png");
+            sticker10 = new Image("res/locker/sticker10.png");
+            sticker11 = new Image("res/locker/sticker.png");
+            sticker12 = new Image("res/locker/sticker.png");
 
             //conversation
             mcVBG = new Image("res/conversation/backdrop/mcVeighBackdrop.png");
@@ -75,8 +102,22 @@ public class Images {
             lunch3 = new Image("res/cutscene/lunch/lunch3.png");
             lunch4 = new Image("res/cutscene/lunch/lunch4.png");
             fight = new Image("res/cutscene/fight.png");
+            fight1 = new Image("res/cutscene/fight1.png");
+            fight2 = new Image("res/cutscene/fight2.png");
             transition1 = new Image("res/cutscene/transition1.png");
             snowDay = new Image("res/cutscene/snowDay.png");
+            snow1 = new Image("res/cutscene/snow1.png");
+            snow2 = new Image("res/cutscene/snow2.png");
+            bathroom = new Image("res/cutscene/bathroom.png");
+            bathroom1 = new Image("res/cutscene/bathroom1.png");
+            bathroom2 = new Image("res/cutscene/bathroom2.png");
+
+            parking = new Image("res/cutscene/parking.png");
+            parking1 = new Image("res/cutscene/parking1.png");
+            parking2 = new Image("res/cutscene/parking2.png");
+
+            coolLunch = new Image("res/cutscene/lunch/coolLunch.png").getScaledCopy(400, 400);
+            wimpLunch = new Image("res/cutscene/lunch/wimpLunch.png");
 
             // ui
             volumeSheet = new SpriteSheet("res/ui/volumeSheet.png", 100, 100);

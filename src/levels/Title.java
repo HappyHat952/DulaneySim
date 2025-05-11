@@ -34,7 +34,7 @@ public class Title extends BasicGameState {
         Images.loadImages();
         Sounds.loadSounds();
         MessageManager.init();
-        button = new StateChangeButton((int) (Main.getScreenWidth() * .8f), (int) (Main.getScreenHeight() * .6f), Color.red,
+        button = new StateChangeButton((int) (Main.getScreenWidth() * .45f), (int) (Main.getScreenHeight() * .8f), Color.red,
                 "Start Game", Main.LOCKER_ID, sbg);
     }
 
@@ -43,11 +43,18 @@ public class Title extends BasicGameState {
 
         g.drawImage(Images.title, 0, 0);
 
+        int w = 800;
+        int h = 100;
+        g.setColor(Color.red);
+        g.fillRect(Main.getScreenWidth() * .5f - w/2, Main.getScreenHeight() * .15f - h/2, w, h);
         g.setColor(Color.white);
+        g.drawRect(Main.getScreenWidth() * .5f - w/2, Main.getScreenHeight() * .15f - h/2, w, h);
+
         g.setFont(Fonts.big);
-        g.drawString("Dulaney Simulator", Main.getScreenWidth() * .3f, Main.getScreenHeight() * .31f);
+        g.drawString("Dulaney Simulator", Main.getScreenWidth() * .5f - w/2 + 180, Main.getScreenHeight() * .15f - h/2 + 20);
 
         button.render(g);
+        g.drawImage(Images.logo, Main.getScreenWidth() * .5f - Images.logo.getWidth()/2, Main.getScreenHeight() * .5f - Images.logo.getHeight()/2);
     }
 
 

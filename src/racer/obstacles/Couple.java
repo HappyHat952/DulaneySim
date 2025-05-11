@@ -1,13 +1,13 @@
 package racer.obstacles;
 
-import core.Main;
 import setup.Images;
 
-public class Mouse extends Obstacle {
-    public Mouse() {
+public class Couple extends Obstacle{
+
+    public Couple() {
         super();
-        image = Images.mouse;
-        name = "Mouse";
+        image = Images.couple;
+        name = "Couple";
         w = image.getWidth();
         h = image.getHeight();
     }

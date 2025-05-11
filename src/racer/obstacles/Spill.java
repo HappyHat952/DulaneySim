@@ -9,7 +9,6 @@ public class Spill extends Obstacle {
         super();
         image = Images.spill;
         name = "Spill";
-        x = Main.getScreenWidth() * .5f - (float) image.getWidth() / 2;
         w = image.getWidth();
         h = image.getHeight();
     }

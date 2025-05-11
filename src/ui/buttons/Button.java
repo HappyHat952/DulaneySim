@@ -105,7 +105,9 @@ public class Button {
                 g.fillRect(x,y,w,h);
             }
             else {
-                image.drawFlash(x,y);
+                image.draw(x, y);
+                g.setColor(new Color(1f, 1f, 1f, 0.5f));
+                g.fillRect(x, y, w, h);
             }
             if (name != null) {
                 g.setFont(font);

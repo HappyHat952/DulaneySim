@@ -1,13 +1,12 @@
 package racer.obstacles;
 
-import core.Main;
 import setup.Images;
 
-public class Mouse extends Obstacle {
-    public Mouse() {
+public class LunchTray extends Obstacle {
+    public LunchTray() {
         super();
-        image = Images.mouse;
-        name = "Mouse";
+        image = Images.lunchTray;
+        name = "Lunch Tray";
         w = image.getWidth();
         h = image.getHeight();
     }

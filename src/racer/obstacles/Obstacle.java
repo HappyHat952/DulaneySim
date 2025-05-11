@@ -13,49 +13,32 @@ public class Obstacle {
     protected float y;
     protected int w;
     protected int h;
-    protected float xAdd;
+
     protected Image image;
     protected String name;
-    protected int finalX;
+
 
     public Obstacle() {
 //        this.image = Images.obstacle;
-        y = Main.getScreenHeight() * .14f;
-        finalX = (int) (Math.random() * Main.getScreenWidth());
-
-        double random = Math.random();
-
-        Point start = new Point(Main.getScreenWidth()*.5f, y);
-        Point end = new Point(finalX, Main.getScreenHeight());
-
-        if (random < .25) {
-            xAdd = 4.5f;
-        } else if (random < .5) {
-            xAdd = -4.5f;
-        } else if (random < .75) {
-            xAdd = 10;
+        int random = (int) (Math.random() * Main.getScreenWidth() *.32f);
+        int multiplier;
+        if (Math.random() < 0.5) {
+            multiplier = -1;
         } else {
-            xAdd = -10;
+            multiplier = 1;
         }
+        x = Main.getScreenWidth() * .5f + (random * multiplier);
+        y = 0;
 
-    }
 
-    public float getScale() {
-        int startY = (int) (Main.getScreenHeight() * 0.14f);
-        int endY = Main.getScreenHeight();
-
-        // Can adjust this later to make it better
-        float add = 2 * ((y-startY)/(endY-startY));
-        return (0.2f + add);
     }
 
     public void update() {
-        y += (float) RacerState.getyAdd() /2;
-        if (RacerState.getyAdd() == 10) {
-            x += xAdd/2;
-        } else {
-            x += xAdd;
-        }
+       if (RacerState.getSpeed() == 1) {
+           y += 5;
+       } else {
+           y += 3;
+       }
     }
 
     public float getY() {
@@ -75,16 +58,11 @@ public class Obstacle {
     }
 
     public void render(Graphics g) {
-//        g.drawImage(image, x, y);
-        g.drawImage(image.getScaledCopy(getScale()), x, y);
+        g.drawImage(image, x, y);
     }
 
     public void setX(float x) {
         this.x = x;
-    }
-
-    public void setxAdd(float xAdd) {
-        this.xAdd = xAdd;
     }
 
     public void setY(float y) {
