@@ -34,6 +34,7 @@ public class CutScene {
                     int totalFrames) {
         leaveButton = new StateChangeButton((int) (Main.getScreenWidth() * .85f), (int) (Main.getScreenHeight() * .1f), Color.yellow,
                 "Leave", CUTSCENE_ID, sbg);
+        // HELLO
         this.id = id;
         this.image = image;
         this.title = title;

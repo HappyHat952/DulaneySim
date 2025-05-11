@@ -17,7 +17,7 @@ public class Freshman extends Level {
         obstacles.add(Spill.class);
 
         testID = "Test_1";
-        convoID = "mcVeigh";
+        convoID = "Malafarina";
         convoSprite = Images.mcVImage;
         convoBg = Images.mcVBG;
         this.cutScenes.add(new CutScene(1, Images.lunch1, "LUNCH TIME", "EAT", "DON'T EAT", "That heavenly hot dog has granted you some street cred, but you'll be spending some extra time in the bathroom later... Send a prayer to the janitors", "What?! You missed out on some tasty food... But you also escaped the listeria outbreak, so maybe this was the better choice", 2));
