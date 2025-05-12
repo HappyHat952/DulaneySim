@@ -1,6 +1,6 @@
 Qstn: What is 3.2399 + 2.3293
 a) 5
-b) 5.5692 absurdly long to test out whether the stuff works!
+b) 5.5692
 c) 6
 d) 5.5439
 b

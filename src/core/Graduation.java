@@ -57,7 +57,7 @@ public class Graduation extends BasicGameState {
             message = "Not bad... you had a coolness of " + Player.getCoolness();
         }
 
-        g.drawString("You Graduate with a GPA of "+Player.getGPA(),
+        g.drawString(message,
                 Main.getScreenWidth()*.2f, Main.getScreenHeight()/2 - 75);
     }
 
